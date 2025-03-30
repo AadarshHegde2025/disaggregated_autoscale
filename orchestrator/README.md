@@ -14,5 +14,14 @@ pip install python-dotenv
 pip install pyyaml
 ```
 
-OR use requirements
-3) 
+OR 
+```
+pip install -r requirements.txt
+```
+
+3) Modify the config.yaml accordingly 
+
+4) Run orchestrator.py 
+```
+orchestrator.py -o [OUTPUT FILE] -c [CONFIG FILE]
+```

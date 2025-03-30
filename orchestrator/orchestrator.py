@@ -7,6 +7,8 @@ import time
 from multiprocessing import Process, freeze_support
 import threading
 import yaml
+import argparse
+
 
 # Load credentials from .env
 load_dotenv()
@@ -117,4 +119,14 @@ if __name__ == "__main__":
     # Required for compatibility on windows
     freeze_support()
 
-    runOrchestrator(configFile="config.yaml")
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-o', '--output', type=str, help="Output File name")
+    parser.add_argument('-c', '--config', type=str, help="Config File name")
+
+    args = parser.parse_args()
+    if(args.config and args.output):
+        runOrchestrator(configFile= args.config, outputFile= args.ouput)
+    elif(args.config):
+        runOrchestrator(configFile= args.config)
+    else:
+        print("Config file not supplied. Correct invocation: orchestrator.py -c [CONFIG FILE] (-o [OUTPUT FILE])")
