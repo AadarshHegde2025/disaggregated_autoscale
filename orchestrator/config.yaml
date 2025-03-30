@@ -1,0 +1,21 @@
+# This YAML is used to configure which VMs are designated in each group
+- name: Autoscaler
+  vm_numbers: [1]
+  commands: ["echo I_am_the_autoscaler"]
+
+- name: Load Balancer
+  vm_numbers: [2]
+  commands: ["echo I_am_the_load_Balancer"]
+
+- name: Memory heavy
+  vm_numbers: [3, 4, 5, 6, 7, 8]
+  commands: ["touch wow.txt", "ls"]  
+  
+- name: Compute heavy
+  vm_numbers: [9, 10, 11, 12, 13, 14]
+  commands: ["echo hi"]
+  
+- name: Storage heavy
+  vm_numbers: [15, 16, 17, 18, 19, 20]
+  commands: ["echo CS525"]
+

@@ -1,0 +1,19 @@
+VM17: CS525 
+VM5: wow.txt 
+VM15: CS525 
+VM9: hi 
+VM8: wow.txt 
+VM18: CS525 
+VM16: CS525 
+VM11: hi 
+VM1: I_am_the_autoscaler 
+VM12: hi 
+VM2: I_am_the_load_Balancer 
+VM10: hi 
+VM14: hi 
+VM3: hello.txt  hi.txt  wow.txt 
+VM19: CS525 
+VM7: wow.txt 
+VM13: hi 
+VM6: wow.txt 
+VM4: wow.txt 
