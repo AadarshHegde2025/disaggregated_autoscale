@@ -62,6 +62,7 @@ def runOrchestrator(configFile, outputFile = "output.txt"):
         )
         processes.append(process)
         process.start()
+        time.sleep(0.2)
     
     print("Shells created, running commands...")
 
@@ -113,7 +114,7 @@ def writeToOutputFile(filename, VMNumber, data):
     with file_lock:
         with open(filename, 'a') as file:
             # Data cleaned to omit bracketed paste mode (See more here [https://en.wikipedia.org/wiki/Bracketed-paste])
-            file.write(f"VM{VMNumber}: {data.split("\r")[1]} \n")
+            file.write(f"VM{VMNumber}: {data} \n")
 
 if __name__ == "__main__":
     # Required for compatibility on windows
