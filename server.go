@@ -1,5 +1,7 @@
 package main
 
+import "net"
+
 /*
 	Description: This file is the code that runs on each server that actually processes a job
 
@@ -8,3 +10,7 @@ package main
 */
 
 // TODO: RPC handler to send resource utilization info
+
+func handleConnection(connection net.Conn) {
+
+}
