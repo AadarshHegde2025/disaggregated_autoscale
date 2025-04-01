@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"encoding/csv"
 	"fmt"
-	"net"
+	"net/rpc"
 	"os"
 	"strconv"
 	"strings"
@@ -16,10 +16,6 @@ const (
 	ONLINE ServerState = iota
 	OFFLINE
 )
-
-func send_data(server_num int) {
-
-}
 
 func main() {
 	/* General Architecture:
@@ -33,12 +29,13 @@ func main() {
 
 	// TODO: process config file here, set up connections, choose an initial subset of servers to be "online"
 
-	config_file, err := os.Open("config.txt")
+	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 
 	total_servers := 0
 	number_of_online_servers := 0
-	var connected_servers map[int]net.Conn = make(map[int]net.Conn)
+	var connected_servers map[int]string = make(map[int]string)
+	var port int = 9000
 
 	i := 0
 	for scanner.Scan() {
@@ -52,8 +49,7 @@ func main() {
 		} else {
 			// normal servers
 			words := strings.Fields(line)
-			conn, _ := net.Dial("tcp", words[1]+":"+words[2])
-			connected_servers[i-2] = conn
+			connected_servers[i-2] = words[1]
 		}
 
 		if i-2 == number_of_online_servers {
@@ -63,7 +59,7 @@ func main() {
 	}
 
 	// TODO: process trace here, route the job ids to best matching server
-
+	print(total_servers)
 	file, _ := os.Open("./alibaba_trace/batch_task.csv")
 	reader := csv.NewReader(file)
 	records, err := reader.ReadAll()
@@ -73,9 +69,12 @@ func main() {
 	}
 
 	// basic round robin load balancer
-	for idx, record := range records {
+	for idx, _ := range records {
 		// route each job to the appropriate initial server, tell the server how much resources it will actually using
-		send_data(idx % number_of_online_servers)
+		client, _ := rpc.Dial("tcp", connected_servers[idx%number_of_online_servers]+":"+strconv.Itoa(port))
+		args := Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
+		var reply int
+		client.Call("handle_job.add_job", &args, &reply)
 	}
 }
 
