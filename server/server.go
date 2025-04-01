@@ -22,9 +22,9 @@ const MEMORY_AVAILABLE = 100
 var compute_remaining float32
 var memory_remaining float32
 
-type handle_job struct{}
+type HandleJob struct{}
 
-func (t *handle_job) add_job(args *rpcstructs.Args, reply *int) error {
+func (t *HandleJob) add_job(args *rpcstructs.Args, reply *int) error {
 
 	// if the server can handle the job, it will add it to its queue
 	// otherwise, it will return an error
@@ -34,7 +34,7 @@ func (t *handle_job) add_job(args *rpcstructs.Args, reply *int) error {
 }
 
 func startServer() {
-	job_handler := new(handle_job)
+	job_handler := new(HandleJob)
 	rpc.Register(job_handler)
 
 	listener, err := net.Listen("tcp", ":9000")
