@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"encoding/csv"
 	"fmt"
 	"net/rpc"
@@ -72,7 +73,7 @@ func main() {
 	for idx, _ := range records {
 		// route each job to the appropriate initial server, tell the server how much resources it will actually using
 		client, _ := rpc.Dial("tcp", connected_servers[idx%number_of_online_servers]+":"+strconv.Itoa(port))
-		args := Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
+		args := rpcstructs.Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
 		var reply int
 		client.Call("handle_job.add_job", &args, &reply)
 	}
