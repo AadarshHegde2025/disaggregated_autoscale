@@ -24,7 +24,7 @@ var memory_remaining float32
 
 type HandleJob struct{}
 
-func (t *HandleJob) add_job(args *rpcstructs.Args, reply *int) error {
+func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 
 	// if the server can handle the job, it will add it to its queue
 	// otherwise, it will return an error

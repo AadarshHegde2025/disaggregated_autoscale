@@ -3,8 +3,6 @@ package main
 import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
-	"encoding/csv"
-	"fmt"
 	"net/rpc"
 	"os"
 	"strconv"
@@ -36,7 +34,7 @@ func main() {
 	total_servers := 0
 	number_of_online_servers := 0
 	var connected_servers map[int]string = make(map[int]string)
-	var port int = 9000
+	// var port int = 9000
 
 	i := 0
 	for scanner.Scan() {
@@ -50,7 +48,7 @@ func main() {
 		} else {
 			// normal servers
 			words := strings.Fields(line)
-			connected_servers[i-2] = words[1]
+			connected_servers[i-2] = strings.TrimSpace(words[1])
 		}
 
 		if i-2 == number_of_online_servers {
@@ -61,22 +59,22 @@ func main() {
 
 	// TODO: process trace here, route the job ids to best matching server
 	print(total_servers)
-	file, _ := os.Open("./alibaba_trace/batch_task.csv")
-	reader := csv.NewReader(file)
-	records, err := reader.ReadAll()
-	if err != nil {
-		fmt.Println("Error reading records:", err)
-		return
-	}
+	// file, _ := os.Open("./data/batch_task.csv")
+	// reader := csv.NewReader(file)
+	// records, err := reader.ReadAll()
+	// if err != nil {
+	// 	fmt.Println("Error reading records:", err)
+	// 	return
+	// }
 
 	// basic round robin load balancer
-	for idx, _ := range records {
-		// route each job to the appropriate initial server, tell the server how much resources it will actually using
-		client, _ := rpc.Dial("tcp", connected_servers[idx%number_of_online_servers]+":"+strconv.Itoa(port))
-		args := rpcstructs.Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
-		var reply int
-		client.Call("handle_job.add_job", &args, &reply)
-	}
+	// for idx, _ := range records {
+	// route each job to the appropriate initial server, tell the server how much resources it will actually using
+	client, _ := rpc.Dial("tcp", "sp25-cs525-0902.cs.illinois.edu"+":"+"9000")
+	args := rpcstructs.Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
+	var reply int
+	client.Call("HandleJob.AddJobs", &args, &reply)
+	// }
 }
 
 /* My notes:
