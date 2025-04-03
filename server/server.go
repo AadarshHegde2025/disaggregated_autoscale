@@ -34,25 +34,26 @@ var job_to_mem_resource_usage = make(map[Pair]float32)
 type HandleJob struct{}
 
 func deallocateResources(jobId int, taskId int) {
-	print("Server: Deallocating resources\n")
 	key := Pair{j_id: jobId, t_id: taskId}
 
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
-	print("Server: Resources deallocated\n")
+	print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 }
 
 func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 
 	// if the server can handle the job, it will add it to its queue
 	// otherwise, it will return an error
-	print("Server: Adding job %d\n", args.JobId)
 	key := Pair{j_id: args.JobId, t_id: args.TaskId}
 	job_to_cpu_resource_usage[key] = float32(args.CPUResourceUsage) / 100
 	job_to_mem_resource_usage[key] = float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
 
 	compute_remaining -= float32(args.CPUResourceUsage) / 100
 	memory_remaining -= float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
+	print("Server: Added job %d\n", args.JobId)
+	print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+
 	time.AfterFunc((time.Duration(args.TimeEnd-args.TimeStart) * time.Second), func() { deallocateResources(args.JobId, args.TaskId) })
 	*reply = 0
 	return nil
