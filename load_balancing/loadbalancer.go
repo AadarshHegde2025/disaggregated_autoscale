@@ -3,10 +3,13 @@ package main
 import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
+	"encoding/csv"
+	"fmt"
 	"net/rpc"
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 type ServerState int
@@ -34,7 +37,7 @@ func main() {
 	total_servers := 0
 	number_of_online_servers := 0
 	var connected_servers map[int]string = make(map[int]string)
-	// var port int = 9000
+	var port int = 9000
 
 	i := 0
 	for scanner.Scan() {
@@ -57,24 +60,32 @@ func main() {
 		i += 1
 	}
 
-	// TODO: process trace here, route the job ids to best matching server
 	print(total_servers)
-	// file, _ := os.Open("./data/batch_task.csv")
-	// reader := csv.NewReader(file)
-	// records, err := reader.ReadAll()
-	// if err != nil {
-	// 	fmt.Println("Error reading records:", err)
-	// 	return
-	// }
+	// TODO: process trace here, route the job ids to best matching server
+	file, _ := os.Open("./data/cleaned_merged_output.csv")
+	reader := csv.NewReader(file)
+	i = 0
+	for {
+		record, err := reader.Read()
+		if err != nil {
+			break // EOF or error
+		}
+		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
 
-	// basic round robin load balancer
-	// for idx, _ := range records {
-	// route each job to the appropriate initial server, tell the server how much resources it will actually using
-	client, _ := rpc.Dial("tcp", "sp25-cs525-0902.cs.illinois.edu"+":"+"9000")
-	args := rpcstructs.Args{1, 2, 3, 4, 5} // TODO: fill in with actual values from the trace
-	var reply int
-	client.Call("HandleJob.AddJobs", &args, &reply)
-	// }
+		job_id, _ := strconv.Atoi(record[2])
+		task_id, _ := strconv.Atoi(record[3])
+		plan_cpu, _ := strconv.Atoi(record[6])
+		plan_mem, _ := strconv.Atoi(record[7])
+		start_time, _ := strconv.Atoi(record[8])
+		end_time, _ := strconv.Atoi(record[9])
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id} // TODO: fill in with actual values from the trace
+		var reply int
+		client.Call("HandleJob.AddJobs", &args, &reply)
+		i += 1
+		time.Sleep(500 * time.Millisecond)
+	}
+
 }
 
 /* My notes:

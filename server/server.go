@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"net"
 	"net/rpc"
+	"time"
 )
 
 /*
@@ -16,19 +17,43 @@ import (
 
 // TODO: RPC handler to send resource utilization info
 
-const CPU_AVAILABLE = 100
-const MEMORY_AVAILABLE = 100
+const CPU_AVAILABLE = 2    // number of cores
+const MEMORY_AVAILABLE = 4 // in GB
 
-var compute_remaining float32
-var memory_remaining float32
+var compute_remaining float32 = CPU_AVAILABLE
+var memory_remaining float32 = MEMORY_AVAILABLE
+
+type Pair struct {
+	j_id int
+	t_id int
+}
+
+var job_to_cpu_resource_usage = make(map[Pair]float32)
+var job_to_mem_resource_usage = make(map[Pair]float32)
 
 type HandleJob struct{}
+
+func deallocateResources(jobId int, taskId int) {
+	print("Server: Deallocating resources\n")
+	key := Pair{j_id: jobId, t_id: taskId}
+
+	compute_remaining += job_to_cpu_resource_usage[key]
+	memory_remaining += job_to_mem_resource_usage[key]
+	print("Server: Resources deallocated\n")
+}
 
 func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 
 	// if the server can handle the job, it will add it to its queue
 	// otherwise, it will return an error
 	print("Server: Adding job %d\n", args.JobId)
+	key := Pair{j_id: args.JobId, t_id: args.TaskId}
+	job_to_cpu_resource_usage[key] = float32(args.CPUResourceUsage) / 100
+	job_to_mem_resource_usage[key] = float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
+
+	compute_remaining -= float32(args.CPUResourceUsage) / 100
+	memory_remaining -= float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
+	time.AfterFunc((time.Duration(args.TimeEnd-args.TimeStart) * time.Second), func() { deallocateResources(args.JobId, args.TaskId) })
 	*reply = 0
 	return nil
 }

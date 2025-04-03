@@ -6,4 +6,5 @@ type Args struct {
 	MemoryResourceUsage int
 	TimeStart           int
 	TimeEnd             int
+	TaskId              int
 }
