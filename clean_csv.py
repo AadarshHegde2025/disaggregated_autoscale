@@ -38,8 +38,12 @@ if __name__ == "__main__":
 
     # Data cleaning
 
-    merged_df = pd.read_csv('cleaned_merged_output.csv')
-    print(merged_df)
+    merged_df = pd.read_csv('./data/cleaned_file.csv')
+    # cleaned_df = merged_df.dropna(subset=['plan_cpu', 'plan_mem'])
+
+    # # Save to new CSV
+    # cleaned_df.to_csv('cleaned_file.csv', index=False)
+    print(merged_df['plan_cpu'])
     # deduped_df = merged_df.drop_duplicates(subset=['job_id', 'task_id'], keep='first')
     # deduped_df.to_csv("cleaned_merged_output.csv", index=False)
     # # instance_df = instance_df.drop(columns=["real_cpu_max", "real_cpu_avg", "real_mem_max", "real_mem_avg"])

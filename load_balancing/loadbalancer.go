@@ -34,7 +34,6 @@ func main() {
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 
-	total_servers := 0
 	number_of_online_servers := 0
 	var connected_servers map[int]string = make(map[int]string)
 	var port int = 9000
@@ -43,8 +42,8 @@ func main() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		if i == 0 {
-			num, _ := strconv.Atoi(line)
-			total_servers = num - 2
+			// num, _ := strconv.Atoi(line)
+			// total_servers = num - 2
 		} else if i == 1 {
 			num, _ := strconv.Atoi(line)
 			number_of_online_servers = num
@@ -60,23 +59,27 @@ func main() {
 		i += 1
 	}
 
-	print(total_servers)
 	// TODO: process trace here, route the job ids to best matching server
-	file, _ := os.Open("./data/cleaned_merged_output.csv")
+	file, _ := os.Open("./data/cleaned_file.csv")
 	reader := csv.NewReader(file)
 	i = 0
 	for {
-		record, err := reader.Read()
-		if err != nil {
-			break // EOF or error
+		record, _ := reader.Read()
+		if i == 0 {
+			// Skip the first line (header)
+			i += 1
+			continue
+
 		}
+		fmt.Println(record)
 		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
 
+		// fmt.Println(record[6])
 		job_id, _ := strconv.Atoi(record[2])
 		task_id, _ := strconv.Atoi(record[3])
-		plan_cpu, _ := strconv.Atoi(record[6])
-		plan_mem, _ := strconv.Atoi(record[7])
+		plan_cpu, _ := strconv.ParseFloat(record[6], 64)
+		plan_mem, _ := strconv.ParseFloat(record[7], 64)
 		start_time, _ := strconv.Atoi(record[8])
 		end_time, _ := strconv.Atoi(record[9])
 
