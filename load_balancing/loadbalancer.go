@@ -79,6 +79,9 @@ func main() {
 		plan_mem, _ := strconv.Atoi(record[7])
 		start_time, _ := strconv.Atoi(record[8])
 		end_time, _ := strconv.Atoi(record[9])
+
+		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
+
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id} // TODO: fill in with actual values from the trace
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)

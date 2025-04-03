@@ -51,7 +51,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 
 	compute_remaining -= float32(args.CPUResourceUsage) / 100
 	memory_remaining -= float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
-	print("Server: Added job %d\n", args.JobId)
+	print("Server: Added job ", args.JobId)
 	print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 
 	time.AfterFunc((time.Duration(args.TimeEnd-args.TimeStart) * time.Second), func() { deallocateResources(args.JobId, args.TaskId) })
