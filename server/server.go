@@ -40,7 +40,8 @@ type HandleJob struct{}
 
 func deallocateResources(jobId int, taskId int) {
 	key := Pair{j_id: jobId, t_id: taskId}
-
+	mu.Lock()
+	defer mu.Unlock()
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
 	print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
