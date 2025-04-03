@@ -59,7 +59,6 @@ func main() {
 		i += 1
 	}
 
-	// TODO: process trace here, route the job ids to best matching server
 	file, _ := os.Open("./data/cleaned_file.csv")
 	reader := csv.NewReader(file)
 	i = 0
