@@ -22,6 +22,7 @@ import (
 
 // TODO: Need Locking on Global Variables to ensure consistency
 
+// TODO: The following are the real numbers for the server, however can make them different via commandline args
 const CPU_AVAILABLE = 2    // number of cores
 const MEMORY_AVAILABLE = 4 // in GB
 

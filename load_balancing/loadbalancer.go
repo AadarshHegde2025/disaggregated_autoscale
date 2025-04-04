@@ -35,76 +35,10 @@ func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) err
 	return nil
 }
 
-func ListenForAutoscalerUpdates() {
-	server_adder := new(AddingServer)
-	rpc.Register(server_adder)
-
-	listener, err := net.Listen("tcp", ":9000")
-	if err != nil {
-		fmt.Println("Error starting server:", err)
-		return
-	}
-	fmt.Println("Load balancer listening on port 9000")
-
-	for {
-		conn, err := listener.Accept()
-		if err != nil {
-			fmt.Println("Connection error:", err)
-			continue
-		}
-		fmt.Println("Connection accepted from:", conn.RemoteAddr())
-		go rpc.ServeConn(conn)
-	}
-}
-
-func main() {
-	// Redirect output to debug file
-	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
-	if err != nil {
-		fmt.Println("Error opening debug file:", err)
-		return
-	}
-	defer debugFile.Close()
-	// os.Stdout = debugFile
-
-	// Processing Config File
-
-	config_file, _ := os.Open("config.txt")
-	scanner := bufio.NewScanner(config_file)
-
-	i := 0
-	for scanner.Scan() {
-		line := scanner.Text()
-		if i == 0 {
-			// num, _ := strconv.Atoi(line)
-			// total_servers = num - 2
-		} else if i == 1 {
-			num, _ := strconv.Atoi(line)
-			mu2.Lock()
-			number_of_online_servers = num
-			mu2.Unlock()
-		} else {
-			// normal servers
-			words := strings.Fields(line)
-			mu.Lock()
-			connected_servers[i-2] = strings.TrimSpace(words[1])
-			mu.Unlock()
-		}
-
-		if i-2 == number_of_online_servers {
-			break
-		}
-		i += 1
-	}
-
-	// Listen for server updates
-	go ListenForAutoscalerUpdates()
-
-	// Process Jobs:
-
+func processJobs() {
 	file, _ := os.Open("./data/cleaned_file.csv")
 	reader := csv.NewReader(file)
-	i = 0
+	i := 0
 	for {
 		record, _ := reader.Read()
 		if i == 0 {
@@ -140,6 +74,77 @@ func main() {
 		time.Sleep(500 * time.Millisecond)
 	}
 
+}
+
+func ListenForAutoscalerUpdates() {
+	server_adder := new(AddingServer)
+	rpc.Register(server_adder)
+
+	listener, err := net.Listen("tcp", ":9000")
+	if err != nil {
+		fmt.Println("Error starting server:", err)
+		return
+	}
+	fmt.Println("Load balancer listening on port 9000")
+
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			fmt.Println("Connection error:", err)
+			continue
+		}
+		fmt.Println("Connection accepted from:", conn.RemoteAddr())
+		go rpc.ServeConn(conn)
+	}
+}
+
+func processConfigFile() {
+	config_file, _ := os.Open("config.txt")
+	scanner := bufio.NewScanner(config_file)
+
+	i := 0
+	for scanner.Scan() {
+		line := scanner.Text()
+		if i == 0 {
+			// num, _ := strconv.Atoi(line)
+			// total_servers = num - 2
+		} else if i == 1 {
+			num, _ := strconv.Atoi(line)
+			mu2.Lock()
+			number_of_online_servers = num
+			mu2.Unlock()
+		} else {
+			// normal servers
+			words := strings.Fields(line)
+			mu.Lock()
+			connected_servers[i-2] = strings.TrimSpace(words[1])
+			mu.Unlock()
+		}
+
+		if i-2 == number_of_online_servers {
+			break
+		}
+		i += 1
+	}
+}
+
+func main() {
+	// Redirect output to debug file if needed
+	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	if err != nil {
+		fmt.Println("Error opening debug file:", err)
+		return
+	}
+	defer debugFile.Close()
+	// os.Stdout = debugFile
+
+	// Processing Config File
+	processConfigFile()
+	// Listen for server updates
+	go ListenForAutoscalerUpdates()
+
+	// Process Jobs:
+	processJobs()
 }
 
 /* My notes:
