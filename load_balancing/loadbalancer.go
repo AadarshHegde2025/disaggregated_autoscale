@@ -60,7 +60,7 @@ func main() {
 		return
 	}
 	defer debugFile.Close()
-	os.Stdout = debugFile
+	// os.Stdout = debugFile
 
 	// Processing Config File
 
