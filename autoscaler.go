@@ -52,6 +52,9 @@ func autoscale() {
 
 	var reply int
 	load_balancer.Call("AddingServer.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
 
 }
 
