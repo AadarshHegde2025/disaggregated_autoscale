@@ -1,10 +1,14 @@
 package main
 
 import (
+	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"fmt"
 	"net"
 	"net/rpc"
+	"os"
+	"strconv"
+	"strings"
 	"sync"
 	"time"
 )
@@ -36,7 +40,32 @@ var job_to_mem_resource_usage = make(map[Pair]float32)
 
 var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
+var port int = 9000
+var my_ip string
+
 type HandleJob struct{}
+
+func sendAutoscalerStatistics() {
+	time.Sleep(5 * time.Second) // Wait for a while before sending stats
+	config_file, _ := os.Open("config.txt")
+	scanner := bufio.NewScanner(config_file)
+	var line string
+	for scanner.Scan() {
+		line = scanner.Text()
+	}
+
+	words := strings.Fields(line)
+	autoscaler, _ := rpc.Dial("tcp", words[1]+":"+strconv.Itoa(port))
+
+	for {
+		time.Sleep(5 * time.Second) // Send stats every 5 seconds
+		mu.Lock()
+		server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining}
+		autoscaler.Call("AutoScaler.RequestedStats", server_stats, nil)
+		mu.Unlock()
+	}
+
+}
 
 func deallocateResources(jobId int, taskId int) {
 	key := Pair{j_id: jobId, t_id: taskId}
@@ -55,10 +84,11 @@ func processJobQueue() {
 			if compute_remaining >= float32(job.CPUResourceUsage)/100 && memory_remaining >= float32(job.MemoryResourceUsage*MEMORY_AVAILABLE) {
 				// Remove job from queue
 				job_queue = job_queue[1:]
+				key := Pair{j_id: job.JobId, t_id: job.TaskId}
 
 				// Allocate resources
-				compute_remaining -= float32(job.CPUResourceUsage) / 100
-				memory_remaining -= float32(job.MemoryResourceUsage * MEMORY_AVAILABLE)
+				compute_remaining -= job_to_cpu_resource_usage[key]
+				memory_remaining -= job_to_mem_resource_usage[key]
 				fmt.Print("Server: Processing queued job ", job.JobId)
 				fmt.Print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 
@@ -77,7 +107,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	key := Pair{j_id: args.JobId, t_id: args.TaskId}
 	job_to_cpu_resource_usage[key] = float32(args.CPUResourceUsage) / 100
 	job_to_mem_resource_usage[key] = float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
-
+	my_ip = args.ServerIp
 	if compute_remaining < float32(args.CPUResourceUsage)/100 || memory_remaining < float32(args.MemoryResourceUsage*MEMORY_AVAILABLE) {
 		fmt.Print("Server: Not enough resources, adding job to queue\n")
 		job_queue = append(job_queue, *args)
@@ -117,6 +147,7 @@ func startServer() {
 }
 
 func main() {
-	go processJobQueue() // Start the job queue processor in a separate goroutine
+	go processJobQueue()          // Start the job queue processor in a separate goroutine
+	go sendAutoscalerStatistics() // Start the autoscaler statistics sender in a separate goroutine
 	startServer()
 }

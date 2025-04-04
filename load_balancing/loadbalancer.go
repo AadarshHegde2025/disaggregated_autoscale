@@ -12,13 +12,6 @@ import (
 	"time"
 )
 
-type ServerState int
-
-const (
-	ONLINE ServerState = iota
-	OFFLINE
-)
-
 func main() {
 	// Redirect output to debug file
 	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
@@ -93,7 +86,7 @@ func main() {
 
 		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
 
-		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id} // TODO: fill in with actual values from the trace
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers]} // TODO: fill in with actual values from the trace
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1

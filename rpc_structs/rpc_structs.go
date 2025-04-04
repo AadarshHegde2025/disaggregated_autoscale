@@ -7,4 +7,11 @@ type Args struct {
 	TimeStart           int
 	TimeEnd             int
 	TaskId              int
+	ServerIp            string
+}
+
+type ServerUsage struct {
+	ServerIp     string
+	ComputeUsage float32
+	MemoryUsage  float32
 }
