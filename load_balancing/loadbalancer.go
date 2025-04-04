@@ -2,9 +2,11 @@ package main
 
 import (
 	"bufio"
+	"database/sql"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"encoding/csv"
 	"fmt"
+	"log"
 	"net"
 	"net/rpc"
 	"os"
@@ -12,7 +14,11 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	_ "github.com/mattn/go-sqlite3"
 )
+
+// TODO: Update config file to determine which servers are compute heavy and which are memory heavy
 
 type AddingServer struct{}
 
@@ -22,6 +28,35 @@ var mu2 sync.Mutex
 var connected_servers map[int]string = make(map[int]string)
 var port int = 9000
 var number_of_online_servers int = 0
+
+func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64) {
+	db, err := sql.Open("sqlite3", "./batch_data.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	query := `
+		SELECT real_cpu_max, real_mem_max
+		FROM instances
+		WHERE job_id = ? AND task_id = ?
+		LIMIT 1
+	`
+
+	var cpuAvg, memAvg float64
+	err = db.QueryRow(query, job_id, task_id).Scan(&cpuAvg, &memAvg)
+
+	if err != nil {
+		if err == sql.ErrNoRows {
+			fmt.Println("No matching record found.")
+			return 0, 0
+		}
+		log.Fatal(err)
+	}
+
+	return cpuAvg, memAvg
+
+}
 
 func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
 	mu.Lock()
@@ -35,7 +70,7 @@ func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) err
 	return nil
 }
 
-func processJobs() {
+func round_robin_loadbalancer() {
 	file, _ := os.Open("./data/cleaned_file.csv")
 	reader := csv.NewReader(file)
 	i := 0
@@ -65,13 +100,14 @@ func processJobs() {
 		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
 		mu.Lock()
 		mu2.Lock()
-		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers]} // TODO: fill in with actual values from the trace
+		real_cpu, real_mem := retrieve_corresponding_real_resource_util(job_id, task_id)
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
 		mu2.Unlock()
 		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
-		time.Sleep(500 * time.Millisecond)
+		time.Sleep(1000 * time.Millisecond)
 	}
 
 }
@@ -140,11 +176,12 @@ func main() {
 
 	// Processing Config File
 	processConfigFile()
+
 	// Listen for server updates
 	go ListenForAutoscalerUpdates()
 
-	// Process Jobs:
-	processJobs()
+	// // Process Jobs:
+	round_robin_loadbalancer()
 }
 
 /* My notes:

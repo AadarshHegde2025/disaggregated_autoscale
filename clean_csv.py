@@ -1,7 +1,7 @@
 import pandas as pd 
 import sqlite3   
 
-def create_db():
+def create_db(): # run to create the database locally on machine
     task_df = pd.read_csv('./data/batch_task.csv', header=None)
     instance_df = pd.read_csv('./data/batch_instance.csv', header=None)
 
@@ -37,27 +37,19 @@ def merge():
         'real_cpu_max', 'real_cpu_avg', 'real_mem_max', 'real_mem_avg'
     ]
 
-    task_df.columns = task_columns
-    instance_df.columns = instance_columns
+    merged_df = pd.merge(
+        task_df,
+        instance_df,
+        on=['job_id', 'task_id'],
+        how='inner',
+        suffixes=('_task', '_instance')
+    )
 
-    conn = sqlite3.connect('batch_data.db')
+    # Save the merged data
+    merged_df.to_csv('merged_batch_data.csv', index=False)
 
-    task_df.to_sql('tasks', conn, index=False, if_exists='replace')
-    instance_df.to_sql('instances', conn, index=False, if_exists='replace')
-
-    # merged_df = pd.merge(
-    #     task_df,
-    #     instance_df,
-    #     on=['job_id', 'task_id'],
-    #     how='inner',
-    #     suffixes=('_task', '_instance')
-    # )
-
-    # # Save the merged data
-    # merged_df.to_csv('merged_batch_data.csv', index=False)
-
-    # print(f"Merged data shape: {merged_df.shape}")
-    # print(f"Columns in merged data: {merged_df.columns.tolist()}")
+    print(f"Merged data shape: {merged_df.shape}")
+    print(f"Columns in merged data: {merged_df.columns.tolist()}")
 
 if __name__ == "__main__":
 
