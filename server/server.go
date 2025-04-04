@@ -55,17 +55,25 @@ func sendAutoscalerStatistics() {
 	}
 
 	words := strings.Fields(line)
-	autoscaler, _ := rpc.Dial("tcp", words[1]+":"+strconv.Itoa(port))
+	autoscaler, err := rpc.Dial("tcp", words[1]+":"+strconv.Itoa(port))
+	if err != nil {
+		fmt.Printf("Error connecting to autoscaler at %s:%d: %v\n", words[1], port, err)
+		return // Exit the function if the connection fails
+	}
 
 	for {
 		time.Sleep(5 * time.Second) // Send stats every 5 seconds
 		mu.Lock()
 		server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining}
 		var reply string
-		autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
+		err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
+		if err != nil {
+			fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
+			mu.Unlock()
+			continue // Skip this iteration and try again
+		}
 		mu.Unlock()
 	}
-
 }
 
 func deallocateResources(jobId int, taskId int) {
