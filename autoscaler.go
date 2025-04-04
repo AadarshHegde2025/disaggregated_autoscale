@@ -20,7 +20,7 @@ var mu sync.Mutex
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
-	fmt.Println("Received server stats:", args)
+	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
 	server_to_status[args.ServerIp] = true // mark the server as online
 	mu.Unlock()
 	*reply = "Stats received"
@@ -81,3 +81,6 @@ func main() {
 	// Keep the main function running
 	select {} // Blocks forever
 }
+
+// TODO:
+// Figure out how to tell the autoscaler which IP it is
