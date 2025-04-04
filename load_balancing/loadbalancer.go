@@ -53,7 +53,7 @@ func ListenForAutoscalerUpdates() {
 
 func main() {
 	// Redirect output to debug file
-	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE, 0666)
+	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
 	if err != nil {
 		fmt.Println("Error opening debug file:", err)
 		return
