@@ -41,7 +41,7 @@ func autoscale() {
 	// autoscaler also has to let load balancer know when it adds or removes a server
 
 	// basic testing that autoscaler can interact with load balancer
-	time.Sleep(10 * time.Second) // wait for load balancer to start
+	time.Sleep(20 * time.Second) // wait for load balancer to start
 	fmt.Println("Autoscaler is starting to send stats to load balancer")
 	load_balancer, err := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
 	if err != nil {
@@ -58,7 +58,7 @@ func autoscale() {
 
 }
 
-func startAutoscaler() {
+func startAutoscaler() { // server listener
 	stat_handler := new(AutoScaler)
 	rpc.Register(stat_handler)
 
@@ -97,7 +97,6 @@ func main() {
 		server_to_status[words[1]] = false // everything starts offline until they identify themselves
 	}
 
-	time.Sleep(6 * time.Second)
 	go startAutoscaler() // handler to receive stats from servers
 	go autoscale()       // actual autoscaling logic
 
