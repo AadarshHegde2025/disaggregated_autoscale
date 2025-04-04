@@ -15,3 +15,8 @@ type ServerUsage struct {
 	ComputeUsage float32
 	MemoryUsage  float32
 }
+
+type ServerDetails struct {
+	ServerIp   string
+	NodeNumber int
+}

@@ -7,10 +7,14 @@ import (
 	"net"
 	"net/rpc"
 	"os"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
 )
+
+var LOAD_BALANCER_IP string = "192.168.4.248" // Change this
+var port int = 9000
 
 type AutoScaler struct{}
 
@@ -33,6 +37,15 @@ func autoscale() {
 	// autoscaler has to be aware of which servers are online and offline so it knows what can be turned off or on
 
 	// autoscaler has to be pre-trained on the trace
+
+	// autoscaler also has to let load balancer know when it adds or removes a server
+
+	// basic testing that autoscaler can interact with load balancer
+	load_balancer, _ := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
+	args := rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: fill in with actual values from the trace
+
+	var reply int
+	load_balancer.Call("AddingServer.AddServer", &args, &reply)
 
 }
 
@@ -76,7 +89,8 @@ func main() {
 	}
 
 	time.Sleep(6 * time.Second)
-	go startAutoscaler()
+	go startAutoscaler() // handler to receive stats from servers
+	go autoscale()       // actual autoscaling logic
 
 	// Keep the main function running
 	select {} // Blocks forever

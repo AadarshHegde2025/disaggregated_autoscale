@@ -5,16 +5,55 @@ import (
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"encoding/csv"
 	"fmt"
+	"net"
 	"net/rpc"
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 )
 
+type AddingServer struct{}
+
+var mu sync.Mutex
+
+var connected_servers map[int]string = make(map[int]string)
+var port int = 9000
+
+func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
+	mu.Lock()
+	fmt.Println("Adding server:", args.ServerIp, "with node number:", args.NodeNumber)
+	connected_servers[args.NodeNumber] = args.ServerIp
+	mu.Unlock()
+	*reply = 0
+	return nil
+}
+
+func ListenForAutoscalerUpdates() {
+	server_adder := new(AddingServer)
+	rpc.Register(server_adder)
+
+	listener, err := net.Listen("tcp", ":9000")
+	if err != nil {
+		fmt.Println("Error starting server:", err)
+		return
+	}
+	fmt.Println("Load balancer listening on port 9000")
+
+	for {
+		conn, err := listener.Accept()
+		if err != nil {
+			fmt.Println("Connection error:", err)
+			continue
+		}
+		go rpc.ServeConn(conn)
+	}
+}
+
 func main() {
 	// Redirect output to debug file
-	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE, 0666)
 	if err != nil {
 		fmt.Println("Error opening debug file:", err)
 		return
@@ -22,23 +61,12 @@ func main() {
 	defer debugFile.Close()
 	os.Stdout = debugFile
 
-	/* General Architecture:
-	- When a client sends some request for work, it first goes to the load balancer to determine which server the job goes to
-	- The load balancer will read the trace csv, and route the job id to the best available server
-	- Each server needs to maintain "resource counters" - essentially statistics on how much of its resources are being used.
-	  Load balancer can send an RPC to any server to get its resource utilization
-	- The autoscaler's job is to monitor resource utilization on servers, and based on some algorithm, dynamically add or remove
-	  vms from the system to match the workload.
-	*/
-
-	// TODO: process config file here, set up connections, choose an initial subset of servers to be "online"
+	// Processing Config File
 
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 
 	number_of_online_servers := 0
-	var connected_servers map[int]string = make(map[int]string)
-	var port int = 9000
 
 	i := 0
 	for scanner.Scan() {
@@ -52,7 +80,9 @@ func main() {
 		} else {
 			// normal servers
 			words := strings.Fields(line)
+			mu.Lock()
 			connected_servers[i-2] = strings.TrimSpace(words[1])
+			mu.Unlock()
 		}
 
 		if i-2 == number_of_online_servers {
@@ -60,6 +90,11 @@ func main() {
 		}
 		i += 1
 	}
+
+	// Listen for server updates
+	go ListenForAutoscalerUpdates()
+
+	// Process Jobs:
 
 	file, _ := os.Open("./data/cleaned_file.csv")
 	reader := csv.NewReader(file)
@@ -73,9 +108,10 @@ func main() {
 
 		}
 		fmt.Println(record)
+		mu.Lock()
 		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
-
+		mu.Unlock()
 		// fmt.Println(record[6])
 		job_id, _ := strconv.Atoi(record[2])
 		task_id, _ := strconv.Atoi(record[3])
@@ -85,8 +121,9 @@ func main() {
 		end_time, _ := strconv.Atoi(record[9])
 
 		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
-
+		mu.Lock()
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers]} // TODO: fill in with actual values from the trace
+		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
