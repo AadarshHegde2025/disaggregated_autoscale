@@ -61,7 +61,8 @@ func sendAutoscalerStatistics() {
 		time.Sleep(5 * time.Second) // Send stats every 5 seconds
 		mu.Lock()
 		server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining}
-		autoscaler.Call("AutoScaler.RequestedStats", server_stats, nil)
+		var reply string
+		autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 		mu.Unlock()
 	}
 
