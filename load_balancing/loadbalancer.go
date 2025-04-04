@@ -2,9 +2,10 @@ package main
 
 import (
 	"bufio"
+	"database/sql"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
-	"encoding/csv"
 	"fmt"
+	"log"
 	"net"
 	"net/rpc"
 	"os"
@@ -12,7 +13,11 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	_ "github.com/mattn/go-sqlite3"
 )
+
+// TODO: Update config file to determine which servers are compute heavy and which are memory heavy
 
 type AddingServer struct{}
 
@@ -22,6 +27,36 @@ var mu2 sync.Mutex
 var connected_servers map[int]string = make(map[int]string)
 var port int = 9000
 var number_of_online_servers int = 0
+
+func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64, int, int) {
+	db, err := sql.Open("sqlite3", "./batch_data.db")
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	query := `
+		SELECT real_cpu_max, real_mem_max, start_timestamp, end_timestamp
+		FROM instances
+		WHERE job_id = ? AND task_id = ?
+		LIMIT 1
+	`
+
+	var cpuAvg, memAvg float64
+	var start_time, end_time int
+	err = db.QueryRow(query, job_id, task_id).Scan(&cpuAvg, &memAvg, &start_time, &end_time)
+
+	if err != nil {
+		if err == sql.ErrNoRows {
+			fmt.Println("No matching record found.")
+			return 0, 0, 0, 0
+		}
+		log.Fatal(err)
+	}
+
+	return cpuAvg, memAvg, start_time, end_time
+
+}
 
 func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
 	mu.Lock()
@@ -33,6 +68,45 @@ func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) err
 	mu.Unlock()
 	*reply = 0
 	return nil
+}
+
+func round_robin_loadbalancer() {
+	db, _ := sql.Open("sqlite3", "./batch_data.db")
+	rows, _ := db.Query(`
+		SELECT job_id, task_id, plan_cpu, plan_mem
+		FROM tasks
+	`)
+
+	i := 0
+	for rows.Next() {
+
+		mu.Lock()
+		mu2.Lock()
+		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		mu2.Unlock()
+		mu.Unlock()
+		// fmt.Println(record[6])
+		var job_id int
+		var task_id int
+		var plan_cpu float64
+		var plan_mem float64
+
+		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
+
+		mu.Lock()
+		mu2.Lock()
+		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
+		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
+		mu2.Unlock()
+		mu.Unlock()
+		var reply int
+		client.Call("HandleJob.AddJobs", &args, &reply)
+		i += 1
+		time.Sleep(100 * time.Millisecond)
+	}
+
 }
 
 func ListenForAutoscalerUpdates() {
@@ -57,18 +131,7 @@ func ListenForAutoscalerUpdates() {
 	}
 }
 
-func main() {
-	// Redirect output to debug file
-	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
-	if err != nil {
-		fmt.Println("Error opening debug file:", err)
-		return
-	}
-	defer debugFile.Close()
-	// os.Stdout = debugFile
-
-	// Processing Config File
-
+func processConfigFile() {
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 
@@ -96,50 +159,26 @@ func main() {
 		}
 		i += 1
 	}
+}
+
+func main() {
+	// Redirect output to debug file if needed
+	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0666)
+	if err != nil {
+		fmt.Println("Error opening debug file:", err)
+		return
+	}
+	defer debugFile.Close()
+	// os.Stdout = debugFile
+
+	// Processing Config File
+	processConfigFile()
 
 	// Listen for server updates
 	go ListenForAutoscalerUpdates()
 
-	// Process Jobs:
-
-	file, _ := os.Open("./data/cleaned_file.csv")
-	reader := csv.NewReader(file)
-	i = 0
-	for {
-		record, _ := reader.Read()
-		if i == 0 {
-			// Skip the first line (header)
-			i += 1
-			continue
-
-		}
-		fmt.Println(record)
-		mu.Lock()
-		mu2.Lock()
-		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
-		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
-		mu2.Unlock()
-		mu.Unlock()
-		// fmt.Println(record[6])
-		job_id, _ := strconv.Atoi(record[2])
-		task_id, _ := strconv.Atoi(record[3])
-		plan_cpu, _ := strconv.ParseFloat(record[6], 64)
-		plan_mem, _ := strconv.ParseFloat(record[7], 64)
-		start_time, _ := strconv.Atoi(record[8])
-		end_time, _ := strconv.Atoi(record[9])
-
-		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
-		mu.Lock()
-		mu2.Lock()
-		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers]} // TODO: fill in with actual values from the trace
-		mu2.Unlock()
-		mu.Unlock()
-		var reply int
-		client.Call("HandleJob.AddJobs", &args, &reply)
-		i += 1
-		time.Sleep(500 * time.Millisecond)
-	}
-
+	// // Process Jobs:
+	round_robin_loadbalancer()
 }
 
 /* My notes:

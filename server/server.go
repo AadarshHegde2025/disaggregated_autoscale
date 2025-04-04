@@ -20,13 +20,14 @@ import (
 	This info will be sent to autoscaler via RPCs
 */
 
-// TODO: Need Locking on Global Variables to ensure consistency
+// TODO: Currently using plan_cpu and plan_mem as the actual resource usage
 
+// TODO: The following are the real numbers for the server, however can make them different via commandline args
 const CPU_AVAILABLE = 2    // number of cores
 const MEMORY_AVAILABLE = 4 // in GB
 
-var compute_remaining float32 = CPU_AVAILABLE
-var memory_remaining float32 = MEMORY_AVAILABLE
+var compute_remaining float64 = CPU_AVAILABLE
+var memory_remaining float64 = MEMORY_AVAILABLE
 
 var job_queue []rpcstructs.Args
 
@@ -35,8 +36,8 @@ type Pair struct {
 	t_id int
 }
 
-var job_to_cpu_resource_usage = make(map[Pair]float32)
-var job_to_mem_resource_usage = make(map[Pair]float32)
+var job_to_cpu_resource_usage = make(map[Pair]float64)
+var job_to_mem_resource_usage = make(map[Pair]float64)
 
 var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
@@ -92,10 +93,10 @@ func processJobQueue() {
 		mu.Lock()
 		if len(job_queue) > 0 {
 			job := job_queue[0]
-			if compute_remaining >= float32(job.CPUResourceUsage)/100 && memory_remaining >= float32(job.MemoryResourceUsage*MEMORY_AVAILABLE) {
+			key := Pair{j_id: job.JobId, t_id: job.TaskId}
+			if compute_remaining >= job_to_cpu_resource_usage[key] && memory_remaining >= job_to_mem_resource_usage[key] {
 				// Remove job from queue
 				job_queue = job_queue[1:]
-				key := Pair{j_id: job.JobId, t_id: job.TaskId}
 
 				// Allocate resources
 				compute_remaining -= job_to_cpu_resource_usage[key]
@@ -116,10 +117,10 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	mu.Lock()
 	// if the server can handle the job, immediatelty process, else will have to put in a queue
 	key := Pair{j_id: args.JobId, t_id: args.TaskId}
-	job_to_cpu_resource_usage[key] = float32(args.CPUResourceUsage) / 100
-	job_to_mem_resource_usage[key] = float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
+	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
+	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
 	my_ip = args.ServerIp
-	if compute_remaining < float32(args.CPUResourceUsage)/100 || memory_remaining < float32(args.MemoryResourceUsage*MEMORY_AVAILABLE) {
+	if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
 		fmt.Print("Server: Not enough resources, adding job to queue\n")
 		job_queue = append(job_queue, *args)
 	} else {
