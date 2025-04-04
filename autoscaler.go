@@ -43,7 +43,11 @@ func autoscale() {
 	// basic testing that autoscaler can interact with load balancer
 	time.Sleep(10 * time.Second) // wait for load balancer to start
 	fmt.Println("Autoscaler is starting to send stats to load balancer")
-	load_balancer, _ := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
+	load_balancer, err := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
+	if err != nil {
+		fmt.Println("Error connecting to load balancer:", err)
+		return
+	}
 	args := rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: fill in with actual values from the trace
 
 	var reply int
