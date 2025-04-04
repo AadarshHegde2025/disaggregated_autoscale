@@ -17,13 +17,18 @@ import (
 type AddingServer struct{}
 
 var mu sync.Mutex
+var mu2 sync.Mutex
 
 var connected_servers map[int]string = make(map[int]string)
 var port int = 9000
+var number_of_online_servers int = 0
 
 func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
 	mu.Lock()
 	fmt.Println("Adding server:", args.ServerIp, "with node number:", args.NodeNumber)
+	mu2.Lock()
+	number_of_online_servers += 1
+	mu2.Unlock()
 	connected_servers[args.NodeNumber] = args.ServerIp
 	mu.Unlock()
 	*reply = 0
@@ -67,8 +72,6 @@ func main() {
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 
-	number_of_online_servers := 0
-
 	i := 0
 	for scanner.Scan() {
 		line := scanner.Text()
@@ -77,7 +80,9 @@ func main() {
 			// total_servers = num - 2
 		} else if i == 1 {
 			num, _ := strconv.Atoi(line)
+			mu2.Lock()
 			number_of_online_servers = num
+			mu2.Unlock()
 		} else {
 			// normal servers
 			words := strings.Fields(line)
@@ -110,8 +115,10 @@ func main() {
 		}
 		fmt.Println(record)
 		mu.Lock()
+		mu2.Lock()
 		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		mu2.Unlock()
 		mu.Unlock()
 		// fmt.Println(record[6])
 		job_id, _ := strconv.Atoi(record[2])
@@ -123,7 +130,9 @@ func main() {
 
 		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
 		mu.Lock()
+		mu2.Lock()
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers]} // TODO: fill in with actual values from the trace
+		mu2.Unlock()
 		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
