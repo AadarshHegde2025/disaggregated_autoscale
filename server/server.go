@@ -46,7 +46,9 @@ var my_ip string
 type HandleJob struct{}
 
 func sendAutoscalerStatistics() {
-	time.Sleep(5 * time.Second) // Wait for a while before sending stats
+	for my_ip == "" {
+		time.Sleep(1 * time.Second) // Wait for my_ip to be set
+	}
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 	var line string
