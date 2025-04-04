@@ -47,6 +47,7 @@ func ListenForAutoscalerUpdates() {
 			fmt.Println("Connection error:", err)
 			continue
 		}
+		fmt.Println("Connection accepted from:", conn.RemoteAddr())
 		go rpc.ServeConn(conn)
 	}
 }
