@@ -16,6 +16,8 @@ import (
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
 var port int = 9000
 
+// everything working
+
 type AutoScaler struct{}
 
 var server_to_status = make(map[string]bool)
