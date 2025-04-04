@@ -20,6 +20,15 @@ const (
 )
 
 func main() {
+	// Redirect output to debug file
+	debugFile, err := os.OpenFile("loadbalancer_debug.txt", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)
+	if err != nil {
+		fmt.Println("Error opening debug file:", err)
+		return
+	}
+	defer debugFile.Close()
+	os.Stdout = debugFile
+
 	/* General Architecture:
 	- When a client sends some request for work, it first goes to the load balancer to determine which server the job goes to
 	- The load balancer will read the trace csv, and route the job id to the best available server

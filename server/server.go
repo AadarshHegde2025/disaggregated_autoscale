@@ -44,7 +44,7 @@ func deallocateResources(jobId int, taskId int) {
 	defer mu.Unlock()
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
-	print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 }
 
 func processJobQueue() {
@@ -59,8 +59,8 @@ func processJobQueue() {
 				// Allocate resources
 				compute_remaining -= float32(job.CPUResourceUsage) / 100
 				memory_remaining -= float32(job.MemoryResourceUsage * MEMORY_AVAILABLE)
-				print("Server: Processing queued job ", job.JobId)
-				print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+				fmt.Print("Server: Processing queued job ", job.JobId)
+				fmt.Print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 
 				// Schedule resource deallocation
 				time.AfterFunc((time.Duration(job.TimeEnd-job.TimeStart) * time.Second), func() { deallocateResources(job.JobId, job.TaskId) })
@@ -79,13 +79,13 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	job_to_mem_resource_usage[key] = float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
 
 	if compute_remaining < float32(args.CPUResourceUsage)/100 || memory_remaining < float32(args.MemoryResourceUsage*MEMORY_AVAILABLE) {
-		print("Server: Not enough resources, adding job to queue\n")
+		fmt.Print("Server: Not enough resources, adding job to queue\n")
 		job_queue = append(job_queue, *args)
 	} else {
-		compute_remaining -= float32(args.CPUResourceUsage) / 100
-		memory_remaining -= float32(args.MemoryResourceUsage * MEMORY_AVAILABLE)
-		print("Server: Added job ", args.JobId)
-		print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+		compute_remaining -= job_to_cpu_resource_usage[key]
+		memory_remaining -= job_to_mem_resource_usage[key]
+		fmt.Print("Server: Added job ", args.JobId)
+		fmt.Println("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining)
 
 		time.AfterFunc((time.Duration(args.TimeEnd-args.TimeStart) * time.Second), func() { deallocateResources(args.JobId, args.TaskId) })
 	}
