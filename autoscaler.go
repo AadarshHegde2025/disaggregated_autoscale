@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-var LOAD_BALANCER_IP string = "192.168.4.248" // Change this
+var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
 var port int = 9000
 
 type AutoScaler struct{}
