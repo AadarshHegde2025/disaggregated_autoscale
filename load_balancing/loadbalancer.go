@@ -29,7 +29,6 @@ var port int = 9000
 var number_of_online_servers int = 0
 
 func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64, int, int) {
-	fmt.Println("Retrieving real resource utilization for job_id:", job_id, "task_id:", task_id)
 	db, err := sql.Open("sqlite3", "./batch_data.db")
 	if err != nil {
 		log.Fatal(err)
@@ -40,9 +39,6 @@ func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64
 		SELECT real_cpu_max, real_mem_max, start_timestamp, end_timestamp
 		FROM instances
 		WHERE job_id = ? AND task_id = ?
-		AND real_cpu_max IS NOT NULL
-  		AND real_mem_max IS NOT NULL
-		AND status = 'TERMINATED'
 		LIMIT 1
 	`
 
@@ -98,17 +94,17 @@ func round_robin_loadbalancer() {
 
 		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
 
-		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem)
 		mu.Lock()
 		mu2.Lock()
 		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
+		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
 		mu2.Unlock()
 		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
-		time.Sleep(1000 * time.Millisecond)
+		time.Sleep(100 * time.Millisecond)
 	}
 
 }
