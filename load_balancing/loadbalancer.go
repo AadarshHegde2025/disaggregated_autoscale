@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"database/sql"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
-	"encoding/csv"
 	"fmt"
 	"log"
 	"net"
@@ -29,7 +28,8 @@ var connected_servers map[int]string = make(map[int]string)
 var port int = 9000
 var number_of_online_servers int = 0
 
-func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64) {
+func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64, int, int) {
+	fmt.Println("Retrieving real resource utilization for job_id:", job_id, "task_id:", task_id)
 	db, err := sql.Open("sqlite3", "./batch_data.db")
 	if err != nil {
 		log.Fatal(err)
@@ -37,24 +37,28 @@ func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64
 	defer db.Close()
 
 	query := `
-		SELECT real_cpu_max, real_mem_max
+		SELECT real_cpu_max, real_mem_max, start_timestamp, end_timestamp
 		FROM instances
 		WHERE job_id = ? AND task_id = ?
+		AND real_cpu_max IS NOT NULL
+  		AND real_mem_max IS NOT NULL
+		AND status = 'TERMINATED'
 		LIMIT 1
 	`
 
 	var cpuAvg, memAvg float64
-	err = db.QueryRow(query, job_id, task_id).Scan(&cpuAvg, &memAvg)
+	var start_time, end_time int
+	err = db.QueryRow(query, job_id, task_id).Scan(&cpuAvg, &memAvg, &start_time, &end_time)
 
 	if err != nil {
 		if err == sql.ErrNoRows {
 			fmt.Println("No matching record found.")
-			return 0, 0
+			return 0, 0, 0, 0
 		}
 		log.Fatal(err)
 	}
 
-	return cpuAvg, memAvg
+	return cpuAvg, memAvg, start_time, end_time
 
 }
 
@@ -71,18 +75,15 @@ func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) err
 }
 
 func round_robin_loadbalancer() {
-	file, _ := os.Open("./data/cleaned_file.csv")
-	reader := csv.NewReader(file)
-	i := 0
-	for {
-		record, _ := reader.Read()
-		if i == 0 {
-			// Skip the first line (header)
-			i += 1
-			continue
+	db, _ := sql.Open("sqlite3", "./batch_data.db")
+	rows, _ := db.Query(`
+		SELECT job_id, task_id, plan_cpu, plan_mem
+		FROM tasks
+	`)
 
-		}
-		fmt.Println(record)
+	i := 0
+	for rows.Next() {
+
 		mu.Lock()
 		mu2.Lock()
 		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
@@ -90,17 +91,17 @@ func round_robin_loadbalancer() {
 		mu2.Unlock()
 		mu.Unlock()
 		// fmt.Println(record[6])
-		job_id, _ := strconv.Atoi(record[2])
-		task_id, _ := strconv.Atoi(record[3])
-		plan_cpu, _ := strconv.ParseFloat(record[6], 64)
-		plan_mem, _ := strconv.ParseFloat(record[7], 64)
-		start_time, _ := strconv.Atoi(record[8])
-		end_time, _ := strconv.Atoi(record[9])
+		var job_id int
+		var task_id int
+		var plan_cpu float64
+		var plan_mem float64
 
-		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", start_time, " ", end_time)
+		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
+
+		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem)
 		mu.Lock()
 		mu2.Lock()
-		real_cpu, real_mem := retrieve_corresponding_real_resource_util(job_id, task_id)
+		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
 		mu2.Unlock()
 		mu.Unlock()

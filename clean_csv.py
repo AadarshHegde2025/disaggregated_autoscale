@@ -51,10 +51,96 @@ def merge():
     print(f"Merged data shape: {merged_df.shape}")
     print(f"Columns in merged data: {merged_df.columns.tolist()}")
 
+
+def clean_db():
+    conn = sqlite3.connect('batch_data.db')
+    cursor = conn.cursor()
+
+    # Begin transaction
+    cursor.execute("BEGIN TRANSACTION;")
+
+    cursor.execute("""
+        DELETE FROM instances
+        WHERE job_id IS NULL OR task_id IS NULL;
+    """)
+
+    cursor.execute("""
+        DELETE FROM instances
+        WHERE status != 'Terminated';
+    """)
+
+    cursor.execute("""
+        DELETE FROM instances
+        WHERE real_cpu_max IS NULL OR real_mem_max IS NULL;
+    """)
+
+    cursor.execute("""
+        DELETE FROM instances
+        WHERE rowid NOT IN (
+            SELECT MIN(rowid)
+            FROM instances
+            GROUP BY job_id, task_id
+        );
+    """)
+
+    # Delete from tasks tabla
+
+    cursor.execute("""
+        DELETE FROM tasks
+        WHERE job_id IS NULL OR task_id IS NULL;
+    """)
+
+    cursor.execute("""
+        DELETE FROM tasks
+        WHERE status != 'Terminated';
+    """)
+
+    cursor.execute("""
+        DELETE FROM tasks
+        WHERE rowid NOT IN (
+            SELECT MIN(rowid)
+            FROM tasks
+            GROUP BY job_id, task_id
+        );
+    """)
+
+    cursor.execute("""
+        DELETE FROM instances
+        WHERE (job_id, task_id) NOT IN (
+            SELECT job_id, task_id FROM tasks
+        );
+    """)
+
+    cursor.execute("""
+        DELETE FROM tasks
+        WHERE (job_id, task_id) NOT IN (
+            SELECT job_id, task_id FROM instances
+        );
+    """)
+
+    
+
+    # Commit changes
+    conn.commit()
+    cursor.execute("SELECT COUNT(*) FROM instances;")
+    total_rows = cursor.fetchone()[0]
+
+    print(f"Database cleaned. Remaining rows in 'instances': {total_rows}")
+
+    cursor.execute("SELECT COUNT(*) FROM tasks;")
+    total_rows = cursor.fetchone()[0]
+
+    print(f"Database cleaned. Remaining rows in 'tasks': {total_rows}")
+    conn.close()
+
+    print("Database cleaned successfully.")
+
+
 if __name__ == "__main__":
 
     # Database creation
-    create_db()
+    # create_db()
+    clean_db()
 
     # Data merging 
     # merge()
