@@ -1,20 +1,12 @@
-VM14: hi 
-VM10: hi 
-VM5: wow.txt 
-VM20: CS525 
-VM2: I_am_the_load_Balancer 
-VM7: wow.txt 
-VM8: wow.txt 
-VM16: CS525 
-VM3: hello.txt  hi.txt  wow.txt 
-VM6: wow.txt 
-VM4: wow.txt 
-VM18: CS525 
-VM13: hi 
-VM15: CS525 
-VM17: CS525 
-VM1: I_am_the_autoscaler 
-VM12: hi 
-VM19: CS525 
-VM9: hi 
-VM11: hi 
+VM1: [?2004lI_am_the_autoscaler 
+VM3: [?2004lI_am_the_autoscaler 
+VM2: [?2004lI_am_the_autoscaler 
+VM1: [?2004lHi 
+VM3: [?2004lHi 
+VM2: [?2004lHi 
+VM2: [?2004lI_am_the_autoscaler 
+VM1: [?2004lI_am_the_autoscaler 
+VM3: [?2004lI_am_the_autoscaler 
+VM2: [?2004lHello 
+VM1: [?2004lHello 
+VM3: [?2004lHello 

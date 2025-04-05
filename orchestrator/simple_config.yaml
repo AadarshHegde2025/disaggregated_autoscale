@@ -1,0 +1,3 @@
+- name: Autoscaler
+  vm_numbers: [1, 2, 3]
+  commands: ["echo I_am_the_autoscaler", "echo Hello"]
