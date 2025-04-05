@@ -151,7 +151,6 @@ func main() {
 
 	go startAutoscaler() // handler to receive stats from servers
 	go autoscale()       // actual autoscaling logic
-	go captureMetrics()
 
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
