@@ -65,7 +65,7 @@ func captureMetrics() {
 		p := plot.New()
 		p.Title.Text = fmt.Sprintf("Wait Time - %s", server)
 		p.X.Label.Text = "Job Index"
-		p.Y.Label.Text = "Wait Time (ms)"
+		p.Y.Label.Text = "Wait Time (s)"
 
 		line, err := plotter.NewLine(pointsWait)
 		if err != nil {
@@ -132,6 +132,26 @@ func autoscale() {
 	args := rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: This is just a test
 
 	var reply int
+	load_balancer.Call("AddingServer.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0907.cs.illinois.edu", 6} // TODO: This is just a test
+
+	load_balancer.Call("AddingServer.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+	args = rpcstructs.ServerDetails{"sp25-cs525-0908.cs.illinois.edu", 7} // TODO: This is just a test
+
+	load_balancer.Call("AddingServer.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0909.cs.illinois.edu", 8} // TODO: This is just a test
+
 	load_balancer.Call("AddingServer.AddServer", &args, &reply)
 	if err != nil {
 		fmt.Println("RPC call failed:", err) // Check if this prints
