@@ -113,13 +113,13 @@ func processJobQueue() {
 			} else {
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
+				time.AfterFunc((time.Duration(job_queue[0].TimeEnd-job_queue[0].TimeStart) * time.Second), func() { deallocateResources(job_queue[0].JobId, job_queue[0].TaskId) })
 				job_queue = job_queue[1:] // remove the job from the queue
 
 				if job_to_marked[key] == 1 {
 					spots_to_pushback -= 1
 				}
 
-				time.AfterFunc((time.Duration(job_queue[0].TimeEnd-job_queue[0].TimeStart) * time.Second), func() { deallocateResources(job_queue[0].JobId, job_queue[0].TaskId) })
 			}
 
 		}
