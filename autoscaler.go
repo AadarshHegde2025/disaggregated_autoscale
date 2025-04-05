@@ -4,6 +4,7 @@ import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"fmt"
+	"image/color"
 	"net"
 	"net/rpc"
 	"os"
@@ -16,7 +17,6 @@ import (
 
 	"gonum.org/v1/plot"
 	"gonum.org/v1/plot/plotter"
-	"gonum.org/v1/plot/plotutil"
 	"gonum.org/v1/plot/vg"
 )
 
@@ -44,17 +44,17 @@ var mu sync.Mutex
 
 func captureMetrics() {
 	if len(job_completion_times) != len(job_execution_times) {
-		panic("Slices must be the same length")
+		panic("slices must match in length")
 	}
 
 	pointsCompletion := make(plotter.XYs, len(job_completion_times))
 	pointsExecution := make(plotter.XYs, len(job_execution_times))
 
 	for i := range job_completion_times {
-		pointsCompletion[i].X = float64(i) // Job index
+		pointsCompletion[i].X = float64(i)
 		pointsCompletion[i].Y = float64(job_completion_times[i])
 
-		pointsExecution[i].X = float64(i) // Same X
+		pointsExecution[i].X = float64(i)
 		pointsExecution[i].Y = float64(job_execution_times[i])
 	}
 
@@ -63,18 +63,28 @@ func captureMetrics() {
 	p.X.Label.Text = "Job Index"
 	p.Y.Label.Text = "Duration (s)"
 
-	err := plotutil.AddLinePoints(
-		p,
-		"Total Time (Wait + Run)", pointsCompletion,
-		"Execution Time", pointsExecution,
-	)
+	// === Completion line ===
+	line1, err := plotter.NewLine(pointsCompletion)
 	if err != nil {
 		panic(err)
 	}
+	line1.Color = color.RGBA{R: 255, A: 255} // Red
 
-	// Save to PNG
-	fmt.Println("Saving png")
-	if err := p.Save(10*vg.Inch, 5*vg.Inch, "job_comparison.png"); err != nil {
+	// === Execution line ===
+	line2, err := plotter.NewLine(pointsExecution)
+	if err != nil {
+		panic(err)
+	}
+	line2.Color = color.RGBA{G: 128, A: 255} // Green
+
+	// Add to plot
+	p.Add(line1, line2)
+	p.Legend.Add("Total Time (Wait + Run)", line1)
+	p.Legend.Add("Execution Time", line2)
+
+	// Save
+	fmt.Println("Saving clean plot...")
+	if err := p.Save(10*vg.Inch, 5*vg.Inch, "job_durations_clean.png"); err != nil {
 		panic(err)
 	}
 }
