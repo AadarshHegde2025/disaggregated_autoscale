@@ -40,8 +40,14 @@ type Pair struct {
 	t_id int
 }
 
+type JobTiming struct {
+	job_start_time int64
+	job_end_time   int64
+}
+
 var job_to_cpu_resource_usage = make(map[Pair]float64)
 var job_to_mem_resource_usage = make(map[Pair]float64)
+var job_to_timing = make(map[Pair]JobTiming)
 
 var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
@@ -89,6 +95,9 @@ func deallocateResources(jobId int, taskId int) {
 	defer mu.Unlock()
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
+	state := job_to_timing[key]
+	state.job_end_time = time.Now().Unix()
+	job_to_timing[key] = state
 	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 }
 
@@ -113,7 +122,7 @@ func processJobQueue() {
 			}
 		}
 		mu.Unlock()
-		time.Sleep(1 * time.Second) // Check the queue periodically
+		time.Sleep(1 * time.Second) // Check the queue periodically, race condition, queue may never get addressed
 	}
 }
 
@@ -123,6 +132,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	key := Pair{j_id: args.JobId, t_id: args.TaskId}
 	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
 	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
+	job_to_timing[key] = JobTiming{job_start_time: time.Now().Unix(), job_end_time: -1}
 	my_ip = args.ServerIp
 	if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
 		fmt.Print("Server: Not enough resources, adding job to queue\n")
