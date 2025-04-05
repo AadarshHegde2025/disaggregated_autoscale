@@ -80,8 +80,9 @@ func captureMetrics() {
 	}
 	line2.Color = color.RGBA{G: 128, A: 255} // Green
 	// Add to plot
-	p.Add(line1)
+
 	p.Add(line2)
+	p.Add(line1)
 	p.Legend.Add("Total Time (Wait + Run)", line1)
 	p.Legend.Add("Execution Time", line2)
 
