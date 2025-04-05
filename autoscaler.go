@@ -122,7 +122,7 @@ func autoscale() {
 	// autoscaler also has to let load balancer know when it adds or removes a server
 
 	// basic testing that autoscaler can interact with load balancer
-	time.Sleep(20 * time.Second) // TODO: CHANGE THIS wait for load balancer to start
+	time.Sleep(70 * time.Second) // TODO: CHANGE THIS wait for load balancer to start
 	fmt.Println("Autoscaler is starting to send stats to load balancer")
 	load_balancer, err := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
 	if err != nil {

@@ -104,7 +104,7 @@ func round_robin_loadbalancer() {
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
-		time.Sleep(30 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 	}
 
 }
