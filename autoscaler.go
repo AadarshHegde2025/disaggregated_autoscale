@@ -36,7 +36,7 @@ var mu sync.Mutex
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
-	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
+	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage, args.JobCompletionTime)
 	status := server_to_status[args.ServerIp] // mark the server as online
 	status.Status = true
 	status.ComputeRemaining = args.ComputeUsage
