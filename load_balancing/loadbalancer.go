@@ -82,7 +82,7 @@ func round_robin_loadbalancer() {
 
 		mu.Lock()
 		mu2.Lock()
-		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
 		mu2.Unlock()
 		mu.Unlock()
@@ -98,13 +98,13 @@ func round_robin_loadbalancer() {
 		mu2.Lock()
 		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
-		fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
+		// fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
 		mu2.Unlock()
 		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(30 * time.Millisecond)
 	}
 
 }
