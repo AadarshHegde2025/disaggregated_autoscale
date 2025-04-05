@@ -204,7 +204,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     if(args.config and args.output):
-        runOrchestrator(configFile= args.config, outputFile= args.ouput)
+        runOrchestrator(configFile= args.config, outputFile= args.output)
     elif(args.config):
         runOrchestrator(configFile= args.config)
     else:
