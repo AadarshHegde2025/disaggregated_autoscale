@@ -4,13 +4,20 @@ import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"fmt"
+	"image/color"
 	"net"
 	"net/rpc"
 	"os"
+	"os/signal"
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
+
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
 )
 
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
@@ -18,17 +25,145 @@ var port int = 9000
 
 // everything working
 
+// TODO: aggregate the server stats over here. metrics: job latency, efficiency, graph of server usage
+
+type ServerStatus struct {
+	Status           bool
+	Server_Type      string // computer or memory heavy
+	ComputeRemaining float64
+	MemoryRemaining  float64
+}
+
 type AutoScaler struct{}
 
-var server_to_status = make(map[string]bool)
+var server_to_status = make(map[string]ServerStatus)
+var job_completion_times = make(map[string][]int64) // how much time between when the job was added to the server and when it was completed, for each server
+var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
 
 var mu sync.Mutex
 
+func captureMetrics() {
+	if len(job_completion_times) != len(job_execution_times) {
+		panic("Server sets must match in size")
+	}
+
+	fmt.Println("Generating per-server graphs...")
+	for server, completionList := range job_completion_times {
+		executionList, ok := job_execution_times[server]
+		if !ok || len(executionList) != len(completionList) {
+			fmt.Printf("Skipping %s: mismatched execution data\n", server)
+			continue
+		}
+
+		pointsCompletion := make(plotter.XYs, len(completionList))
+		pointsExecution := make(plotter.XYs, len(executionList))
+
+		for i := range completionList {
+			pointsCompletion[i].X = float64(i)
+			pointsCompletion[i].Y = float64(completionList[i])
+			pointsExecution[i].X = float64(i)
+			pointsExecution[i].Y = float64(executionList[i])
+		}
+
+		p := plot.New()
+		p.Title.Text = fmt.Sprintf("Job Times - %s", server)
+		p.X.Label.Text = "Job Index"
+		p.Y.Label.Text = "Duration (ms)"
+
+		line1, _ := plotter.NewLine(pointsCompletion)
+		line1.Color = color.RGBA{R: 255, A: 100}
+
+		line2, _ := plotter.NewLine(pointsExecution)
+		line2.Color = color.RGBA{G: 200, A: 255}
+		line2.Width = vg.Points(2)
+
+		p.Add(line1, line2)
+		p.Legend.Add("Total Time (Wait + Run)", line1)
+		p.Legend.Add("Execution Time", line2)
+
+		filename := fmt.Sprintf("server_%s.png", server)
+		if err := p.Save(10*vg.Inch, 5*vg.Inch, filename); err != nil {
+			fmt.Printf("Failed to save %s: %v\n", filename, err)
+		}
+	}
+
+	fmt.Println("Generating aggregate graph...")
+
+	// === Aggregate
+	maxJobs := 0
+	for _, list := range job_completion_times {
+		if len(list) > maxJobs {
+			maxJobs = len(list)
+		}
+	}
+
+	avgCompletion := make([]float64, maxJobs)
+	avgExecution := make([]float64, maxJobs)
+	counts := make([]int, maxJobs)
+
+	for server, completionList := range job_completion_times {
+		execList := job_execution_times[server]
+		for i := 0; i < len(completionList); i++ {
+			avgCompletion[i] += float64(completionList[i])
+			avgExecution[i] += float64(execList[i])
+			counts[i]++
+		}
+	}
+
+	for i := 0; i < maxJobs; i++ {
+		if counts[i] > 0 {
+			avgCompletion[i] /= float64(counts[i])
+			avgExecution[i] /= float64(counts[i])
+		}
+	}
+
+	pointsAvgCompletion := make(plotter.XYs, maxJobs)
+	pointsAvgExecution := make(plotter.XYs, maxJobs)
+	for i := 0; i < maxJobs; i++ {
+		pointsAvgCompletion[i].X = float64(i)
+		pointsAvgCompletion[i].Y = avgCompletion[i]
+		pointsAvgExecution[i].X = float64(i)
+		pointsAvgExecution[i].Y = avgExecution[i]
+	}
+
+	p := plot.New()
+	p.Title.Text = "Aggregate Job Times (All Servers)"
+	p.X.Label.Text = "Job Index"
+	p.Y.Label.Text = "Avg Duration (ms)"
+
+	line1, _ := plotter.NewLine(pointsAvgCompletion)
+	line1.Color = color.RGBA{R: 255, A: 100}
+
+	line2, _ := plotter.NewLine(pointsAvgExecution)
+	line2.Color = color.RGBA{G: 200, A: 255}
+	line2.Width = vg.Points(2)
+
+	p.Add(line1, line2)
+	p.Legend.Add("Avg Total Time", line1)
+	p.Legend.Add("Avg Execution Time", line2)
+
+	if err := p.Save(10*vg.Inch, 5*vg.Inch, "aggregate_job_times.png"); err != nil {
+		fmt.Printf("Failed to save aggregate plot: %v\n", err)
+	}
+}
+
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
-	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
-	server_to_status[args.ServerIp] = true // mark the server as online
+	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage, args.JobCompletionTime)
+	status := server_to_status[args.ServerIp] // mark the server as online
+	status.Status = true
+	status.ComputeRemaining = args.ComputeUsage
+	status.MemoryRemaining = args.MemoryUsage
+	server_to_status[args.ServerIp] = status
 
+	completion_array := job_completion_times[args.ServerIp]
+	execution_array := job_execution_times[args.ServerIp]
+
+	completion_array = append(completion_array, args.JobCompletionTime)
+	execution_array = append(execution_array, args.JobTraceExecutionTime)
+
+	job_completion_times[args.ServerIp] = completion_array
+	job_execution_times[args.ServerIp] = execution_array
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()
@@ -99,14 +234,16 @@ func main() {
 	for scanner.Scan() {
 		line = scanner.Text()
 		words := strings.Fields(line)
-		server_to_status[words[1]] = false // everything starts offline until they identify themselves
+		server_to_status[words[1]] = ServerStatus{Status: false, Server_Type: words[3], ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
 	}
 
 	go startAutoscaler() // handler to receive stats from servers
 	go autoscale()       // actual autoscaling logic
 
-	// Keep the main function running
-	select {} // Blocks forever
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
+	<-sigChan
+	captureMetrics()
 }
 
 // TODO:
