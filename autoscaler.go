@@ -37,69 +37,113 @@ type ServerStatus struct {
 type AutoScaler struct{}
 
 var server_to_status = make(map[string]ServerStatus)
-var job_completion_times = []int64{} // how much time between when the job was added to the server and when it was completed
-var job_execution_times = []int64{}  // how much time the job took to execute
+var job_completion_times = make(map[string][]int64) // how much time between when the job was added to the server and when it was completed, for each server
+var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
 
 var mu sync.Mutex
 
 func captureMetrics() {
 	if len(job_completion_times) != len(job_execution_times) {
-		panic("slices must match in length")
+		panic("Server sets must match in size")
 	}
 
-	pointsCompletion := make(plotter.XYs, len(job_completion_times))
-	pointsExecution := make(plotter.XYs, len(job_execution_times))
+	fmt.Println("Generating per-server graphs...")
+	for server, completionList := range job_completion_times {
+		executionList, ok := job_execution_times[server]
+		if !ok || len(executionList) != len(completionList) {
+			fmt.Printf("Skipping %s: mismatched execution data\n", server)
+			continue
+		}
 
-	for i := range job_completion_times {
-		pointsCompletion[i].X = float64(i)
-		pointsCompletion[i].Y = float64(job_completion_times[i])
+		pointsCompletion := make(plotter.XYs, len(completionList))
+		pointsExecution := make(plotter.XYs, len(executionList))
 
-		pointsExecution[i].X = float64(i)
-		pointsExecution[i].Y = float64(job_execution_times[i])
+		for i := range completionList {
+			pointsCompletion[i].X = float64(i)
+			pointsCompletion[i].Y = float64(completionList[i])
+			pointsExecution[i].X = float64(i)
+			pointsExecution[i].Y = float64(executionList[i])
+		}
+
+		p := plot.New()
+		p.Title.Text = fmt.Sprintf("Job Times - %s", server)
+		p.X.Label.Text = "Job Index"
+		p.Y.Label.Text = "Duration (ms)"
+
+		line1, _ := plotter.NewLine(pointsCompletion)
+		line1.Color = color.RGBA{R: 255, A: 100}
+
+		line2, _ := plotter.NewLine(pointsExecution)
+		line2.Color = color.RGBA{G: 200, A: 255}
+		line2.Width = vg.Points(2)
+
+		p.Add(line1, line2)
+		p.Legend.Add("Total Time (Wait + Run)", line1)
+		p.Legend.Add("Execution Time", line2)
+
+		filename := fmt.Sprintf("server_%s.png", server)
+		if err := p.Save(10*vg.Inch, 5*vg.Inch, filename); err != nil {
+			fmt.Printf("Failed to save %s: %v\n", filename, err)
+		}
 	}
 
-	fmt.Println(pointsCompletion)
-	fmt.Println(pointsExecution)
+	fmt.Println("Generating aggregate graph...")
+
+	// === Aggregate
+	maxJobs := 0
+	for _, list := range job_completion_times {
+		if len(list) > maxJobs {
+			maxJobs = len(list)
+		}
+	}
+
+	avgCompletion := make([]float64, maxJobs)
+	avgExecution := make([]float64, maxJobs)
+	counts := make([]int, maxJobs)
+
+	for server, completionList := range job_completion_times {
+		execList := job_execution_times[server]
+		for i := 0; i < len(completionList); i++ {
+			avgCompletion[i] += float64(completionList[i])
+			avgExecution[i] += float64(execList[i])
+			counts[i]++
+		}
+	}
+
+	for i := 0; i < maxJobs; i++ {
+		if counts[i] > 0 {
+			avgCompletion[i] /= float64(counts[i])
+			avgExecution[i] /= float64(counts[i])
+		}
+	}
+
+	pointsAvgCompletion := make(plotter.XYs, maxJobs)
+	pointsAvgExecution := make(plotter.XYs, maxJobs)
+	for i := 0; i < maxJobs; i++ {
+		pointsAvgCompletion[i].X = float64(i)
+		pointsAvgCompletion[i].Y = avgCompletion[i]
+		pointsAvgExecution[i].X = float64(i)
+		pointsAvgExecution[i].Y = avgExecution[i]
+	}
 
 	p := plot.New()
-	p.Title.Text = "Job Completion Times"
+	p.Title.Text = "Aggregate Job Times (All Servers)"
 	p.X.Label.Text = "Job Index"
-	p.Y.Label.Text = "Duration (s)"
+	p.Y.Label.Text = "Avg Duration (ms)"
 
-	p2 := plot.New()
-	p2.Title.Text = "Job Execution Times"
-	p2.X.Label.Text = "Job Index"
-	p2.Y.Label.Text = "Duration (s)"
+	line1, _ := plotter.NewLine(pointsAvgCompletion)
+	line1.Color = color.RGBA{R: 255, A: 100}
 
-	// === Completion line ===
-	line1, err := plotter.NewLine(pointsCompletion)
-	if err != nil {
-		panic(err)
-	}
-	line1.Color = color.RGBA{R: 255, A: 255} // Red
+	line2, _ := plotter.NewLine(pointsAvgExecution)
+	line2.Color = color.RGBA{G: 200, A: 255}
+	line2.Width = vg.Points(2)
 
-	// === Execution line ===
-	line2, err := plotter.NewLine(pointsExecution)
-	if err != nil {
-		panic(err)
-	}
-	line2.Color = color.RGBA{G: 128, A: 255} // Green
-	// Add to plot
+	p.Add(line1, line2)
+	p.Legend.Add("Avg Total Time", line1)
+	p.Legend.Add("Avg Execution Time", line2)
 
-	p.Add(line2)  // execution
-	p2.Add(line1) // completion
-	p2.Legend.Add("Total Time (Wait + Run)", line1)
-	p.Legend.Add("Execution Time", line2)
-
-	// Save
-	fmt.Println("Saving clean plot...")
-	if err := p.Save(10*vg.Inch, 5*vg.Inch, "job_durations_clean.png"); err != nil {
-		panic(err)
-	}
-
-	fmt.Println("Saving clean plot...")
-	if err := p2.Save(10*vg.Inch, 5*vg.Inch, "job_completion.png"); err != nil {
-		panic(err)
+	if err := p.Save(10*vg.Inch, 5*vg.Inch, "aggregate_job_times.png"); err != nil {
+		fmt.Printf("Failed to save aggregate plot: %v\n", err)
 	}
 }
 
@@ -111,8 +155,15 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.ComputeRemaining = args.ComputeUsage
 	status.MemoryRemaining = args.MemoryUsage
 	server_to_status[args.ServerIp] = status
-	job_completion_times = append(job_completion_times, args.JobCompletionTime)
-	job_execution_times = append(job_execution_times, args.JobTraceExecutionTime)
+
+	completion_array := job_completion_times[args.ServerIp]
+	execution_array := job_execution_times[args.ServerIp]
+
+	completion_array = append(completion_array, args.JobCompletionTime)
+	execution_array = append(execution_array, args.JobTraceExecutionTime)
+
+	job_completion_times[args.ServerIp] = completion_array
+	job_execution_times[args.ServerIp] = execution_array
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()
