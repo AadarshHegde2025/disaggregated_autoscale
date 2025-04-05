@@ -62,9 +62,14 @@ func captureMetrics() {
 	fmt.Println(pointsExecution)
 
 	p := plot.New()
-	p.Title.Text = "Job Completion Times vs Execution Times"
+	p.Title.Text = "Job Completion Times"
 	p.X.Label.Text = "Job Index"
 	p.Y.Label.Text = "Duration (s)"
+
+	p2 := plot.New()
+	p2.Title.Text = "Job Execution Times"
+	p2.X.Label.Text = "Job Index"
+	p2.Y.Label.Text = "Duration (s)"
 
 	// === Completion line ===
 	line1, err := plotter.NewLine(pointsCompletion)
@@ -81,14 +86,19 @@ func captureMetrics() {
 	line2.Color = color.RGBA{G: 128, A: 255} // Green
 	// Add to plot
 
-	p.Add(line2)
-	p.Add(line1)
-	p.Legend.Add("Total Time (Wait + Run)", line1)
+	p.Add(line2)  // execution
+	p2.Add(line1) // completion
+	p2.Legend.Add("Total Time (Wait + Run)", line1)
 	p.Legend.Add("Execution Time", line2)
 
 	// Save
 	fmt.Println("Saving clean plot...")
 	if err := p.Save(10*vg.Inch, 5*vg.Inch, "job_durations_clean.png"); err != nil {
+		panic(err)
+	}
+
+	fmt.Println("Saving clean plot...")
+	if err := p2.Save(10*vg.Inch, 5*vg.Inch, "job_completion.png"); err != nil {
 		panic(err)
 	}
 }
