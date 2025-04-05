@@ -7,10 +7,17 @@ import (
 	"net"
 	"net/rpc"
 	"os"
+	"os/signal"
 	"strconv"
 	"strings"
 	"sync"
+	"syscall"
 	"time"
+
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/plotutil"
+	"gonum.org/v1/plot/vg"
 )
 
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
@@ -30,9 +37,34 @@ type ServerStatus struct {
 type AutoScaler struct{}
 
 var server_to_status = make(map[string]ServerStatus)
-var job_completion_times = []int64{}
+var job_completion_times = []int64{} // or can do a map of server to slice of job completion times
 
 var mu sync.Mutex
+
+func captureMetrics() {
+	points := make(plotter.XYs, len(job_completion_times))
+	for i, t := range job_completion_times {
+		// X = time (unix), Y = index or duration if you have that
+		points[i].X = float64(t)
+		points[i].Y = float64(i) // Replace with job duration if you have it
+	}
+
+	// Create plot
+	p := plot.New()
+	p.Title.Text = "Job Completion Times"
+	p.X.Label.Text = "Timestamp"
+	p.Y.Label.Text = "Job Index"
+
+	err := plotutil.AddLinePoints(p, "Jobs", points)
+	if err != nil {
+		panic(err)
+	}
+
+	// Save to PNG
+	if err := p.Save(8*vg.Inch, 4*vg.Inch, "job_completion.png"); err != nil {
+		panic(err)
+	}
+}
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
@@ -118,9 +150,12 @@ func main() {
 
 	go startAutoscaler() // handler to receive stats from servers
 	go autoscale()       // actual autoscaling logic
+	go captureMetrics()
 
-	// Keep the main function running
-	select {} // Blocks forever
+	sigChan := make(chan os.Signal, 1)
+	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
+	<-sigChan
+	captureMetrics()
 }
 
 // TODO:
