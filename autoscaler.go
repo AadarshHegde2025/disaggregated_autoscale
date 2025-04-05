@@ -43,10 +43,9 @@ var mu sync.Mutex
 
 func captureMetrics() {
 	points := make(plotter.XYs, len(job_completion_times))
-	for i, t := range job_completion_times {
-		// X = time (unix), Y = index or duration if you have that
-		points[i].X = float64(t)
-		points[i].Y = float64(i) // Replace with job duration if you have it
+	for i, duration := range job_completion_times {
+		points[i].X = float64(i)        // Job index
+		points[i].Y = float64(duration) // Duration on the server
 	}
 
 	// Create plot
