@@ -49,8 +49,7 @@ func captureMetrics() {
 
 	pointsCompletion := make(plotter.XYs, len(job_completion_times))
 	pointsExecution := make(plotter.XYs, len(job_execution_times))
-	fmt.Println(pointsCompletion)
-	fmt.Println(pointsExecution)
+
 	for i := range job_completion_times {
 		pointsCompletion[i].X = float64(i)
 		pointsCompletion[i].Y = float64(job_completion_times[i])
@@ -58,6 +57,9 @@ func captureMetrics() {
 		pointsExecution[i].X = float64(i)
 		pointsExecution[i].Y = float64(job_execution_times[i])
 	}
+
+	fmt.Println(pointsCompletion)
+	fmt.Println(pointsExecution)
 
 	p := plot.New()
 	p.Title.Text = "Job Completion Times vs Execution Times"
@@ -77,8 +79,6 @@ func captureMetrics() {
 		panic(err)
 	}
 	line2.Color = color.RGBA{G: 128, A: 255} // Green
-	line2.Width = vg.Points(2)               // Thicker execution line
-
 	// Add to plot
 	p.Add(line1)
 	p.Add(line2)
