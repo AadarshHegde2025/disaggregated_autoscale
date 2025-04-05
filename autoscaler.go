@@ -30,6 +30,7 @@ type ServerStatus struct {
 type AutoScaler struct{}
 
 var server_to_status = make(map[string]ServerStatus)
+var job_completion_times = []int64{}
 
 var mu sync.Mutex
 
@@ -41,6 +42,7 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.ComputeRemaining = args.ComputeUsage
 	status.MemoryRemaining = args.MemoryUsage
 	server_to_status[args.ServerIp] = status
+	job_completion_times = append(job_completion_times, args.JobCompletionTime)
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()

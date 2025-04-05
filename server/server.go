@@ -56,9 +56,9 @@ var my_ip string
 
 type HandleJob struct{}
 
-func sendAutoscalerStatistics() {
+func sendAutoscalerStatistics(key Pair) { // trade off is higher network usage for sending per completed job
 	for my_ip == "" {
-		time.Sleep(1 * time.Second) // Wait for my_ip to be set
+		time.Sleep(1 * time.Second) // Wait for my_ip to be set -> means we heard from the load balancer
 	}
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
@@ -74,31 +74,32 @@ func sendAutoscalerStatistics() {
 		return // Exit the function if the connection fails
 	}
 
-	for {
-		time.Sleep(5 * time.Second) // Send stats every 5 seconds
-		mu.Lock()
-		server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining}
-		var reply string
-		err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
-		if err != nil {
-			fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
-			mu.Unlock()
-			continue // Skip this iteration and try again
-		}
+	mu.Lock()
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing[key].job_end_time - job_to_timing[key].job_start_time}
+	var reply string
+	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
+	if err != nil {
+		fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
 		mu.Unlock()
+		return
 	}
+	mu.Unlock()
 }
 
 func deallocateResources(jobId int, taskId int) {
 	key := Pair{j_id: jobId, t_id: taskId}
 	mu.Lock()
-	defer mu.Unlock()
+
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
 	state := job_to_timing[key]
 	state.job_end_time = time.Now().Unix()
 	job_to_timing[key] = state
 	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+	mu.Unlock()
+
+	sendAutoscalerStatistics(key)
+
 }
 
 func processJobQueue() {
@@ -173,7 +174,6 @@ func startServer() {
 }
 
 func main() {
-	go processJobQueue()          // Start the job queue processor in a separate goroutine
-	go sendAutoscalerStatistics() // Start the autoscaler statistics sender in a separate goroutine
+	go processJobQueue() // Start the job queue processor in a separate goroutine
 	startServer()
 }
