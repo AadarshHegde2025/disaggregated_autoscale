@@ -61,6 +61,7 @@ func captureMetrics() {
 	}
 
 	// Save to PNG
+	fmt.Println("Saving png")
 	if err := p.Save(8*vg.Inch, 4*vg.Inch, "job_completion.png"); err != nil {
 		panic(err)
 	}
