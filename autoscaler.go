@@ -18,17 +18,25 @@ var port int = 9000
 
 // everything working
 
+// TODO: aggregate the server stats over here. metrics: job latency, efficiency, graph of server usage
+
+type ServerStatus struct {
+	Status      bool
+	Server_Type string // computer or memory heavy
+}
+
 type AutoScaler struct{}
 
-var server_to_status = make(map[string]bool)
+var server_to_status = make(map[string]ServerStatus)
 
 var mu sync.Mutex
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
 	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
-	server_to_status[args.ServerIp] = true // mark the server as online
-
+	status := server_to_status[args.ServerIp] // mark the server as online
+	status.Status = true
+	server_to_status[args.ServerIp] = status
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()
@@ -99,7 +107,7 @@ func main() {
 	for scanner.Scan() {
 		line = scanner.Text()
 		words := strings.Fields(line)
-		server_to_status[words[1]] = false // everything starts offline until they identify themselves
+		server_to_status[words[1]] = ServerStatus{Status: false, Server_Type: words[3]} // everything starts offline until they identify themselves
 	}
 
 	go startAutoscaler() // handler to receive stats from servers

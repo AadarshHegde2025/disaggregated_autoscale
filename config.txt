@@ -1,22 +1,22 @@
 20
 5
-node1 sp25-cs525-0901.cs.illinois.edu 9000
-node2 sp25-cs525-0902.cs.illinois.edu 9000
-node3 sp25-cs525-0903.cs.illinois.edu 9000
-node4 sp25-cs525-0904.cs.illinois.edu 9000
-node5 sp25-cs525-0905.cs.illinois.edu 9000
-node6 sp25-cs525-0906.cs.illinois.edu 9000
-node7 sp25-cs525-0907.cs.illinois.edu 9000
-node8 sp25-cs525-0908.cs.illinois.edu 9000
-node9 sp25-cs525-0909.cs.illinois.edu 9000
-node10 sp25-cs525-0910.cs.illinois.edu 9000
-node11 sp25-cs525-0911.cs.illinois.edu 9000
-node12 sp25-cs525-0912.cs.illinois.edu 9000
-node13 sp25-cs525-0913.cs.illinois.edu 9000
-node14 sp25-cs525-0914.cs.illinois.edu 9000
-node15 sp25-cs525-0915.cs.illinois.edu 9000
-node16 sp25-cs525-0916.cs.illinois.edu 9000
-node17 sp25-cs525-0917.cs.illinois.edu 9000
-node18 sp25-cs525-0918.cs.illinois.edu 9000
-node19 sp25-cs525-0919.cs.illinois.edu 9000
-node20 sp25-cs525-0920.cs.illinois.edu 9000
+node1 sp25-cs525-0901.cs.illinois.edu 9000 C
+node2 sp25-cs525-0902.cs.illinois.edu 9000 C
+node3 sp25-cs525-0903.cs.illinois.edu 9000 C
+node4 sp25-cs525-0904.cs.illinois.edu 9000 C
+node5 sp25-cs525-0905.cs.illinois.edu 9000 C
+node6 sp25-cs525-0906.cs.illinois.edu 9000 C
+node7 sp25-cs525-0907.cs.illinois.edu 9000 C
+node8 sp25-cs525-0908.cs.illinois.edu 9000 C
+node9 sp25-cs525-0909.cs.illinois.edu 9000 C
+node10 sp25-cs525-0910.cs.illinois.edu 9000 M
+node11 sp25-cs525-0911.cs.illinois.edu 9000 M
+node12 sp25-cs525-0912.cs.illinois.edu 9000 M
+node13 sp25-cs525-0913.cs.illinois.edu 9000 M
+node14 sp25-cs525-0914.cs.illinois.edu 9000 M
+node15 sp25-cs525-0915.cs.illinois.edu 9000 M
+node16 sp25-cs525-0916.cs.illinois.edu 9000 M
+node17 sp25-cs525-0917.cs.illinois.edu 9000 M
+node18 sp25-cs525-0918.cs.illinois.edu 9000 M
+node19 sp25-cs525-0919.cs.illinois.edu 9000 LB
+node20 sp25-cs525-0920.cs.illinois.edu 9000 AS

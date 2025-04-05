@@ -22,6 +22,10 @@ import (
 
 // TODO: Currently using plan_cpu and plan_mem as the actual resource usage
 
+// TODO: Probably a race condition for queue job vs incoming job
+
+// TODO: what if the second element in the queue can be processed before the first element?
+
 // TODO: The following are the real numbers for the server, however can make them different via commandline args
 const CPU_AVAILABLE = 2    // number of cores
 const MEMORY_AVAILABLE = 4 // in GB
