@@ -26,6 +26,8 @@ import (
 
 // TODO: Optimize Queueing:what if the second element in the queue can be processed before the first element?
 
+// need a hash map + linked list implementation?
+
 // TODO: The following are the real numbers for the server, however can make them different via commandline args
 const CPU_AVAILABLE = 2    // number of cores
 const MEMORY_AVAILABLE = 4 // in GB
@@ -35,21 +37,13 @@ var memory_remaining float64 = MEMORY_AVAILABLE
 
 var job_queue []rpcstructs.Args
 
-type Pair struct {
-	j_id int
-	t_id int
-}
+var job_to_cpu_resource_usage = make(map[rpcstructs.Pair]float64)
+var job_to_mem_resource_usage = make(map[rpcstructs.Pair]float64)
+var job_to_timing = make(map[rpcstructs.Pair]rpcstructs.JobTiming)
 
-type JobTiming struct {
-	job_start_time           int64
-	job_end_time             int64
-	job_execution_start_time int64
-	job_execution_end_time   int64
-}
-
-var job_to_cpu_resource_usage = make(map[Pair]float64)
-var job_to_mem_resource_usage = make(map[Pair]float64)
-var job_to_timing = make(map[Pair]JobTiming)
+// Queueing Optimization 1 Data Structure: Aims to solve the problem of the initial job in the queue not having enough available resources
+var job_to_marked = make(map[rpcstructs.Pair]int)
+var spots_to_pushback = 0
 
 var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
@@ -58,10 +52,7 @@ var my_ip string
 
 type HandleJob struct{}
 
-func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
-	for my_ip == "" {
-		time.Sleep(1 * time.Second) // Wait for my_ip to be set -> means we heard from the load balancer
-	}
+func sendAutoscalerStatistics() { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
 	// inefficient, do not have to loop through every single time, just store in a map or something
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
@@ -78,7 +69,7 @@ func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing[key].job_end_time - job_to_timing[key].job_start_time, job_to_timing[key].job_execution_end_time - job_to_timing[key].job_execution_start_time}
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {
@@ -90,65 +81,60 @@ func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has
 }
 
 func deallocateResources(jobId int, taskId int) {
-	key := Pair{j_id: jobId, t_id: taskId}
+	key := rpcstructs.Pair{J_ID: jobId, T_ID: taskId}
 	mu.Lock()
 
 	compute_remaining += job_to_cpu_resource_usage[key]
 	memory_remaining += job_to_mem_resource_usage[key]
 	state := job_to_timing[key]
-	state.job_end_time = time.Now().Unix()
+	state.JobEndTime = time.Now().Unix()
 	job_to_timing[key] = state
 	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 	mu.Unlock()
-
-	sendAutoscalerStatistics(key)
-
 }
 
 func processJobQueue() {
 	for {
 		mu.Lock()
 		if len(job_queue) > 0 {
-			job := job_queue[0]
-			key := Pair{j_id: job.JobId, t_id: job.TaskId}
-			if compute_remaining >= job_to_cpu_resource_usage[key] && memory_remaining >= job_to_mem_resource_usage[key] {
-				// Remove job from queue
-				job_queue = job_queue[1:]
+			key := rpcstructs.Pair{J_ID: job_queue[0].JobId, T_ID: job_queue[0].TaskId}
+			if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
+				fmt.Print("Server: Not enough resources, adding job to queue\n")
 
-				// Allocate resources
+				// TODO: Push the current job back in the queue due to lack of resources
+				job_to_marked[key] = 1
+
+				job_to_delay := job_queue[0]
+
+				// remove that job from the queue and add it back in
+				job_queue = job_queue[1:]
+				job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
+				spots_to_pushback += 1 // future jobs should be pushed back behind where we placed this one
+			} else {
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
-				fmt.Print("Server: Processing queued job ", job.JobId)
-				fmt.Print("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+				job_queue = job_queue[1:] // remove the job from the queue
 
-				// Schedule resource deallocation
-				time.AfterFunc((time.Duration(job.TimeEnd-job.TimeStart) * time.Second), func() { deallocateResources(job.JobId, job.TaskId) })
+				if job_to_marked[key] == 1 {
+					spots_to_pushback -= 1
+				}
+
+				time.AfterFunc((time.Duration(job_queue[0].TimeEnd-job_queue[0].TimeStart) * time.Second), func() { deallocateResources(job_queue[0].JobId, job_queue[0].TaskId) })
 			}
+
 		}
 		mu.Unlock()
-		time.Sleep(1 * time.Second) // Check the queue periodically, race condition, queue may never get addressed
 	}
 }
 
 func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	mu.Lock()
-	// if the server can handle the job, immediatelty process, else will have to put in a queue
-	key := Pair{j_id: args.JobId, t_id: args.TaskId}
+	job_queue = append(job_queue, *args)
+	key := rpcstructs.Pair{J_ID: args.JobId, T_ID: args.TaskId}
 	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
 	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
-	job_to_timing[key] = JobTiming{job_start_time: time.Now().Unix(), job_end_time: -1, job_execution_start_time: int64(args.TimeStart), job_execution_end_time: int64(args.TimeEnd)}
+	job_to_timing[key] = rpcstructs.JobTiming{JobStartTime: time.Now().Unix(), JobEndTime: -1, JobExecStartTime: int64(args.TimeStart), JobExecEndTime: int64(args.TimeEnd)}
 	my_ip = args.ServerIp
-	if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
-		fmt.Print("Server: Not enough resources, adding job to queue\n")
-		job_queue = append(job_queue, *args)
-	} else {
-		compute_remaining -= job_to_cpu_resource_usage[key]
-		memory_remaining -= job_to_mem_resource_usage[key]
-		fmt.Print("Server: Added job ", args.JobId)
-		fmt.Println("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining)
-
-		time.AfterFunc((time.Duration(args.TimeEnd-args.TimeStart) * time.Second), func() { deallocateResources(args.JobId, args.TaskId) })
-	}
 	mu.Unlock()
 
 	*reply = 0
