@@ -22,9 +22,9 @@ import (
 
 // TODO: Currently using plan_cpu and plan_mem as the actual resource usage
 
-// TODO: Probably a race condition for queue job vs incoming job
+// TODO:  important for good metrics: Probably a race condition for queue job vs incoming job
 
-// TODO: what if the second element in the queue can be processed before the first element?
+// TODO: Optimize Queueing:what if the second element in the queue can be processed before the first element?
 
 // TODO: The following are the real numbers for the server, however can make them different via commandline args
 const CPU_AVAILABLE = 2    // number of cores
@@ -62,6 +62,7 @@ func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has
 	for my_ip == "" {
 		time.Sleep(1 * time.Second) // Wait for my_ip to be set -> means we heard from the load balancer
 	}
+	// inefficient, do not have to loop through every single time, just store in a map or something
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 	var line string
