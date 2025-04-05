@@ -21,8 +21,10 @@ var port int = 9000
 // TODO: aggregate the server stats over here. metrics: job latency, efficiency, graph of server usage
 
 type ServerStatus struct {
-	Status      bool
-	Server_Type string // computer or memory heavy
+	Status           bool
+	Server_Type      string // computer or memory heavy
+	ComputeRemaining float64
+	MemoryRemaining  float64
 }
 
 type AutoScaler struct{}
@@ -36,6 +38,8 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
 	status := server_to_status[args.ServerIp] // mark the server as online
 	status.Status = true
+	status.ComputeRemaining = args.ComputeUsage
+	status.MemoryRemaining = args.MemoryUsage
 	server_to_status[args.ServerIp] = status
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
@@ -107,7 +111,7 @@ func main() {
 	for scanner.Scan() {
 		line = scanner.Text()
 		words := strings.Fields(line)
-		server_to_status[words[1]] = ServerStatus{Status: false, Server_Type: words[3]} // everything starts offline until they identify themselves
+		server_to_status[words[1]] = ServerStatus{Status: false, Server_Type: words[3], ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
 	}
 
 	go startAutoscaler() // handler to receive stats from servers
