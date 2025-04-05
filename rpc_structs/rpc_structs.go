@@ -13,10 +13,11 @@ type Args struct { // This struct sends job details to the server
 }
 
 type ServerUsage struct { // This struct sends server stats to the autoscaler
-	ServerIp          string
-	ComputeUsage      float64
-	MemoryUsage       float64
-	JobCompletionTime int64
+	ServerIp              string
+	ComputeUsage          float64
+	MemoryUsage           float64
+	JobCompletionTime     int64 // the turn around time between when the job was added to the server and when it was completed
+	JobTraceExecutionTime int64 // the actual time taken to execute the job (time end - time start from the trace)
 }
 
 type ServerDetails struct { // This struct is used for autoscaler to add server to load balancer

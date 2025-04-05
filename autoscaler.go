@@ -37,31 +37,44 @@ type ServerStatus struct {
 type AutoScaler struct{}
 
 var server_to_status = make(map[string]ServerStatus)
-var job_completion_times = []int64{} // or can do a map of server to slice of job completion times
+var job_completion_times = []int64{} // how much time between when the job was added to the server and when it was completed
+var job_execution_times = []int64{}  // how much time the job took to execute
 
 var mu sync.Mutex
 
 func captureMetrics() {
-	points := make(plotter.XYs, len(job_completion_times))
-	for i, duration := range job_completion_times {
-		points[i].X = float64(i)        // Job index
-		points[i].Y = float64(duration) // Duration on the server
+	if len(job_completion_times) != len(job_execution_times) {
+		panic("Slices must be the same length")
 	}
 
-	// Create plot
-	p := plot.New()
-	p.Title.Text = "Job Completion Times"
-	p.X.Label.Text = "Timestamp"
-	p.Y.Label.Text = "Job Index"
+	pointsCompletion := make(plotter.XYs, len(job_completion_times))
+	pointsExecution := make(plotter.XYs, len(job_execution_times))
 
-	err := plotutil.AddLinePoints(p, "Jobs", points)
+	for i := range job_completion_times {
+		pointsCompletion[i].X = float64(i) // Job index
+		pointsCompletion[i].Y = float64(job_completion_times[i])
+
+		pointsExecution[i].X = float64(i) // Same X
+		pointsExecution[i].Y = float64(job_execution_times[i])
+	}
+
+	p := plot.New()
+	p.Title.Text = "Job Completion Times vs Execution Times"
+	p.X.Label.Text = "Job Index"
+	p.Y.Label.Text = "Duration (s)"
+
+	err := plotutil.AddLinePoints(
+		p,
+		"Total Time (Wait + Run)", pointsCompletion,
+		"Execution Time", pointsExecution,
+	)
 	if err != nil {
 		panic(err)
 	}
 
 	// Save to PNG
 	fmt.Println("Saving png")
-	if err := p.Save(8*vg.Inch, 4*vg.Inch, "job_completion.png"); err != nil {
+	if err := p.Save(10*vg.Inch, 5*vg.Inch, "job_comparison.png"); err != nil {
 		panic(err)
 	}
 }
@@ -75,6 +88,7 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.MemoryRemaining = args.MemoryUsage
 	server_to_status[args.ServerIp] = status
 	job_completion_times = append(job_completion_times, args.JobCompletionTime)
+	job_execution_times = append(job_execution_times, args.JobTraceExecutionTime)
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()

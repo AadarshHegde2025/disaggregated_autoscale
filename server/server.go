@@ -41,8 +41,10 @@ type Pair struct {
 }
 
 type JobTiming struct {
-	job_start_time int64
-	job_end_time   int64
+	job_start_time           int64
+	job_end_time             int64
+	job_execution_start_time int64
+	job_execution_end_time   int64
 }
 
 var job_to_cpu_resource_usage = make(map[Pair]float64)
@@ -56,7 +58,7 @@ var my_ip string
 
 type HandleJob struct{}
 
-func sendAutoscalerStatistics(key Pair) { // trade off is higher network usage for sending per completed job
+func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
 	for my_ip == "" {
 		time.Sleep(1 * time.Second) // Wait for my_ip to be set -> means we heard from the load balancer
 	}
@@ -75,7 +77,7 @@ func sendAutoscalerStatistics(key Pair) { // trade off is higher network usage f
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing[key].job_end_time - job_to_timing[key].job_start_time}
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing[key].job_end_time - job_to_timing[key].job_start_time, job_to_timing[key].job_execution_end_time - job_to_timing[key].job_execution_start_time}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {
@@ -133,7 +135,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	key := Pair{j_id: args.JobId, t_id: args.TaskId}
 	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
 	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
-	job_to_timing[key] = JobTiming{job_start_time: time.Now().Unix(), job_end_time: -1}
+	job_to_timing[key] = JobTiming{job_start_time: time.Now().Unix(), job_end_time: -1, job_execution_start_time: int64(args.TimeStart), job_execution_end_time: int64(args.TimeEnd)}
 	my_ip = args.ServerIp
 	if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
 		fmt.Print("Server: Not enough resources, adding job to queue\n")
