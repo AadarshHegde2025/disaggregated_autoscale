@@ -6184,3 +6184,563 @@ VM4: Server: Resources deallocated, cpu remaining: 0.6284999999999992 mem remain
 VM4:  
 VM2: Server: Resources deallocated, cpu remaining: 0.9547999999999995 mem remaining: 0.1984417466932522 
 VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6369000000000004 mem remaining: 0.18477467450108806 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5773000000000005 mem remaining: 0.1331711231330866 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5892000000000005 mem remaining: 0.1400874899697286 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6423000000000003 mem remaining: 0.19492144021951527 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9400999999999995 mem remaining: 0.05986591773873181 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9606999999999994 mem remaining: 0.07723966557089582 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6277999999999992 mem remaining: 0.07581083529626173 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9694999999999995 mem remaining: 0.08367975564932581 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6377999999999993 mem remaining: 0.16702818833640853 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7050999999999992 mem remaining: 0.06367613180442727 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9786999999999995 mem remaining: 0.25934304868895497 
+VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5515000000000003 mem remaining: 0.15153883985195407 
+VM1:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6962999999999991 mem remaining: 0.03980017083841407 
+VM2: Server: Resources deallocated, cpu remaining: 0.9701999999999995 mem remaining: 0.17232935573215657 
+VM5:  
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9492999999999996 mem remaining: 0.07371935909715538 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5227000000000004 mem remaining: 0.17912147645796447 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9321999999999996 mem remaining: 0.08146403333938337 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9391999999999996 mem remaining: 0.09747107395233057 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5681000000000005 mem remaining: 0.022881992079324207 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9554999999999996 mem remaining: 0.25729298786012933 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5860999999999993 mem remaining: 0.06046644060778292 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5960999999999993 mem remaining: 0.06769342272151972 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9969999999999996 mem remaining: 0.3145290295861157 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4829000000000004 mem remaining: 0.035596510755068485 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6761999999999991 mem remaining: 0.015158025522233672 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9973999999999995 mem remaining: 0.3641653508658509 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4928000000000004 mem remaining: 0.08525353971994289 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6762999999999991 mem remaining: 0.05400564284421247 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0034999999999996 mem remaining: 0.3683275955789197 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0201999999999996 mem remaining: 0.5046255791680789 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0194999999999994 mem remaining: 0.3778117153728777 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6048999999999992 mem remaining: 0.019837962363794523 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6857999999999991 mem remaining: 0.05725674941113687 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.48910000000000037 mem remaining: 0.2449304998317645 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9791999999999994 mem remaining: 0.28833380788446095 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5883999999999991 mem remaining: 0.017228794036198924 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5768000000000004 mem remaining: 0.16777366500143778 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5848000000000004 mem remaining: 0.1721844019361826 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6847999999999991 mem remaining: 0.07763311158855007 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6029999999999991 mem remaining: 0.03955167861673853 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6366000000000004 mem remaining: 0.196723008826665 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9570999999999994 mem remaining: 0.07301529780240697 
+VM5: Server: Resources deallocated, cpu remaining: 0.6891999999999991 mem remaining: 0.08738643128932408 
+VM4: Server: Resources deallocated, cpu remaining: 0.6139999999999991 mem remaining: 0.05338441229002293 
+VM1: Server: Resources deallocated, cpu remaining: 0.45030000000000037 mem remaining: 0.05330158154946689 
+VM3: Server: Resources deallocated, cpu remaining: 0.6386000000000004 mem remaining: 0.1963088551238722 
+VM2:  
+VM5:  
+VM4:  
+VM1:  
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9670999999999994 mem remaining: 0.14437398079363178 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6901999999999991 mem remaining: 0.08738643128932408 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.45700000000000035 mem remaining: 0.05820930292756329 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6991999999999992 mem remaining: 0.10917091605623289 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7216999999999992 mem remaining: 0.1737788936919329 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6445000000000004 mem remaining: 0.178541661274055 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5339000000000004 mem remaining: 0.12762146351566128 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9644999999999994 mem remaining: 0.07305671317268578 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6653999999999991 mem remaining: 0.13346103072503934 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6549000000000004 mem remaining: 0.186182797090585 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.696099999999999 mem remaining: 0.2955400823130597 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0131999999999994 mem remaining: 0.14789428726737136 
+VM4: Server: Resources deallocated, cpu remaining: 0.689399999999999 mem remaining: 0.034975280200876105 
+VM2:  
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5973000000000004 mem remaining: 0.07251831335905928 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0916999999999994 mem remaining: 0.26855796857609693 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6074000000000004 mem remaining: 0.17473144720835887 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.750299999999999 mem remaining: 0.07100665234386291 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6058000000000004 mem remaining: 0.0774467424222966 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.763299999999999 mem remaining: 0.07610074288821611 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.772899999999999 mem remaining: 0.12085005047499411 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0746999999999995 mem remaining: 0.07808868066161972 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0846999999999996 mem remaining: 0.17485569331919212 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6158000000000005 mem remaining: 0.1008050112598186 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6886999999999993 mem remaining: 0.08312064815055728 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6135000000000005 mem remaining: 0.1009292573706562 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7371999999999991 mem remaining: 0.2205782621075365 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6931999999999993 mem remaining: 0.1882328579194077 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7014999999999992 mem remaining: 0.1926435948541525 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5929000000000003 mem remaining: 0.16665545000389648 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7016999999999993 mem remaining: 0.1924572256878953 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6194000000000005 mem remaining: 0.1054228250459594 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7106999999999993 mem remaining: 0.1957083322548197 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6987000000000005 mem remaining: 0.1756011699842246 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5957000000000003 mem remaining: 0.08214738694899487 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6886000000000004 mem remaining: 0.08136049491368938 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0135999999999996 mem remaining: 0.13544896849844332 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6302000000000003 mem remaining: 0.14311081200011688 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6497999999999993 mem remaining: 0.11523826780214969 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7057000000000004 mem remaining: 0.08999559961692218 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7066000000000004 mem remaining: 0.09351590609066217 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6216000000000004 mem remaining: 0.0764527735355921 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0058999999999996 mem remaining: 0.22200709238216973 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6018999999999992 mem remaining: 0.08612326249580529 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.683299999999999 mem remaining: 0.1086739316128825 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5716999999999992 mem remaining: 0.0829342789842997 
+VM1: Server: Resources deallocated, cpu remaining: 0.6231000000000003 mem remaining: 0.1174539901120937 
+VM5:  
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5995000000000003 mem remaining: 0.03876478658143331 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6053000000000003 mem remaining: 0.04226438537003371 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9316999999999995 mem remaining: 0.03963450935729494 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9553999999999996 mem remaining: 0.17286775554578654 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6146000000000003 mem remaining: 0.1467346568995549 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5788999999999992 mem remaining: 0.1807573835839941 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6252000000000003 mem remaining: 0.1969507933631997 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6941000000000005 mem remaining: 0.06139828643906937 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9500999999999996 mem remaining: 0.13360598452101494 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6241000000000003 mem remaining: 0.04702715295215251 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6919000000000005 mem remaining: 0.04916004452153777 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.622799999999999 mem remaining: 0.0256154065177569 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7015000000000006 mem remaining: 0.06396603939638537 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6332000000000003 mem remaining: 0.09856858126473492 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9594999999999996 mem remaining: 0.11906918955298254 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6323000000000003 mem remaining: 0.08827686175033012 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9879999999999995 mem remaining: 0.16288665130847654 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4716999999999991 mem remaining: 0.048248906375390505 
+VM5:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.48169999999999913 mem remaining: 0.0551859808971721 
+VM5:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.621399999999999 mem remaining: 0.0214117464344085 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5216999999999992 mem remaining: 0.0702611756788353 
+VM1: Server: Resources deallocated, cpu remaining: 0.6423000000000003 mem remaining: 0.09136230683613732 
+VM5:  
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5469999999999992 mem remaining: 0.1575440685424493 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6487000000000003 mem remaining: 0.09593870525199932 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9782999999999995 mem remaining: 0.14443610384905092 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.43259999999999915 mem remaining: 0.1647503429710469 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7115000000000006 mem remaining: 0.06845960707168858 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7269000000000005 mem remaining: 0.10801128568841498 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44309999999999916 mem remaining: 0.1800740299743857 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9408999999999995 mem remaining: 0.07887557269692692 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7350000000000005 mem remaining: 0.11300183780706978 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6584000000000003 mem remaining: 0.24586234566304652 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6456000000000003 mem remaining: 0.0419951854632173 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7360000000000005 mem remaining: 0.2177620169285462 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6114999999999989 mem remaining: 0.0692050837367149 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9564999999999995 mem remaining: 0.18088162969483013 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44369999999999915 mem remaining: 0.055061734786334096 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9561999999999995 mem remaining: 0.26654932311755175 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.609799999999999 mem remaining: 0.047503429710364496 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7204000000000005 mem remaining: 0.08206455620843658 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.638199999999999 mem remaining: 0.2143659565656433 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6232000000000002 mem remaining: 0.031972665855628496 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.646599999999999 mem remaining: 0.2392151787332201 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9393999999999995 mem remaining: 0.15427225429038377 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6227000000000003 mem remaining: 0.031144358450042493 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9378999999999995 mem remaining: 0.06628530013202177 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9503999999999995 mem remaining: 0.15574249993529857 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.43779999999999913 mem remaining: 0.0664509616131405 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44469999999999915 mem remaining: 0.0680247456837537 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7130000000000005 mem remaining: 0.07423705122565019 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4408999999999992 mem remaining: 0.1344549996117429 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7150000000000005 mem remaining: 0.06736209975928699 
+VM2: Server: Resources deallocated, cpu remaining: 0.8768999999999995 mem remaining: 0.12134703491834457 
+VM3:  
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6307000000000003 mem remaining: 0.032842388631493295 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5106999999999992 mem remaining: 0.17945279942019687 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7221000000000005 mem remaining: 0.07212486734140579 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6309000000000002 mem remaining: 0.0339398959438949 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6609000000000003 mem remaining: 0.11590091372661929 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6737000000000003 mem remaining: 0.12356275722828848 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8644999999999995 mem remaining: 0.14955090207854457 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8744999999999995 mem remaining: 0.15280200864546897 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7114000000000003 mem remaining: 0.1418269355214577 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7289000000000005 mem remaining: 0.07707400408978139 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7374000000000005 mem remaining: 0.08150544870966579 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8742999999999995 mem remaining: 0.13136955452593416 
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7118000000000003 mem remaining: 0.1367121372919649 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7381000000000005 mem remaining: 0.08179535630162099 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.46989999999999915 mem remaining: 0.3726555017731089 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7450000000000006 mem remaining: 0.093536613775801 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.47939999999999916 mem remaining: 0.3920793104340981 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7449000000000006 mem remaining: 0.21012088111201582 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4892999999999992 mem remaining: 0.3163720135635469 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7528000000000006 mem remaining: 0.21778272461368503 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6533000000000003 mem remaining: 0.11465845261824091 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7638000000000006 mem remaining: 0.2786633189242482 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6639000000000004 mem remaining: 0.11917272797868371 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5366999999999988 mem remaining: 0.0067299976703992835 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5446999999999989 mem remaining: 0.010188181088720084 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6098000000000005 mem remaining: 0.035534387699647715 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8953999999999995 mem remaining: 0.14741801050916137 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5515999999999989 mem remaining: 0.013501410711063285 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9053999999999995 mem remaining: 0.15093831698290136 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5591999999999989 mem remaining: 0.016711101907708484 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7418000000000006 mem remaining: 0.011679134418773843 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6308000000000004 mem remaining: 0.07063391401135011 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6408000000000004 mem remaining: 0.0822716330598317 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9131999999999996 mem remaining: 0.19744777780654937 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7598000000000006 mem remaining: 0.03996583231953224 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3133999999999991 mem remaining: 0.040607770558862055 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5368999999999989 mem remaining: 0.012176118862125683 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7707000000000006 mem remaining: 0.19556337845884303 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6372000000000003 mem remaining: 0.1138508528977941 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6464000000000003 mem remaining: 0.2027075298320213 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7764000000000006 mem remaining: 0.22532032200451624 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9089999999999996 mem remaining: 0.08413532472239857 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7771000000000007 mem remaining: 0.16853984935160263 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7103000000000003 mem remaining: 0.16920249527607173 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9023999999999995 mem remaining: 0.12362488028370616 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9055999999999995 mem remaining: 0.24927911371108696 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7855000000000006 mem remaining: 0.15487277715943543 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7960000000000006 mem remaining: 0.29792146610411985 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9049999999999996 mem remaining: 0.24998317500583497 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5368999999999989 mem remaining: 0.012176118862125683 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9151999999999996 mem remaining: 0.27580565837497495 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6136999999999989 mem remaining: 0.07270468252531488 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7903000000000006 mem remaining: 0.29920534258277787 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.31819999999999915 mem remaining: 0.045039215178746456 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7111000000000003 mem remaining: 0.12198897315767572 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7178000000000003 mem remaining: 0.13240493878291812 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7679000000000004 mem remaining: 0.3309709315869973 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.626299999999999 mem remaining: 0.2106385732405065 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.32829999999999915 mem remaining: 0.10672740920975606 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9189999999999996 mem remaining: 0.18899904226957295 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8404000000000006 mem remaining: 0.21378614138173227 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.32719999999999916 mem remaining: 0.10842543939120726 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.675899999999999 mem remaining: 0.2496104366733229 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8510000000000006 mem remaining: 0.3028498951673559 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9287999999999996 mem remaining: 0.20332876038620895 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5954999999999988 mem remaining: 0.12263091139700528 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9276999999999996 mem remaining: 0.054916780990355754 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7664000000000004 mem remaining: 0.3628400590169153 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5933999999999988 mem remaining: 0.11190433049466808 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7915000000000006 mem remaining: 0.1243082338933163 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7896000000000006 mem remaining: 0.1052985789351199 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9241999999999996 mem remaining: 0.056055703673036555 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7983000000000007 mem remaining: 0.1085496855020443 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.26709999999999917 mem remaining: 0.005777444153975261 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7055000000000003 mem remaining: 0.1569228379882613 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2755999999999992 mem remaining: 0.030046851137642064 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8077000000000006 mem remaining: 0.1078870395775755 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8572000000000006 mem remaining: 0.2216136463645191 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9246999999999996 mem remaining: 0.056055703673036555 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7162000000000004 mem remaining: 0.2360883182771337 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7226000000000004 mem remaining: 0.2404162244713197 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7367000000000004 mem remaining: 0.26570030802682887 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.28379999999999916 mem remaining: 0.06914296068129647 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7573000000000004 mem remaining: 0.16700748065126927 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5585999999999989 mem remaining: 0.10418036393757969 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.27719999999999917 mem remaining: 0.019506639401561665 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8255000000000006 mem remaining: 0.1369813371987807 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.28979999999999917 mem remaining: 0.026133098646248465 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8308000000000005 mem remaining: 0.20158931483448067 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7619000000000005 mem remaining: 0.17104547925350047 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5609999999999988 mem remaining: 0.10418036393757969 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9260999999999997 mem remaining: 0.06249579375146695 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9266999999999997 mem remaining: 0.20889912768877417 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.36559999999999915 mem remaining: 0.19732353169571368 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5734999999999988 mem remaining: 0.10736934744908529 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0073999999999999 mem remaining: 0.294359744260099 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8263000000000006 mem remaining: 0.09415784432998986 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7307000000000005 mem remaining: 0.08720006212306768 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.8267000000000005 mem remaining: 0.05806434913158426 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.35439999999999916 mem remaining: 0.09598012062227927 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.36409999999999915 mem remaining: 0.23271296559937127 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7339000000000004 mem remaining: 0.12577847953823088 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5720999999999988 mem remaining: 0.10519504050942248 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9939999999999999 mem remaining: 0.22509253746797858 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5912999999999988 mem remaining: 0.12331426500661369 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3153999999999991 mem remaining: 0.37222064038517605 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6112999999999988 mem remaining: 0.12664820231409687 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 1.0036999999999998 mem remaining: 0.22834364403490298 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3205999999999991 mem remaining: 0.4559625190899105 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3816999999999991 mem remaining: 0.5150208371081849 
+VM5:  
