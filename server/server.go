@@ -58,7 +58,7 @@ type HandleJob struct{}
 func sendAutoscalerStatistics() { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
 	// inefficient, do not have to loop through every single time, just store in a map or something
 
-	if my_ip == "" {
+	if status == false && len(job_queue) == 0 {
 		return
 	}
 
@@ -157,6 +157,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 
 func (t *HandleJob) ShutDownServer(args *rpcstructs.Args, reply *int) error {
 	mu.Lock()
+	fmt.Println("Shutting Down")
 	status = false
 	mu.Unlock()
 

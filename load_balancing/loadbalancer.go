@@ -96,7 +96,7 @@ func round_robin_loadbalancer() {
 
 		mu.Lock()
 		mu2.Lock()
-		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		var values []string
 		for _, v := range connected_servers {
 			values = append(values, v)
