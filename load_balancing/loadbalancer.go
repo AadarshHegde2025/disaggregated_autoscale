@@ -84,6 +84,10 @@ func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) 
 	return nil
 }
 
+func resource_awareness_loadbalancer() {
+
+}
+
 func round_robin_loadbalancer() {
 	db, _ := sql.Open("sqlite3", "./batch_data.db")
 	rows, _ := db.Query(`
@@ -158,26 +162,11 @@ func processConfigFile() {
 	i := 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		if i-2 == number_of_online_servers {
-			break
+		words := strings.Fields(line)
+		if words[3] == "O" {
+			number_of_online_servers += 1
+			connected_servers[i] = strings.TrimSpace(words[1])
 		}
-		if i == 0 {
-			// num, _ := strconv.Atoi(line)
-			// total_servers = num - 2
-		} else if i == 1 {
-			num, _ := strconv.Atoi(line)
-			mu2.Lock()
-			number_of_online_servers = num
-			fmt.Println("NUM ONLINE ", number_of_online_servers)
-			mu2.Unlock()
-		} else {
-			// normal servers
-			words := strings.Fields(line)
-			mu.Lock()
-			connected_servers[i-2] = strings.TrimSpace(words[1])
-			mu.Unlock()
-		}
-
 		i += 1
 	}
 	fmt.Println("post processing: ", connected_servers)
