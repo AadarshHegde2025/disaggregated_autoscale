@@ -96,12 +96,16 @@ func round_robin_loadbalancer() {
 
 		mu.Lock()
 		mu2.Lock()
-		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+
 		var values []string
 		for _, v := range connected_servers {
 			values = append(values, v)
 		}
 
+		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		if values[i%number_of_online_servers] == "sp25-cs525-0906.cs.illinois.edu" {
+			fmt.Println("sending to 6")
+		}
 		client, _ := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
 		mu2.Unlock()
 		mu.Unlock()
