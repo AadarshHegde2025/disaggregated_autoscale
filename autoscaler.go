@@ -86,6 +86,10 @@ func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plot
 func captureMetrics(servers map[string][]ServerStatus) {
 	fmt.Println("Generating multi-server metric overlays...")
 
+	for k, v := range server_to_status_overtime {
+		fmt.Println(k, len(v))
+	}
+
 	type metricData map[string]plotter.XYs
 
 	queueData := make(metricData)
