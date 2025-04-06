@@ -5,6 +5,7 @@ import (
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"fmt"
 	"image/color"
+	"math"
 	"net"
 	"net/rpc"
 	"os"
@@ -85,35 +86,36 @@ func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plot
 func captureMetrics(servers map[string][]ServerStatus) {
 	fmt.Println("Generating multi-server metric overlays...")
 
-	for k, v := range server_to_status_overtime {
-		fmt.Println(k, len(v))
-	}
-	// Store metric data grouped by metric type
-	type metricData map[string]plotter.XYs // serverID -> data
+	type metricData map[string]plotter.XYs
 
 	queueData := make(metricData)
 	computeData := make(metricData)
 	memoryData := make(metricData)
 	waitData := make(metricData)
 
-	for serverID, snapshots := range servers {
-		if len(snapshots) == 0 {
-			continue
+	// --- Step 1: Find the earliest timestamp across all servers ---
+	var globalStartTime int64 = math.MaxInt64
+	for _, snapshots := range servers {
+		for _, snap := range snapshots {
+			if snap.Time > 0 && snap.Time < globalStartTime {
+				globalStartTime = snap.Time
+			}
 		}
+	}
 
+	// --- Step 2: Build relative time series per server ---
+	for serverID, snapshots := range servers {
 		var computePoints, memoryPoints, waitPoints, queuePoints plotter.XYs
 
-		// Compute mean time for centering
-		var totalTime int64
 		for _, snap := range snapshots {
-			totalTime += snap.Time
-		}
-		meanTime := totalTime / int64(len(snapshots))
+			// Align time relative to global first data point
+			t := float64(snap.Time - globalStartTime)
 
-		for _, snap := range snapshots {
-			t := float64(snap.Time - meanTime) // relative time
+			// Skip any 0 or nonsense timestamps
+			if t < 0 {
+				continue
+			}
 
-			// --- Resource usage ---
 			computePoints = append(computePoints, plotter.XY{X: t, Y: snap.ComputeRemaining})
 			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snap.MemoryRemaining})
 			queuePoints = append(queuePoints, plotter.XY{X: t, Y: float64(snap.QueueLength)})
@@ -149,7 +151,7 @@ func captureMetrics(servers map[string][]ServerStatus) {
 		waitData[serverID] = waitPoints
 	}
 
-	// Plot all metrics across servers
+	// --- Step 3: Plot each metric across all servers ---
 	plotOverlayedMetric("Queue Length", "queue_length_all.png", "Queue Length", queueData)
 	plotOverlayedMetric("Compute Remaining (%)", "compute_remaining_all.png", "Compute Remaining (%)", computeData)
 	plotOverlayedMetric("Memory Remaining (%)", "memory_remaining_all.png", "Memory Remaining (%)", memoryData)
