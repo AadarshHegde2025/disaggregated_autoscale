@@ -183,6 +183,7 @@ func processConfigFile() {
 		}
 		i += 1
 	}
+	fmt.Println("post processing: ", connected_servers)
 }
 
 func main() {
