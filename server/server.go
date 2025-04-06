@@ -111,6 +111,7 @@ func processJobQueue() {
 				job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
 				spots_to_pushback += 1 // future jobs should be pushed back behind where we placed this one
 			} else {
+				fmt.Println("Job Queue length: ", len(job_queue))
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
 				time.AfterFunc((time.Duration(job_queue[0].TimeEnd-job_queue[0].TimeStart) * time.Second), func() { deallocateResources(job_queue[0].JobId, job_queue[0].TaskId) })
