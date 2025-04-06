@@ -85,6 +85,9 @@ func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plot
 func captureMetrics(servers map[string][]ServerStatus) {
 	fmt.Println("Generating multi-server metric overlays...")
 
+	for k, v := range server_to_status_overtime {
+		fmt.Println(k, len(v))
+	}
 	// Store metric data grouped by metric type
 	type metricData map[string]plotter.XYs // serverID -> data
 
@@ -105,11 +108,10 @@ func captureMetrics(servers map[string][]ServerStatus) {
 		for _, snap := range snapshots {
 			totalTime += snap.Time
 		}
-		// meanTime := totalTime / int64(len(snapshots))
+		meanTime := totalTime / int64(len(snapshots))
 
 		for _, snap := range snapshots {
-			startTime := snapshots[0].Time
-			t := float64(snap.Time - startTime)
+			t := float64(snap.Time - meanTime) // relative time
 
 			// --- Resource usage ---
 			computePoints = append(computePoints, plotter.XY{X: t, Y: snap.ComputeRemaining})
