@@ -19,7 +19,7 @@ import (
 
 // TODO: Update config file to determine which servers are compute heavy and which are memory heavy
 
-type AddingServer struct{}
+type ServerChange struct{}
 
 var mu sync.Mutex
 var mu2 sync.Mutex
@@ -58,13 +58,27 @@ func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64
 
 }
 
-func (t *AddingServer) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
+func (t *ServerChange) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
 	mu.Lock()
 	fmt.Println("Adding server:", args.ServerIp, "with node number:", args.NodeNumber)
 	mu2.Lock()
 	number_of_online_servers += 1
 	mu2.Unlock()
 	connected_servers[args.NodeNumber] = args.ServerIp
+	mu.Unlock()
+	*reply = 0
+	return nil
+}
+
+func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) error {
+	mu.Lock()
+	fmt.Println("Removing server server:", args.ServerIp, "with node number:", args.NodeNumber)
+	mu2.Lock()
+	number_of_online_servers -= 1
+	mu2.Unlock()
+	delete(connected_servers, args.NodeNumber)
+	client, _ := rpc.Dial("tcp", connected_servers[args.NodeNumber]+":"+strconv.Itoa(port))
+	client.Call("HandleJob.ShutDownServer", &args, &reply) // args field doesn't really matter, is not considered by server
 	mu.Unlock()
 	*reply = 0
 	return nil
@@ -83,7 +97,12 @@ func round_robin_loadbalancer() {
 		mu.Lock()
 		mu2.Lock()
 		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
-		client, _ := rpc.Dial("tcp", connected_servers[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		var values []string
+		for _, v := range connected_servers {
+			values = append(values, v)
+		}
+
+		client, _ := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
 		mu2.Unlock()
 		mu.Unlock()
 		// fmt.Println(record[6])
@@ -97,7 +116,7 @@ func round_robin_loadbalancer() {
 		mu.Lock()
 		mu2.Lock()
 		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
-		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, connected_servers[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, values[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
 		// fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
 		mu2.Unlock()
 		mu.Unlock()
@@ -110,7 +129,7 @@ func round_robin_loadbalancer() {
 }
 
 func ListenForAutoscalerUpdates() {
-	server_adder := new(AddingServer)
+	server_adder := new(ServerChange)
 	rpc.Register(server_adder)
 
 	listener, err := net.Listen("tcp", ":9000")

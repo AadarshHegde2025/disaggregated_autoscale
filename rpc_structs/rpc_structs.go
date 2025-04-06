@@ -32,9 +32,10 @@ type ServerUsage struct { // This struct sends server stats to the autoscaler
 	MemoryUsage  float64
 	JobToTiming  map[Pair]JobTiming
 	QueueLength  int
+	Status       bool
 }
 
-type ServerDetails struct { // This struct is used for autoscaler to add server to load balancer
+type ServerDetails struct { // This struct is used for autoscaler to add/remove server to load balancer
 	ServerIp   string
 	NodeNumber int
 }

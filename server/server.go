@@ -42,6 +42,8 @@ var job_to_cpu_resource_usage = make(map[rpcstructs.Pair]float64)
 var job_to_mem_resource_usage = make(map[rpcstructs.Pair]float64)
 var job_to_timing = make(map[rpcstructs.Pair]rpcstructs.JobTiming)
 
+var status bool = false // false is offline
+
 // Queueing Optimization 1 Data Structure: Aims to solve the problem of the initial job in the queue not having enough available resources
 var job_to_marked = make(map[rpcstructs.Pair]int)
 var spots_to_pushback = 0
@@ -75,7 +77,7 @@ func sendAutoscalerStatistics() { // only send when a job with 'key' has complet
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, job_queue_len}
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, job_queue_len, status}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {
@@ -141,11 +143,21 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	mu.Lock()
 	job_queue = append(job_queue, *args)
 	job_queue_len += 1
+	status = true
 	key := rpcstructs.Pair{J_ID: args.JobId, T_ID: args.TaskId}
 	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
 	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
 	job_to_timing[key] = rpcstructs.JobTiming{JobStartTime: time.Now().Unix(), JobEndTime: -1, JobExecStartTime: int64(args.TimeStart), JobExecEndTime: int64(args.TimeEnd)}
 	my_ip = args.ServerIp
+	mu.Unlock()
+
+	*reply = 0
+	return nil
+}
+
+func (t *HandleJob) ShutDownServer(args *rpcstructs.Args, reply *int) error {
+	mu.Lock()
+	status = false
 	mu.Unlock()
 
 	*reply = 0
