@@ -103,10 +103,6 @@ func round_robin_loadbalancer() {
 		}
 
 		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
-		if values[i%number_of_online_servers] == "sp25-cs525-0906.cs.illinois.edu" {
-			fmt.Println("sending to 6")
-			fmt.Println(values)
-		}
 		client, _ := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
 		mu2.Unlock()
 		mu.Unlock()
