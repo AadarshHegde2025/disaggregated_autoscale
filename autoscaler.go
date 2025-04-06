@@ -47,69 +47,89 @@ var job_execution_times = make(map[string][]int64)  // how much time the job too
 
 var mu sync.Mutex
 
-func plotLineGraph(title, xlabel, ylabel string, data plotter.XYs, filename string, lineColor color.RGBA) error {
+func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plotter.XYs) {
 	p := plot.New()
 	p.Title.Text = title
-	p.X.Label.Text = xlabel
+	p.X.Label.Text = "Time (relative, s)"
 	p.Y.Label.Text = ylabel
 
-	line, err := plotter.NewLine(data)
-	if err != nil {
-		return err
+	colorList := []color.RGBA{
+		{R: 255, G: 99, B: 132, A: 255},
+		{R: 54, G: 162, B: 235, A: 255},
+		{R: 255, G: 206, B: 86, A: 255},
+		{R: 75, G: 192, B: 192, A: 255},
+		{R: 153, G: 102, B: 255, A: 255},
+		{R: 255, G: 159, B: 64, A: 255},
+		{R: 100, G: 255, B: 100, A: 255},
 	}
-	line.Color = lineColor
-	line.Width = vg.Points(2)
 
-	p.Add(line)
-	p.Legend.Add(title, line)
+	i := 0
+	for serverID, data := range allData {
+		line, err := plotter.NewLine(data)
+		if err != nil {
+			fmt.Printf("Skipping %s: %v\n", serverID, err)
+			continue
+		}
+		line.Color = colorList[i%len(colorList)]
+		line.Width = vg.Points(2)
+		p.Add(line)
+		p.Legend.Add(serverID, line)
+		i++
+	}
 
-	return p.Save(10*vg.Inch, 5*vg.Inch, filename)
+	if err := p.Save(12*vg.Inch, 6*vg.Inch, filename); err != nil {
+		fmt.Printf("Failed to save %s: %v\n", filename, err)
+	}
 }
 
 func captureMetrics(servers map[string][]ServerStatus) {
-	fmt.Println("Generating overlayed server metrics graphs...")
+	fmt.Println("Generating multi-server metric overlays...")
+
+	// Store metric data grouped by metric type
+	type metricData map[string]plotter.XYs // serverID -> data
+
+	queueData := make(metricData)
+	computeData := make(metricData)
+	memoryData := make(metricData)
+	waitData := make(metricData)
 
 	for serverID, snapshots := range servers {
-		var computePoints, memoryPoints, avgWaitPoints, queuePoints plotter.XYs
-
 		if len(snapshots) == 0 {
 			continue
 		}
 
-		// --- Step 1: Compute mean timestamp
+		var computePoints, memoryPoints, waitPoints, queuePoints plotter.XYs
+
+		// Compute mean time for centering
 		var totalTime int64
-		for _, snapshot := range snapshots {
-			totalTime += snapshot.Time
+		for _, snap := range snapshots {
+			totalTime += snap.Time
 		}
 		meanTime := totalTime / int64(len(snapshots))
 
-		// --- Step 2: Gather XY points for each metric
-		for _, snapshot := range snapshots {
-			t := float64(snapshot.Time - meanTime) // Centered timestamp
+		for _, snap := range snapshots {
+			t := float64(snap.Time - meanTime) // relative time
 
-			// Resource usage
-			computePoints = append(computePoints, plotter.XY{X: t, Y: snapshot.ComputeRemaining})
-			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snapshot.MemoryRemaining})
-			queuePoints = append(queuePoints, plotter.XY{X: t, Y: float64(snapshot.QueueLength)})
+			// --- Resource usage ---
+			computePoints = append(computePoints, plotter.XY{X: t, Y: snap.ComputeRemaining})
+			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snap.MemoryRemaining})
+			queuePoints = append(queuePoints, plotter.XY{X: t, Y: float64(snap.QueueLength)})
 
-			// Wait time
+			// --- Wait time ---
 			var totalWait float64
 			var jobCount int
-
-			for _, timing := range snapshot.JobToTiming {
+			for _, timing := range snap.JobToTiming {
 				if timing.JobStartTime == 0 || timing.JobEndTime == 0 ||
 					timing.JobExecStartTime == 0 || timing.JobExecEndTime == 0 {
 					continue
 				}
-
-				totalTime := timing.JobEndTime - timing.JobStartTime
-				execTime := timing.JobExecEndTime - timing.JobExecStartTime
-				waitTime := float64(totalTime - execTime)
-				if waitTime < 0 {
-					waitTime = 0
+				total := timing.JobEndTime - timing.JobStartTime
+				exec := timing.JobExecEndTime - timing.JobExecStartTime
+				wait := float64(total - exec)
+				if wait < 0 {
+					wait = 0
 				}
-
-				totalWait += waitTime
+				totalWait += wait
 				jobCount++
 			}
 
@@ -117,38 +137,22 @@ func captureMetrics(servers map[string][]ServerStatus) {
 			if jobCount > 0 {
 				avgWait = totalWait / float64(jobCount)
 			}
-
-			avgWaitPoints = append(avgWaitPoints, plotter.XY{X: t, Y: avgWait})
+			waitPoints = append(waitPoints, plotter.XY{X: t, Y: avgWait})
 		}
 
-		// --- Step 3: Create combined plot with legend ---
-		p := plot.New()
-		p.Title.Text = fmt.Sprintf("Server Metrics - %s", serverID)
-		p.X.Label.Text = "Time (relative, s)"
-		p.Y.Label.Text = "Value"
-
-		addLine := func(name string, data plotter.XYs, col color.RGBA) {
-			line, err := plotter.NewLine(data)
-			if err == nil {
-				line.Color = col
-				line.Width = vg.Points(2)
-				p.Add(line)
-				p.Legend.Add(name, line)
-			}
-		}
-
-		addLine("Compute Remaining (%)", computePoints, color.RGBA{R: 100, G: 200, B: 255, A: 255})
-		addLine("Memory Remaining (%)", memoryPoints, color.RGBA{R: 150, G: 255, B: 150, A: 255})
-		addLine("Avg Wait Time (ms)", avgWaitPoints, color.RGBA{B: 255, A: 255})
-		addLine("Queue Length", queuePoints, color.RGBA{R: 200, G: 100, B: 255, A: 255})
-
-		// Save to file
-		if err := p.Save(12*vg.Inch, 6*vg.Inch, fmt.Sprintf("metrics_overlay_%s.png", serverID)); err != nil {
-			fmt.Printf("Failed to save overlay plot for %s: %v\n", serverID, err)
-		}
+		computeData[serverID] = computePoints
+		memoryData[serverID] = memoryPoints
+		queueData[serverID] = queuePoints
+		waitData[serverID] = waitPoints
 	}
 
-	fmt.Println("Done plotting overlayed server metrics.")
+	// Plot all metrics across servers
+	plotOverlayedMetric("Queue Length", "queue_length_all.png", "Queue Length", queueData)
+	plotOverlayedMetric("Compute Remaining (%)", "compute_remaining_all.png", "Compute Remaining (%)", computeData)
+	plotOverlayedMetric("Memory Remaining (%)", "memory_remaining_all.png", "Memory Remaining (%)", memoryData)
+	plotOverlayedMetric("Average Wait Time (ms)", "avg_wait_time_all.png", "Avg Wait Time (ms)", waitData)
+
+	fmt.Println("Done plotting overlayed metrics by server.")
 }
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
