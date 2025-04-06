@@ -24,16 +24,18 @@ type Args struct { // This struct sends job details to the server
 	ServerIp                string
 	RealMaxCPU              float64
 	RealMaxMemory           float64
+	Server_Type             string
 }
 
-type ServerUsage struct { // This struct sends server stats to the autoscaler
-	ServerIp     string
-	ComputeUsage float64
-	MemoryUsage  float64
-	JobToTiming  map[Pair]JobTiming
-	QueueLength  int
-	Status       bool
-	Time         int64
+type ServerUsage struct { // This struct used for server stats to send to and maintain on the autoscaler
+	ServerIp         string
+	ComputeRemaining float64
+	MemoryRemaining  float64
+	JobToTiming      map[Pair]JobTiming
+	QueueLength      int
+	Status           bool
+	Time             int64
+	Server_Type      string
 }
 
 type ServerDetails struct { // This struct is used for autoscaler to add/remove server to load balancer

@@ -24,7 +24,8 @@ type ServerChange struct{}
 var mu sync.Mutex
 var mu2 sync.Mutex
 
-var connected_servers map[int]string = make(map[int]string)
+var connected_servers map[int]string = make(map[int]string) // node number -> server ip
+var server_to_type = make(map[string]string)                // server ip -> server type
 var port int = 9000
 var number_of_online_servers int = 0
 
@@ -121,7 +122,7 @@ func round_robin_loadbalancer() {
 		mu.Lock()
 		mu2.Lock()
 		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
-		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, values[i%number_of_online_servers], real_cpu, real_mem} // TODO: fill in with actual values from the trace
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, values[i%number_of_online_servers], real_cpu, real_mem, server_to_type[values[i%number_of_online_servers]]} // TODO: fill in with actual values from the trace
 		// fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
 		mu2.Unlock()
 		mu.Unlock()
@@ -163,6 +164,12 @@ func processConfigFile() {
 	for scanner.Scan() {
 		line := scanner.Text()
 		words := strings.Fields(line)
+		if words[4] == "C" {
+			server_to_type[words[1]] = "C"
+		} else if words[4] == "M" {
+			server_to_type[words[1]] = "M"
+		}
+
 		if words[3] == "O" {
 			number_of_online_servers += 1
 			connected_servers[i] = strings.TrimSpace(words[1])

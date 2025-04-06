@@ -52,6 +52,7 @@ var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
 var port int = 9000
 var my_ip string
+var my_type string
 
 type HandleJob struct{}
 
@@ -77,7 +78,7 @@ func sendAutoscalerStatistics() { // only send when a job with 'key' has complet
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, job_queue_len, status, time.Now().Unix()}
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, job_queue_len, status, time.Now().Unix(), my_type}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {

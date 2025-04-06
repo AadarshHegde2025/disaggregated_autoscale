@@ -27,24 +27,13 @@ var port int = 9000
 // everything working
 
 // TODO: aggregate the server stats over here. metrics: job latency, efficiency, graph of server usage
-
-type ServerStatus struct {
-	Status           bool
-	Server_Type      string // computer or memory heavy
-	ComputeRemaining float64
-	MemoryRemaining  float64
-	JobToTiming      map[rpcstructs.Pair]rpcstructs.JobTiming
-	QueueLength      int
-	Time             int64
-}
-
 type AutoScaler struct{}
 
-var server_to_status_overtime = make(map[string][]ServerStatus)
+var server_to_status_overtime = make(map[string][]rpcstructs.ServerUsage)
 
-var server_to_status = make(map[string]ServerStatus)
-var job_completion_times = make(map[string][]int64) // how much time between when the job was added to the server and when it was completed, for each server
-var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
+var server_to_status = make(map[string]rpcstructs.ServerUsage) // server_ip -> ServerStatus
+var job_completion_times = make(map[string][]int64)            // how much time between when the job was added to the server and when it was completed, for each server
+var job_execution_times = make(map[string][]int64)             // how much time the job took to execute, for each server
 
 var mu sync.Mutex
 
@@ -83,7 +72,7 @@ func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plot
 	}
 }
 
-func captureMetrics(servers map[string][]ServerStatus) {
+func captureMetrics(servers map[string][]rpcstructs.ServerUsage) {
 	fmt.Println("Generating multi-server metric overlays...")
 
 	for k, v := range server_to_status_overtime {
@@ -166,14 +155,14 @@ func captureMetrics(servers map[string][]ServerStatus) {
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
 	mu.Lock()
-	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
+	fmt.Println("Received server stats:", args.ServerIp, args.ComputeRemaining, args.MemoryRemaining)
 	status := server_to_status[args.ServerIp] // mark the server as online
 	status.Status = args.Status
 	if status.Status == false {
 		fmt.Println("Server , ", args.ServerIp, " is now offline")
 	}
-	status.ComputeRemaining = args.ComputeUsage
-	status.MemoryRemaining = args.MemoryUsage
+	status.ComputeRemaining = args.ComputeRemaining
+	status.MemoryRemaining = args.MemoryRemaining
 	status.JobToTiming = args.JobToTiming
 	status.QueueLength = args.QueueLength
 	status.Time = args.Time
@@ -274,7 +263,7 @@ func main() {
 	for scanner.Scan() {
 		line = scanner.Text()
 		words := strings.Fields(line)
-		server_to_status[words[1]] = ServerStatus{Status: false, Server_Type: words[3], ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
+		server_to_status[words[1]] = rpcstructs.ServerUsage{Status: false, Server_Type: words[4], ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
 	}
 
 	go startAutoscaler() // handler to receive stats from servers
