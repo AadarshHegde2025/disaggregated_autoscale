@@ -4,6 +4,7 @@ import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
 	"fmt"
+	"image/color"
 	"net"
 	"net/rpc"
 	"os"
@@ -13,6 +14,10 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	"gonum.org/v1/plot"
+	"gonum.org/v1/plot/plotter"
+	"gonum.org/v1/plot/vg"
 )
 
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
@@ -38,8 +43,91 @@ var job_execution_times = make(map[string][]int64)  // how much time the job too
 
 var mu sync.Mutex
 
-func captureMetrics() {
+func plotLineGraph(title, xlabel, ylabel string, data plotter.XYs, filename string, lineColor color.RGBA) error {
+	p := plot.New()
+	p.Title.Text = title
+	p.X.Label.Text = xlabel
+	p.Y.Label.Text = ylabel
 
+	line, err := plotter.NewLine(data)
+	if err != nil {
+		return err
+	}
+	line.Color = lineColor
+	line.Width = vg.Points(2)
+
+	p.Add(line)
+	p.Legend.Add(title, line)
+
+	return p.Save(10*vg.Inch, 5*vg.Inch, filename)
+}
+
+func captureMetrics(servers map[string]ServerStatus) {
+	fmt.Println("Generating per-server metrics...")
+
+	for serverID, status := range servers {
+		jobTimings := status.JobToTiming
+
+		var waitPoints plotter.XYs
+		var computePoints plotter.XYs
+		var memoryPoints plotter.XYs
+
+		index := 0
+		for _, timing := range jobTimings {
+			// Validate timestamps
+			if timing.JobStartTime == 0 || timing.JobEndTime == 0 ||
+				timing.JobExecStartTime == 0 || timing.JobExecEndTime == 0 {
+				continue
+			}
+
+			// Wait Time = Total time - Execution time
+			totalTime := timing.JobEndTime - timing.JobStartTime
+			execTime := timing.JobExecEndTime - timing.JobExecStartTime
+			waitTime := float64(totalTime - execTime)
+			if waitTime < 0 {
+				waitTime = 0 // for safety
+			}
+
+			// Compute & memory used (invert remaining)
+			computeUsed := 100.0 - status.ComputeRemaining
+			memoryUsed := 100.0 - status.MemoryRemaining
+
+			waitPoints = append(waitPoints, plotter.XY{X: float64(index), Y: waitTime})
+			computePoints = append(computePoints, plotter.XY{X: float64(index), Y: computeUsed})
+			memoryPoints = append(memoryPoints, plotter.XY{X: float64(index), Y: memoryUsed})
+
+			index++
+		}
+
+		// --- Plot Wait Time ---
+		if err := plotLineGraph(
+			fmt.Sprintf("Wait Time - %s", serverID),
+			"Job Index", "Wait Time (ms)", waitPoints,
+			fmt.Sprintf("wait_time_%s.png", serverID),
+			color.RGBA{B: 255, A: 200}); err != nil {
+			fmt.Println("Failed to plot wait time:", err)
+		}
+
+		// --- Plot Compute Usage ---
+		if err := plotLineGraph(
+			fmt.Sprintf("Compute Usage - %s", serverID),
+			"Job Index", "Compute Used (%)", computePoints,
+			fmt.Sprintf("compute_usage_%s.png", serverID),
+			color.RGBA{R: 255, A: 200}); err != nil {
+			fmt.Println("Failed to plot compute usage:", err)
+		}
+
+		// --- Plot Memory Usage ---
+		if err := plotLineGraph(
+			fmt.Sprintf("Memory Usage - %s", serverID),
+			"Job Index", "Memory Used (%)", memoryPoints,
+			fmt.Sprintf("memory_usage_%s.png", serverID),
+			color.RGBA{G: 200, A: 200}); err != nil {
+			fmt.Println("Failed to plot memory usage:", err)
+		}
+	}
+
+	fmt.Println("Done generating metrics.")
 }
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
@@ -151,7 +239,7 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 	<-sigChan
-	captureMetrics()
+	captureMetrics(server_to_status)
 }
 
 // TODO:
