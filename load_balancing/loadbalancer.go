@@ -76,9 +76,9 @@ func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) 
 	mu2.Lock()
 	number_of_online_servers -= 1
 	mu2.Unlock()
-	delete(connected_servers, args.NodeNumber)
 	client, _ := rpc.Dial("tcp", connected_servers[args.NodeNumber]+":"+strconv.Itoa(port))
 	client.Call("HandleJob.ShutDownServer", &args, &reply) // args field doesn't really matter, is not considered by server
+	delete(connected_servers, args.NodeNumber)
 	mu.Unlock()
 	*reply = 0
 	return nil
@@ -96,7 +96,7 @@ func round_robin_loadbalancer() {
 
 		mu.Lock()
 		mu2.Lock()
-		fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
+		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
 		var values []string
 		for _, v := range connected_servers {
 			values = append(values, v)
