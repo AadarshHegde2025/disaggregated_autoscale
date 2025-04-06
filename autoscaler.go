@@ -70,11 +70,44 @@ func captureMetrics(servers map[string][]ServerStatus) {
 	for serverID, snapshots := range servers {
 		var computePoints plotter.XYs
 		var memoryPoints plotter.XYs
+		var avgWaitPoints plotter.XYs
 
 		for i, snapshot := range snapshots {
 			t := float64(i * 5) // time in seconds (5-second interval)
+
+			// --- Resource tracking ---
 			computePoints = append(computePoints, plotter.XY{X: t, Y: snapshot.ComputeRemaining})
 			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snapshot.MemoryRemaining})
+
+			// --- Wait time tracking ---
+			var totalWait float64
+			var jobCount int
+
+			for _, timing := range snapshot.JobToTiming {
+				// Must have valid timestamps
+				if timing.JobStartTime == 0 || timing.JobEndTime == 0 ||
+					timing.JobExecStartTime == 0 || timing.JobExecEndTime == 0 {
+					continue
+				}
+
+				totalTime := timing.JobEndTime - timing.JobStartTime
+				execTime := timing.JobExecEndTime - timing.JobExecStartTime
+				waitTime := float64(totalTime - execTime)
+
+				if waitTime < 0 {
+					waitTime = 0
+				}
+
+				totalWait += waitTime
+				jobCount++
+			}
+
+			avgWait := 0.0
+			if jobCount > 0 {
+				avgWait = totalWait / float64(jobCount)
+			}
+
+			avgWaitPoints = append(avgWaitPoints, plotter.XY{X: t, Y: avgWait})
 		}
 
 		// --- Plot Compute Remaining ---
@@ -94,9 +127,18 @@ func captureMetrics(servers map[string][]ServerStatus) {
 			color.RGBA{R: 150, G: 255, B: 150, A: 255}); err != nil {
 			fmt.Println("Failed to plot memory:", err)
 		}
+
+		// --- Plot Avg Wait Time ---
+		if err := plotLineGraph(
+			fmt.Sprintf("Average Wait Time - %s", serverID),
+			"Time (s)", "Avg Wait Time (ms)", avgWaitPoints,
+			fmt.Sprintf("avg_wait_time_%s.png", serverID),
+			color.RGBA{B: 255, A: 255}); err != nil {
+			fmt.Println("Failed to plot avg wait time:", err)
+		}
 	}
 
-	fmt.Println("Done plotting usage graphs.")
+	fmt.Println("Done plotting usage and wait graphs.")
 }
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
