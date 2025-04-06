@@ -114,7 +114,11 @@ func processJobQueue() {
 				fmt.Println("Job Queue length: ", len(job_queue))
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
-				time.AfterFunc((time.Duration(job_queue[0].TimeEnd-job_queue[0].TimeStart) * time.Second), func() { deallocateResources(job_queue[0].JobId, job_queue[0].TaskId) })
+
+				jid := job_queue[0].JobId
+				tid := job_queue[0].TaskId
+				duration := job_queue[0].TimeEnd - job_queue[0].TimeStart
+				time.AfterFunc((time.Duration(duration) * time.Second), func() { deallocateResources(jid, tid) })
 				job_queue = job_queue[1:] // remove the job from the queue
 
 				if job_to_marked[key] == 1 {

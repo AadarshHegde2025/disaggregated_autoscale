@@ -1,0 +1,21 @@
+VM1: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM3: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM4: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM5: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM2: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM6: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM9: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM7: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM8: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM4: [?2004lAlready up to date. 
+VM1: [?2004lAlready up to date. 
+VM9: [?2004l 
+VM3: [?2004lAlready up to date. 
+VM5: [?2004lAlready up to date. 
+VM6: [?2004lAlready up to date. 
+VM2: [?2004lAlready up to date. 
+VM7: [?2004l 
+VM8: [?2004lAlready up to date. 
+VM9: Already up to date. 
+VM7: Already up to date. 
+VM7: [?2004h 
