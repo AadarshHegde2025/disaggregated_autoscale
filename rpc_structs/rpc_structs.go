@@ -24,3 +24,20 @@ type ServerDetails struct { // This struct is used for autoscaler to add server 
 	ServerIp   string
 	NodeNumber int
 }
+
+type JobType int
+
+const (
+	COMPUTE_HEAVY JobType = iota
+	MEMORY_HEAVY
+)
+
+type Snapshot struct { // This struct is used for the autoscaler to understand the chronology of jobs completed
+	ServerIp			string
+	JobType 			JobType
+	CpuUtilization 		float64
+	MemoryUtilization 	float64
+	ExecutionTime		int64
+	TotalTime			int64
+	Timestamp			int64
+}

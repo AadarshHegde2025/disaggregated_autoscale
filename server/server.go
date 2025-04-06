@@ -77,7 +77,12 @@ func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing[key].job_end_time - job_to_timing[key].job_start_time, job_to_timing[key].job_execution_end_time - job_to_timing[key].job_execution_start_time}
+	
+	// Used for generating statistics on the autoscaler side
+	job_total_time := job_to_timing[key].job_end_time - job_to_timing[key].job_start_time
+	job_execution_time := job_to_timing[key].job_execution_end_time - job_to_timing[key].job_execution_start_time
+
+	server_stats := rpcstructs.ServerUsage{ServerIp: my_ip, ComputeUsage: compute_remaining, MemoryUsage: memory_remaining, JobCompletionTime: job_total_time, JobTraceExecutionTime: job_execution_time}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {
@@ -85,6 +90,18 @@ func sendAutoscalerStatistics(key Pair) { // only send when a job with 'key' has
 		mu.Unlock()
 		return
 	}
+
+	// TODO: Assign job type correctly 
+	jobType := rpcstructs.COMPUTE_HEAVY
+	autoscaler_data := rpcstructs.Snapshot{ServerIp: my_ip, JobType: jobType, CpuUtilization: job_to_cpu_resource_usage[key], MemoryUtilization: job_to_mem_resource_usage[key], ExecutionTime: job_execution_time, TotalTime: job_total_time, Timestamp: job_to_timing[key].job_start_time}
+
+	err = autoscaler.Call("AutoScaler.AddSnapshotToList", &autoscaler_data, &reply)
+	if err != nil {
+		fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
+		mu.Unlock()
+		return
+	}
+
 	mu.Unlock()
 }
 
