@@ -199,110 +199,39 @@ func autoscale() {
 	// autoscaler also has to let load balancer know when it adds or removes a server
 
 	// basic testing that autoscaler can interact with load balancer
-	time.Sleep(30 * time.Second) // TODO: CHANGE THIS wait for load balancer to start
+	time.Sleep(30 * time.Second) // wait for load balancer to start
 	fmt.Println("Autoscaler is starting to send stats to load balancer")
+
 	load_balancer, err := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
 	if err != nil {
 		fmt.Println("Error connecting to load balancer:", err)
 		return
 	}
-	args := rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: This is just a test
 
 	var reply int
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
+
+	for i := 6; i <= 18; i++ {
+		hostname := fmt.Sprintf("sp25-cs525-%04d.cs.illinois.edu", i)
+		nodeNumber := i - 1 // Assuming node numbers start from 5 at i=6
+		args := rpcstructs.ServerDetails{hostname, nodeNumber}
+
+		err := load_balancer.Call("ServerChange.AddServer", &args, &reply)
+		if err != nil {
+			fmt.Printf("RPC AddServer failed for %s: %v\n", hostname, err)
+		}
 	}
 
-	args = rpcstructs.ServerDetails{"sp25-cs525-0907.cs.illinois.edu", 6} // TODO: This is just a test
+	time.Sleep(20 * time.Second) // simulate some time passing before removals
 
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-	args = rpcstructs.ServerDetails{"sp25-cs525-0908.cs.illinois.edu", 7} // TODO: This is just a test
+	for i := 6; i <= 18; i++ {
+		hostname := fmt.Sprintf("sp25-cs525-%04d.cs.illinois.edu", i)
+		nodeNumber := i - 1
+		args := rpcstructs.ServerDetails{hostname, nodeNumber}
 
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0909.cs.illinois.edu", 8} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0910.cs.illinois.edu", 9} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0911.cs.illinois.edu", 10} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0912.cs.illinois.edu", 11} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.AddServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	time.Sleep(20 * time.Second) // TODO: CHANGE THIS wait for load balancer to start
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0907.cs.illinois.edu", 6} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-	args = rpcstructs.ServerDetails{"sp25-cs525-0908.cs.illinois.edu", 7} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0909.cs.illinois.edu", 8} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0910.cs.illinois.edu", 9} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0911.cs.illinois.edu", 10} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
-	}
-
-	args = rpcstructs.ServerDetails{"sp25-cs525-0912.cs.illinois.edu", 11} // TODO: This is just a test
-
-	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	if err != nil {
-		fmt.Println("RPC call failed:", err) // Check if this prints
+		err := load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
+		if err != nil {
+			fmt.Printf("RPC RemoveServer failed for %s: %v\n", hostname, err)
+		}
 	}
 
 }
