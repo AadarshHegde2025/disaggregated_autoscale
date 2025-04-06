@@ -4855,3 +4855,2442 @@ VM3: Server: Resources deallocated, cpu remaining: 0.6613999999999993 mem remain
 VM3:  
 VM2: Server: Resources deallocated, cpu remaining: 0.8650999999999995 mem remaining: 0.1646260968602104 
 VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6712999999999992 mem remaining: 0.08419744777781848 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5443 mem remaining: 0.06688582300107088 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6729999999999993 mem remaining: 0.1739031398027709 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7328999999999997 mem remaining: 0.04980198276086536 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5118 mem remaining: 0.09788522765512328 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5953999999999993 mem remaining: 0.10215101079389288 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6143999999999993 mem remaining: 0.11403722206405048 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6016999999999992 mem remaining: 0.04004866306009048 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8463999999999995 mem remaining: 0.015323687003352791 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5046 mem remaining: 0.08430098620351528 
+VM1: Server: Resources deallocated, cpu remaining: 0.5491 mem remaining: 0.14048093598737849 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4779999999999999 mem remaining: 0.003168275826376174 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7305999999999996 mem remaining: 0.04804182952399536 
+VM5:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7364999999999996 mem remaining: 0.06137757875392816 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7714999999999996 mem remaining: 0.20312168353481497 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6690999999999991 mem remaining: 0.07512748168665329 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6726999999999991 mem remaining: 0.07742603473715448 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8861999999999994 mem remaining: 0.02642300623820359 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5427000000000001 mem remaining: 0.10596122485958609 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5135 mem remaining: 0.016338363575191774 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5892 mem remaining: 0.06005228690498737 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5453000000000001 mem remaining: 0.11010276188751528 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6039 mem remaining: 0.10629254782181977 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6751999999999996 mem remaining: 0.17978412238243296 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6748999999999991 mem remaining: 0.07864778816039368 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6808999999999996 mem remaining: 0.18303522894935736 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5029000000000001 mem remaining: 0.10875676235343806 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.672899999999999 mem remaining: 0.17305412471204648 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5033000000000002 mem remaining: 0.07810938834676007 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5524999999999997 mem remaining: 0.18361504413326776 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.684199999999999 mem remaining: 0.19767556234308728 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5144000000000002 mem remaining: 0.08838040017602486 
+VM1:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3: Server: Resources deallocated, cpu remaining: 0.694299999999999 mem remaining: 0.21409675665882769 
+VM1:  
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6464 mem remaining: 0.08809049258406976 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8784999999999994 mem remaining: 0.02513912975954559 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6466 mem remaining: 0.14271736598245977 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4882999999999997 mem remaining: 0.18657624310823737 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5219999999999997 mem remaining: 0.4402453860689186 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8771999999999994 mem remaining: 0.02116325421273319 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.48550000000000015 mem remaining: 0.04052493981830006 
+VM5: Server: Resources deallocated, cpu remaining: 0.45729999999999965 mem remaining: 0.40649185929129344 
+VM1:  
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5366000000000002 mem remaining: 0.11242202262315566 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7092999999999999 mem remaining: 0.20657986695313257 
+VM2: Server: Resources deallocated, cpu remaining: 0.8869999999999995 mem remaining: 0.024372945409378392 
+VM4:  
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6701999999999989 mem remaining: 0.062019516993256876 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6810999999999999 mem remaining: 0.2922475603758542 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6871999999999999 mem remaining: 0.296658297310599 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.34999999999999964 mem remaining: 0.13973545932235507 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9479999999999995 mem remaining: 0.12056014288304079 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3577999999999996 mem remaining: 0.16315585121529627 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6325999999999989 mem remaining: 0.009049258406038874 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9588999999999995 mem remaining: 0.12606838713018678 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.658599999999999 mem remaining: 0.051748505163991675 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.676699999999999 mem remaining: 0.08117412574743048 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5402000000000001 mem remaining: 0.19589470142107487 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9588999999999995 mem remaining: 0.08055289519324159 
+VM2:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5569000000000002 mem remaining: 0.23948437864003247 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.674399999999999 mem remaining: 0.18527165894443848 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.28349999999999964 mem remaining: 0.11097248466338505 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8938999999999996 mem remaining: 0.07479615872441958 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.28289999999999965 mem remaining: 0.06638883855772384 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6163000000000001 mem remaining: 0.10478088680662617 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6034000000000002 mem remaining: 0.15915926798334046 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.664 mem remaining: 0.17541480081796337 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8922999999999995 mem remaining: 0.17346827841483958 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.686599999999999 mem remaining: 0.23950508632517567 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8940999999999996 mem remaining: 0.08566769342273438 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6892999999999989 mem remaining: 0.2713742137550933 
+VM3:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6163000000000002 mem remaining: 0.07444412807704326 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7014 mem remaining: 0.09266689099993257 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7753 mem remaining: 0.23803484068025738 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6802999999999989 mem remaining: 0.0955659669194869 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6059000000000002 mem remaining: 0.07001268345715847 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6902999999999989 mem remaining: 0.0972847047860773 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7012999999999989 mem remaining: 0.1459684725493885 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2738999999999997 mem remaining: 0.045846814899193844 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7031999999999989 mem remaining: 0.11343669919500209 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7287 mem remaining: 0.06959852975436497 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7387 mem remaining: 0.10312427199545417 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8811999999999995 mem remaining: 0.07808868066162399 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6492000000000002 mem remaining: 0.12395620324594007 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7515 mem remaining: 0.07717754251547616 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2712999999999997 mem remaining: 0.07616286594363784 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6230999999999989 mem remaining: 0.03534801853339168 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6536000000000002 mem remaining: 0.15978049853753007 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2793999999999997 mem remaining: 0.09045116868999424 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6326999999999989 mem remaining: 0.03982087852355528 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7212000000000002 mem remaining: 0.33339373074833406 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2898999999999997 mem remaining: 0.10567131726763504 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7272000000000002 mem remaining: 0.33689332953693446 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6427999999999989 mem remaining: 0.1677943726865765 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.680699999999999 mem remaining: 0.2574793570263893 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8106999999999995 mem remaining: 0.012051872751288384 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.711599999999999 mem remaining: 0.2893484844563069 
+VM3: Server: Resources deallocated, cpu remaining: 0.727599999999999 mem remaining: 0.3362099759273289 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7195000000000001 mem remaining: 0.19394817901794806 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.704499999999999 mem remaining: 0.31206481505450007 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8399999999999995 mem remaining: 0.05551730385940838 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.692099999999999 mem remaining: 0.36909377992908926 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7020999999999991 mem remaining: 0.38284368286181486 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6587000000000002 mem remaining: 0.06369683948956567 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6997000000000002 mem remaining: 0.15652939197060486 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8019 mem remaining: 0.10834260865064577 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7092000000000002 mem remaining: 0.29112934537831325 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6991000000000002 mem remaining: 0.2805270105868136 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8099999999999995 mem remaining: 0.1439598270908428 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.686099999999999 mem remaining: 0.2877539927005541 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.687299999999999 mem remaining: 0.3095591851526029 
+VM3:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8069999999999999 mem remaining: 0.025449745036636967 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6979999999999991 mem remaining: 0.31266533792354967 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8188999999999995 mem remaining: 0.1483705640255876 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6977999999999991 mem remaining: 0.3923485103409133 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8305999999999996 mem remaining: 0.152802008645472 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8459 mem remaining: 0.16537157352523457 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8262999999999995 mem remaining: 0.0888773846193804 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.852 mem remaining: 0.17765123081304576 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7790999999999995 mem remaining: 0.012383195713522796 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7036999999999991 mem remaining: 0.3761965159319885 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.20919999999999972 mem remaining: 0.007661843501683836 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7051999999999992 mem remaining: 0.3794269148137733 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6370000000000002 mem remaining: 0.06462868532084964 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6938999999999991 mem remaining: 0.16533015815495847 
+VM1: Server: Resources deallocated, cpu remaining: 0.6942000000000003 mem remaining: 0.10086713431523245 
+VM3:  
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6961000000000002 mem remaining: 0.12683457148035043 
+VM1:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6763000000000001 mem remaining: 0.08301710972485643 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6845000000000001 mem remaining: 0.09587658219657723 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7529999999999994 mem remaining: 0.0019258147180011963 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8503 mem remaining: 0.09506898247613176 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9069999999999999 mem remaining: 0.12538503352057537 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.683999999999999 mem remaining: 0.1749799394300341 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9068999999999999 mem remaining: 0.11722620557555456 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6941000000000002 mem remaining: 0.10030802681646163 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6827999999999991 mem remaining: 0.17025858721819448 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6961000000000002 mem remaining: 0.03669401806746483 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.20949999999999971 mem remaining: 0.008365904796431836 
+VM5:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.21979999999999972 mem remaining: 0.011534180622797836 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6564999999999991 mem remaining: 0.07104806771414368 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6477999999999992 mem remaining: 0.0710894830844229 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6568999999999992 mem remaining: 0.0758108352962625 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7594999999999994 mem remaining: 0.013853441358437996 
+VM1: Server: Resources deallocated, cpu remaining: 0.7580000000000001 mem remaining: 0.12279657287811922 
+VM2:  
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6568999999999992 mem remaining: 0.0947583671990401 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7638999999999994 mem remaining: 0.022260761525134794 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6562999999999991 mem remaining: 0.13333678461420329 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8838999999999999 mem remaining: 0.043341184997292954 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9548999999999999 mem remaining: 0.12884321693889736 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6495999999999991 mem remaining: 0.10072218051925848 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7779 mem remaining: 0.06864597623794122 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.659799999999999 mem remaining: 0.10382833329020527 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8019999999999993 mem remaining: 0.0741542204850912 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8135999999999992 mem remaining: 0.0809463412108952 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.700399999999999 mem remaining: 0.15652939197060767 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.23639999999999972 mem remaining: 0.18564439727695345 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.670599999999999 mem remaining: 0.07674268112754606 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8084 mem remaining: 0.2565682188802424 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2778999999999997 mem remaining: 0.23031087412317305 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.685799999999999 mem remaining: 0.11099319234852287 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8205 mem remaining: 0.2020448839075508 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7863999999999992 mem remaining: 0.04810395257941479 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9294999999999998 mem remaining: 0.19150467217147057 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8896000000000001 mem remaining: 0.2396500401211504 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7968999999999992 mem remaining: 0.06438019309917759 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.666499999999999 mem remaining: 0.07489969715011766 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7878999999999992 mem remaining: 0.07193849817514919 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9115999999999997 mem remaining: 0.12283798824840018 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.726499999999999 mem remaining: 0.22621075246552125 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2889999999999997 mem remaining: 0.2935314368545171 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.748699999999999 mem remaining: 0.26139310951778244 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3274999999999997 mem remaining: 0.3479512334015107 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6926999999999991 mem remaining: 0.07328449770922485 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5: Server: Resources deallocated, cpu remaining: 0.3197999999999997 mem remaining: 0.1689747107395375 
+VM3:  
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.676099999999999 mem remaining: 0.03364998835193965 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3745999999999997 mem remaining: 0.09863070432015508 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6838999999999991 mem remaining: 0.03810214065696365 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7656999999999992 mem remaining: 0.01845054745943999 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9098999999999997 mem remaining: 0.0736158206714582 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9196999999999997 mem remaining: 0.0754795123340266 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7650999999999991 mem remaining: 0.01534439468849319 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8105999999999991 mem remaining: 0.1909248569875636 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9342999999999998 mem remaining: 0.07587295835167979 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.711899999999999 mem remaining: 0.12095358890069324 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2798999999999997 mem remaining: 0.009629073589951086 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9397999999999997 mem remaining: 0.09274972174049258 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7708 mem remaining: 0.01124427303084 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7886000000000001 mem remaining: 0.033422203815402396 
+VM1:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7548999999999991 mem remaining: 0.1469831491212324 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2663999999999997 mem remaining: 0.06456656226543589 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2678999999999997 mem remaining: 0.07585225066654389 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7561999999999991 mem remaining: 0.1397354593223556 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3153999999999997 mem remaining: 0.04466647684623468 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.703399999999999 mem remaining: 0.07123443688040004 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7478999999999991 mem remaining: 0.1328190924857132 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8452000000000001 mem remaining: 0.18100587580566999 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.720899999999999 mem remaining: 0.07564517381514484 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.730899999999999 mem remaining: 0.10846685476148604 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8573999999999997 mem remaining: 0.13567675303498178 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8692999999999997 mem remaining: 0.24530323816427538 
+VM4:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7935000000000001 mem remaining: 0.05605570367303718 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7482999999999991 mem remaining: 0.04257500064712959 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9142999999999998 mem remaining: 0.3667123961380282 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.31549999999999967 mem remaining: 0.07193849817515027 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7622999999999991 mem remaining: 0.05398493515907519 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8370000000000001 mem remaining: 0.15462428493775876 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.8466000000000001 mem remaining: 0.33190277741828034 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9360999999999998 mem remaining: 0.3346154841715746 
+VM1: Server: Resources deallocated, cpu remaining: 0.8444000000000002 mem remaining: 0.18253824450600314 
+VM4:  
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6640999999999989 mem remaining: 0.11155229984729324 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.31259999999999966 mem remaining: 0.04967773665002907 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8526999999999999 mem remaining: 0.1165221442808078 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6762999999999989 mem remaining: 0.16704889602154804 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.29719999999999963 mem remaining: 0.01590350218726387 
+VM5:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7421999999999991 mem remaining: 0.01801568607150799 
+VM2:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.29959999999999964 mem remaining: 0.05125152072064227 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7528999999999991 mem remaining: 0.06272357828800679 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.24089999999999967 mem remaining: 0.0065022131338642675 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3072999999999997 mem remaining: 0.05027825951907867 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3826999999999997 mem remaining: 0.08966427665468787 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3926999999999997 mem remaining: 0.1829523982087995 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3917999999999997 mem remaining: 0.18293169052365987 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7564999999999991 mem remaining: 0.1572334532653576 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.815299999999999 mem remaining: 0.2381590867910996 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8388999999999999 mem remaining: 0.13994253617374902 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4013999999999997 mem remaining: 0.18460901301997107 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6371999999999989 mem remaining: 0.04222296999975363 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8144999999999991 mem remaining: 0.1878394119017564 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4095999999999997 mem remaining: 0.22341521497167066 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8244999999999991 mem remaining: 0.1909455646727032 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4195999999999997 mem remaining: 0.2622421246085095 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8321999999999992 mem remaining: 0.20347371418219 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8078999999999998 mem remaining: 0.05025755183393582 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4214999999999997 mem remaining: 0.3064944477519363 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7131000000000002 mem remaining: 0.11484482178449634 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4421999999999997 mem remaining: 0.24176222400539826 
+VM1: Server: Resources deallocated, cpu remaining: 0.7283000000000002 mem remaining: 0.11836512825823634 
+VM5:  
+VM1:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4374999999999997 mem remaining: 0.11004063883210065 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8082999999999991 mem remaining: 0.2300209665312188 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6468999999999989 mem remaining: 0.04795899878343563 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44749999999999973 mem remaining: 0.11449279113712466 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5153999999999997 mem remaining: 0.17446224730154347 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8124999999999999 mem remaining: 0.05152072062745422 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7235000000000001 mem remaining: 0.11766106696348833 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6438999999999989 mem remaining: 0.08761421582586043 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.653599999999999 mem remaining: 0.09069966091166763 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8019999999999992 mem remaining: 0.1635492972329504 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7969999999999992 mem remaining: 0.0853156627753624 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8534999999999999 mem remaining: 0.12062226593845742 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8739999999999999 mem remaining: 0.227411798203619 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7380999999999991 mem remaining: 0.07328449770922721 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8739999999999999 mem remaining: 0.227411798203619 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5655999999999997 mem remaining: 0.13988041311833269 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5646999999999998 mem remaining: 0.1412471203375495 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5749999999999997 mem remaining: 0.1879636580125939 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6802000000000001 mem remaining: 0.08024227991614553 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8755999999999999 mem remaining: 0.23530142624182498 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8880999999999999 mem remaining: 0.3287759169621934 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5840999999999996 mem remaining: 0.047317060544108704 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6132999999999991 mem remaining: 0.04843527554164803 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5746999999999997 mem remaining: 0.013770610617879904 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7401999999999991 mem remaining: 0.1562394843786548 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7429999999999999 mem remaining: 0.11407863743432897 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7503999999999998 mem remaining: 0.11853078973935297 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7903999999999999 mem remaining: 0.22030906220072016 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6616000000000002 mem remaining: 0.14424973468279634 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5899999999999991 mem remaining: 0.060135117645548825 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5857999999999997 mem remaining: 0.016897471073966303 
+VM5:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7990999999999999 mem remaining: 0.22737038283333977 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7394999999999999 mem remaining: 0.10229596458986898 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5957999999999997 mem remaining: 0.1081148241141131 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6038999999999997 mem remaining: 0.1125876841042767 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6445999999999991 mem remaining: 0.12973364739990403 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6201999999999996 mem remaining: 0.0425335852768495 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6644000000000002 mem remaining: 0.049015090725557535 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7421 mem remaining: 0.2070561437113454 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6301999999999996 mem remaining: 0.0497605673905863 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6338999999999997 mem remaining: 0.0318691274299307 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6343999999999991 mem remaining: 0.07763311158855123 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6804 mem remaining: 0.1715838790671294 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6509999999999991 mem remaining: 0.08809049258407561 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6592999999999991 mem remaining: 0.10370408717936962 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6732 mem remaining: 0.1557010845650198 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.632899999999999 mem remaining: 0.028742266973843626 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6607000000000003 mem remaining: 0.08359692490876874 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6427999999999997 mem remaining: 0.1399425361737507 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6852000000000003 mem remaining: 0.12929878601197034 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.647899999999999 mem remaining: 0.03265601946523683 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.650599999999999 mem remaining: 0.07614215825849643 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6824 mem remaining: 0.08684803147569181 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6326999999999997 mem remaining: 0.09465482877334229 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5701999999999992 mem remaining: 0.046592291564222024 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6807999999999997 mem remaining: 0.2483472678798055 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6600999999999989 mem remaining: 0.16740092666892242 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6460999999999997 mem remaining: 0.2652654466388975 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6590999999999989 mem remaining: 0.1286982631429212 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7149999999999996 mem remaining: 0.3729661170502035 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6743000000000003 mem remaining: 0.08419744777781875 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.655699999999999 mem remaining: 0.1025444568115464 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6632999999999997 mem remaining: 0.3390469287914611 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5796999999999991 mem remaining: 0.10948153133333123 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6392 mem remaining: 0.04957419822432621 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6731000000000004 mem remaining: 0.15791680687496354 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6831000000000004 mem remaining: 0.16864338777730073 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7087000000000003 mem remaining: 0.22556881422619152 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5670999999999992 mem remaining: 0.07067532938163243 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.647999999999999 mem remaining: 0.12310718815521642 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6571000000000002 mem remaining: 0.21051432712966794 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.685299999999999 mem remaining: 0.23753785623690843 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5734999999999991 mem remaining: 0.07593508140710283 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.685599999999999 mem remaining: 0.24027127067534204 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6388999999999999 mem remaining: 0.122030388527953 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5699999999999991 mem remaining: 0.05922397949940722 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6496 mem remaining: 0.1602567752957418 
+VM4:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5583999999999991 mem remaining: 0.1306654932311908 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.687299999999999 mem remaining: 0.27071156783062367 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6616000000000003 mem remaining: 0.12335568037689193 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6679000000000003 mem remaining: 0.12977506277018233 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6709999999999989 mem remaining: 0.11855149742449446 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6098999999999997 mem remaining: 0.061584655605325896 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6178999999999997 mem remaining: 0.0649807159682279 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5191999999999991 mem remaining: 0.11331245308416601 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6731999999999989 mem remaining: 0.04309269277561926 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5179999999999991 mem remaining: 0.07384360520799801 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.679899999999999 mem remaining: 0.04893225998499966 
+VM3:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5159999999999991 mem remaining: 0.06945357595839241 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6158999999999997 mem remaining: 0.0337121114073603 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6594999999999996 mem remaining: 0.0985685812647359 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6378000000000003 mem remaining: 0.021246084953290726 
+VM1:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6941000000000003 mem remaining: 0.04089767815081593 
+VM3: Server: Resources deallocated, cpu remaining: 0.663499999999999 mem remaining: 0.04468718453137246 
+VM2: Server: Resources deallocated, cpu remaining: 0.5365999999999992 mem remaining: 0.1598012062226744 
+VM1:  
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5445999999999992 mem remaining: 0.1628866513084816 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.676499999999999 mem remaining: 0.049781275075725655 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6590999999999997 mem remaining: 0.1173090363161167 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.686299999999999 mem remaining: 0.06746563818498445 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5497999999999992 mem remaining: 0.1861620894054452 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5581999999999991 mem remaining: 0.2783941190174348 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5685999999999991 mem remaining: 0.340455051380958 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6836 mem remaining: 0.0457639841586318 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5701999999999992 mem remaining: 0.3391918825874392 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6444999999999997 mem remaining: 0.1578339761344067 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6936000000000003 mem remaining: 0.1476665027308383 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6454999999999997 mem remaining: 0.1881293194937107 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7181000000000003 mem remaining: 0.24681489917946992 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6744 mem remaining: 0.058892656537169 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6109999999999998 mem remaining: 0.20854709704140312 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6082999999999998 mem remaining: 0.2829083943778771 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6121999999999999 mem remaining: 0.34430668081693194 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6316 mem remaining: 0.0493049983175126 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6251999999999999 mem remaining: 0.34739212590273916 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6602 mem remaining: 0.1591799756684818 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6722 mem remaining: 0.1811301219165078 
+VM4:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6235999999999998 mem remaining: 0.3369140372220775 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6346 mem remaining: 0.11625294437399258 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6344999999999998 mem remaining: 0.4203038852794375 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.40729999999999916 mem remaining: 0.07243548261850244 
+VM2:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.41729999999999917 mem remaining: 0.08256154065179004 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7046 mem remaining: 0.27224393653095696 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6253999999999991 mem remaining: 0.09763673543345165 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7047 mem remaining: 0.2857660549271466 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6143999999999998 mem remaining: 0.2822457484534083 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6144999999999998 mem remaining: 0.2890792845494923 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7070000000000001 mem remaining: 0.21904589340720218 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5508999999999997 mem remaining: 0.15853803742915507 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6139000000000003 mem remaining: 0.05456475034298351 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6250000000000003 mem remaining: 0.12229958843477032 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7085000000000001 mem remaining: 0.22351875339736577 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5683999999999997 mem remaining: 0.16878834157328026 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7259000000000001 mem remaining: 0.19730282401057217 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7363000000000001 mem remaining: 0.30891724691327177 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5758999999999996 mem remaining: 0.18262107524656468 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.704 mem remaining: 0.2637952009939798 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6922999999999999 mem remaining: 0.1648538813967446 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6064999999999992 mem remaining: 0.03414697279529284 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4012999999999992 mem remaining: 0.01288018015687644 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6227000000000004 mem remaining: 0.10550565578651631 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5639000000000003 mem remaining: 0.07804726529134393 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6166999999999991 mem remaining: 0.07678409649782685 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6910999999999998 mem remaining: 0.17357181684053619 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6994999999999998 mem remaining: 0.17518701628142858 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.45609999999999956 mem remaining: 0.03176558900423347 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4375999999999996 mem remaining: 0.07527243548263307 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5123999999999996 mem remaining: 0.17121114073461946 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6046999999999991 mem remaining: 0.06841819170140924 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4736999999999992 mem remaining: 0.12285869593354404 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5704000000000002 mem remaining: 0.09585587451144073 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7489999999999998 mem remaining: 0.1303134625838126 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6143999999999992 mem remaining: 0.07690834260866444 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5229999999999992 mem remaining: 0.19218802578108404 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4668999999999997 mem remaining: 0.10378691791992785 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5713999999999992 mem remaining: 0.21262651101391605 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6238999999999991 mem remaining: 0.08024227991614764 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7019999999999991 mem remaining: 0.15831025289261846 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5544999999999992 mem remaining: 0.22076463127379725 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5790000000000003 mem remaining: 0.10792845494785513 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4313999999999997 mem remaining: 0.16054668288770146 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5920000000000003 mem remaining: 0.13809955219632114 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.43359999999999965 mem remaining: 0.17131467916031787 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5147999999999991 mem remaining: 0.19854528511895525 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7371999999999997 mem remaining: 0.0439002924960638 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6064000000000003 mem remaining: 0.14424973468279634 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44249999999999967 mem remaining: 0.2917505759325071 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6464000000000003 mem remaining: 0.17845883053349354 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6582000000000003 mem remaining: 0.19098698004297993 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6040000000000003 mem remaining: 0.12273444982270192 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7351999999999997 mem remaining: 0.0724561903036378 
+VM4:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7449999999999998 mem remaining: 0.0955866746046238 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6174999999999989 mem remaining: 0.08316206352083806 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7882999999999998 mem remaining: 0.10517433282428021 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5753999999999991 mem remaining: 0.05367431988198205 
+VM2:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6415000000000003 mem remaining: 0.17806538451583992 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5397999999999992 mem remaining: 0.05514456552689725 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5413999999999992 mem remaining: 0.010664457846934448 
+VM5: Server: Resources deallocated, cpu remaining: 0.3616999999999997 mem remaining: 0.03748091010277668 
+VM2:  
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.36089999999999967 mem remaining: 0.02615380633138948 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.37149999999999966 mem remaining: 0.03199337354076988 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6417000000000003 mem remaining: 0.14810136411876992 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7695999999999998 mem remaining: 0.013749902932737009 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6044999999999989 mem remaining: 0.10685165532059526 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6144999999999989 mem remaining: 0.10993710040640246 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5738000000000003 mem remaining: 0.03234540418814073 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7767999999999998 mem remaining: 0.018202055237761007 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5506999999999992 mem remaining: 0.08949861517357205 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5581999999999991 mem remaining: 0.10066005746384166 
+VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5799999999999992 mem remaining: 0.15193228586960847 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7863999999999999 mem remaining: 0.05750524163281181 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5899999999999992 mem remaining: 0.23917376336294288 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6211999999999989 mem remaining: 0.05586933450678286 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.38179999999999964 mem remaining: 0.03948955556132188 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7952999999999999 mem remaining: 0.1264825408329774 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5457000000000003 mem remaining: 0.016276240519774332 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5568000000000003 mem remaining: 0.09001630730205873 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.42599999999999966 mem remaining: 0.15580462299072148 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7973999999999999 mem remaining: 0.09154867600239222 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7925999999999999 mem remaining: 0.05034038257449382 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8693999999999998 mem remaining: 0.08833898480574662 
+VM1: Server: Resources deallocated, cpu remaining: 0.5591000000000003 mem remaining: 0.03381564983305553 
+VM4:  
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.616399999999999 mem remaining: 0.05595216524734126 
+VM4: Server: Resources deallocated, cpu remaining: 0.8717999999999998 mem remaining: 0.18518882820387741 
+VM3:  
+VM4:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.616299999999999 mem remaining: 0.03437475733182886 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6249000000000002 mem remaining: 0.08978852276552232 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8829999999999998 mem remaining: 0.1896409805089014 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8929999999999998 mem remaining: 0.29108793000803423 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.612999999999999 mem remaining: 0.13435146118604685 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.625499999999999 mem remaining: 0.13754044469755244 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.43629999999999963 mem remaining: 0.18993088810086106 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4676999999999992 mem remaining: 0.05526881163773448 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44629999999999964 mem remaining: 0.19471436336811945 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8710999999999998 mem remaining: 0.10415965625243703 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5902000000000003 mem remaining: 0.11395439132349192 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5381999999999992 mem remaining: 0.12130561954807008 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5972000000000003 mem remaining: 0.18096446043539072 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6228999999999989 mem remaining: 0.06305490125024084 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5826000000000003 mem remaining: 0.1923329795770571 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5158000000000004 mem remaining: 0.1402117360805647 
+VM1:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.30779999999999963 mem remaining: 0.03598995677272226 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8595999999999998 mem remaining: 0.011285688401118633 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4772999999999992 mem remaining: 0.03814355602724568 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8699999999999998 mem remaining: 0.12169906556571863 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8746999999999998 mem remaining: 0.07195920586028544 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.553699999999999 mem remaining: 0.046343799342545636 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.2840999999999996 mem remaining: 0.03528589547797466 
+VM2: Server: Resources deallocated, cpu remaining: 0.4875999999999992 mem remaining: 0.04671653767505968 
+VM5:  
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.620399999999999 mem remaining: 0.11739186705667604 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5150999999999992 mem remaining: 0.12325214195119648 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6190999999999989 mem remaining: 0.02151528486010844 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6279999999999989 mem remaining: 0.026671498459880438 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6386999999999989 mem remaining: 0.03143426604199924 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.28329999999999955 mem remaining: 0.018885408847373858 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.652399999999999 mem remaining: 0.10397328708618404 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5114999999999992 mem remaining: 0.10447027152953647 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8624999999999998 mem remaining: 0.11463774493309904 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5215999999999992 mem remaining: 0.18682473532991406 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5148000000000004 mem remaining: 0.012196826547264308 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.35529999999999956 mem remaining: 0.10426319467814026 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.660399999999999 mem remaining: 0.10838402402092884 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.660899999999999 mem remaining: 0.14273807366760405 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3538999999999996 mem remaining: 0.02625734475708825 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5237000000000004 mem remaining: 0.016938886444243507 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6410999999999991 mem remaining: 0.04017290917093007 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.49949999999999917 mem remaining: 0.08131907954341047 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.636599999999999 mem remaining: 0.06177102477158207 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5610000000000004 mem remaining: 0.09494473636529552 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5036999999999991 mem remaining: 0.10117774959233207 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.652899999999999 mem remaining: 0.07390572826341527 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3336999999999996 mem remaining: 0.07560375844486825 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3359999999999996 mem remaining: 0.07084099086274945 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.656799999999999 mem remaining: 0.07458908187302367 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3356999999999996 mem remaining: 0.041705277871265455 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.34559999999999963 mem remaining: 0.05620065746901866 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5078999999999991 mem remaining: 0.14812207180391285 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5107999999999991 mem remaining: 0.09190070664977004 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5967999999999991 mem remaining: 0.04462506147595367 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.36769999999999964 mem remaining: 0.06193668625270066 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5194999999999992 mem remaining: 0.09647710506563204 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.37969999999999965 mem remaining: 0.06628530013202626 
+VM2: Server: Resources deallocated, cpu remaining: 0.5283999999999992 mem remaining: 0.10372479486450843 
+VM5:  
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5347999999999992 mem remaining: 0.10699660911657244 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7951999999999998 mem remaining: 0.009277042942573444 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.38759999999999967 mem remaining: 0.07009551419772106 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3938999999999997 mem remaining: 0.07485828177983986 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8053999999999998 mem remaining: 0.012341780343241043 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4578999999999997 mem remaining: 0.20515103667850146 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5989999999999991 mem remaining: 0.03509952631171607 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5714999999999991 mem remaining: 0.06479434680197083 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5772999999999991 mem remaining: 0.06829394559057123 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6082999999999991 mem remaining: 0.041311831853610065 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.630799999999999 mem remaining: 0.14675536458469485 
+VM5: Server: Resources deallocated, cpu remaining: 0.4494999999999997 mem remaining: 0.03364998835194146 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4564000000000004 mem remaining: 0.19048999559962912 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5870999999999992 mem remaining: 0.23894597882640561 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.596999999999999 mem remaining: 0.10904666994539684 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4595999999999997 mem remaining: 0.07465120492844307 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.45509999999999967 mem remaining: 0.07320166696866748 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5405999999999991 mem remaining: 0.07674268112754684 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5277999999999997 mem remaining: 0.12256878834158669 
+VM4: Server: Resources deallocated, cpu remaining: 0.7958999999999998 mem remaining: 0.03172417363395144 
+VM5:  
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5533999999999991 mem remaining: 0.09119664535502044 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8057999999999998 mem remaining: 0.07121372919525903 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5262999999999998 mem remaining: 0.1821033831180731 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5522999999999991 mem remaining: 0.11225636114204322 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5871999999999997 mem remaining: 0.20125799187224708 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5616999999999991 mem remaining: 0.11710195946472042 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7418999999999999 mem remaining: 0.06446302383973423 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5688999999999991 mem remaining: 0.11879998964617122 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5516999999999991 mem remaining: 0.047234229803549244 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5889999999999996 mem remaining: 0.20173426863045907 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7401999999999999 mem remaining: 0.08475655527658864 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5642999999999991 mem remaining: 0.18442264385371443 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5718999999999992 mem remaining: 0.18763233505035962 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.45240000000000047 mem remaining: 0.0695156990138091 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6007999999999992 mem remaining: 0.05555871922968841 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.45850000000000046 mem remaining: 0.0727460978955939 
+VM4: Server: Resources deallocated, cpu remaining: 0.7388999999999999 mem remaining: 0.15984262159295065 
+VM1:  
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8109 mem remaining: 0.27820774985117547 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4588000000000005 mem remaining: 0.0686252685528043 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6108999999999992 mem remaining: 0.06469080837627281 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8109 mem remaining: 0.3942122020034803 
+VM4:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7952999999999999 mem remaining: 0.3502083710817295 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.41510000000000047 mem remaining: 0.09324670618384512 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4188000000000005 mem remaining: 0.09577304377088192 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5937999999999992 mem remaining: 0.088711723138264 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8133999999999999 mem remaining: 0.37333885538271583 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5516999999999997 mem remaining: 0.005321875080903477 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4011000000000005 mem remaining: 0.062288716900071914 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5662999999999997 mem remaining: 0.06332410115705588 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.591499999999999 mem remaining: 0.14300727357441884 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7647999999999999 mem remaining: 0.21401392591826862 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.39930000000000054 mem remaining: 0.15752336085731072 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6339999999999997 mem remaining: 0.13830662904771907 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5870999999999991 mem remaining: 0.14277948903788246 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6016999999999992 mem remaining: 0.088711723138264 
+VM2:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6067999999999992 mem remaining: 0.0925426448890984 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.39740000000000053 mem remaining: 0.09049258406027191 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7453 mem remaining: 0.09892061191210824 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6109999999999997 mem remaining: 0.09587658219658185 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5853999999999991 mem remaining: 0.19680583956722286 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5917999999999991 mem remaining: 0.07108948308442287 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6086999999999992 mem remaining: 0.013956979784135995 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6209999999999997 mem remaining: 0.09912768876350625 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6347999999999997 mem remaining: 0.23641964123936865 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5917999999999991 mem remaining: 0.14193047394715688 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6461999999999997 mem remaining: 0.24352237724226744 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6473999999999996 mem remaining: 0.24548960733053424 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6623999999999997 mem remaining: 0.24867859084203983 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.38370000000000054 mem remaining: 0.0564698573758315 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7255999999999999 mem remaining: 0.15510056169597225 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7021999999999996 mem remaining: 0.251888282038685 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7121999999999996 mem remaining: 0.2723888903269358 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7224999999999996 mem remaining: 0.2755778738384414 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6044999999999994 mem remaining: 0.020252116066589197 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6144999999999994 mem remaining: 0.025180545129825198 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7409999999999995 mem remaining: 0.3185463205032098 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6233999999999992 mem remaining: 0.0651256697642045 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6165999999999994 mem remaining: 0.026857867626136796 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7262999999999998 mem remaining: 0.09722258173065745 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6822999999999991 mem remaining: 0.11178008438383011 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.36810000000000054 mem remaining: 0.1715631713819927 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4237000000000005 mem remaining: 0.2048404214014059 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6220999999999994 mem remaining: 0.030626666321552795 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6727999999999995 mem remaining: 0.10873605466830222 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6952999999999991 mem remaining: 0.2465456992726557 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7043999999999991 mem remaining: 0.2509357285222609 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7224999999999998 mem remaining: 0.25563637304896064 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6808999999999995 mem remaining: 0.11196645355008701 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6731999999999995 mem remaining: 0.1134159915098632 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6906999999999995 mem remaining: 0.11998032769913021 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7284999999999991 mem remaining: 0.2634845857168873 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4060000000000005 mem remaining: 0.0932467061838459 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4148000000000005 mem remaining: 0.0987963658012711 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6905999999999995 mem remaining: 0.06382108560040661 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7048999999999994 mem remaining: 0.16015323687004762 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6866999999999998 mem remaining: 0.2576450185075062 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7054999999999993 mem remaining: 0.15013071726245802 
+VM2:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5: Server: Resources deallocated, cpu remaining: 0.7025999999999996 mem remaining: 0.1296508166593458 
+VM3:  
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6806999999999997 mem remaining: 0.2547459425879554 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7126999999999996 mem remaining: 0.29063236093496503 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7210999999999992 mem remaining: 0.2693448606114077 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4259000000000005 mem remaining: 0.16485388139674673 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7063999999999994 mem remaining: 0.09260476794451764 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6820999999999997 mem remaining: 0.2551600962907482 
+VM4:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7522999999999993 mem remaining: 0.10869463929802364 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.42610000000000053 mem remaining: 0.1501721326327367 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7627999999999993 mem remaining: 0.11192503817980844 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7053999999999992 mem remaining: 0.2039706986255409 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4277000000000005 mem remaining: 0.13747832164213272 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5950999999999997 mem remaining: 0.18465042839024864 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4378000000000005 mem remaining: 0.15367173142133672 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7530999999999992 mem remaining: 0.08852535397200724 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5966999999999998 mem remaining: 0.13165946211789104 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4247000000000005 mem remaining: 0.05139647451661792 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6884999999999993 mem remaining: 0.039468847876181726 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6971999999999994 mem remaining: 0.042719954443106126 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6566999999999995 mem remaining: 0.01625553283463701 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6236999999999998 mem remaining: 0.17874873812544903 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4247000000000005 mem remaining: 0.05315662775348792 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5834999999999998 mem remaining: 0.205068205937941 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6547999999999995 mem remaining: 0.01594491755754221 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7599999999999992 mem remaining: 0.10026661144618725 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6637999999999995 mem remaining: 0.02967411280512821 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5760999999999998 mem remaining: 0.1735511091553982 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5879999999999999 mem remaining: 0.18046747599204022 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6966999999999993 mem remaining: 0.041581031760425324 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7857999999999992 mem remaining: 0.12457743380013324 
+VM3: Server: Resources deallocated, cpu remaining: 0.7616999999999994 mem remaining: 0.24269406983668132 
+VM2:  
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.46020000000000055 mem remaining: 0.11242202262315953 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6026999999999999 mem remaining: 0.04870447544846382 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7666999999999994 mem remaining: 0.21328915693838252 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4558000000000006 mem remaining: 0.13325395387364514 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7103999999999995 mem remaining: 0.14590634949396902 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7826999999999992 mem remaining: 0.11830300520282004 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4638000000000006 mem remaining: 0.13776822923408794 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7376999999999995 mem remaining: 0.22745321357390064 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7820999999999994 mem remaining: 0.2798022416069301 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8460999999999992 mem remaining: 0.20995521963089964 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8578999999999992 mem remaining: 0.17056920249529003 
+VM3: Server: Resources deallocated, cpu remaining: 0.7252999999999993 mem remaining: 0.16680040379987413 
+VM1: Server: Resources deallocated, cpu remaining: 0.45500000000000057 mem remaining: 0.18703181218130915 
+VM2: Server: Resources deallocated, cpu remaining: 0.8676999999999992 mem remaining: 0.2596536639660532 
+VM3:  
+VM1:  
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.47030000000000055 mem remaining: 0.22463696839490876 
+VM4: Server: Resources deallocated, cpu remaining: 0.5915999999999999 mem remaining: 0.08200243315301703 
+VM1:  
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7328999999999992 mem remaining: 0.25279942018483015 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7099999999999995 mem remaining: 0.14474671912614862 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8782999999999993 mem remaining: 0.3487174177516768 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8856999999999993 mem remaining: 0.3741671627883032 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8880999999999993 mem remaining: 0.3762793466725472 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8841999999999993 mem remaining: 0.3017316801698164 
+VM1: Server: Resources deallocated, cpu remaining: 0.3985000000000005 mem remaining: 0.10745217818964357 
+VM2:  
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4088000000000005 mem remaining: 0.15222219346156118 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3907000000000005 mem remaining: 0.11062045401600959 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.7075999999999991 mem remaining: 0.11911060492326654 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.39100000000000046 mem remaining: 0.06357259337873078 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6814999999999996 mem remaining: 0.017601532368713417 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.40150000000000047 mem remaining: 0.06804545336889438 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.41480000000000045 mem remaining: 0.12082934278985558 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6500999999999991 mem remaining: 0.16377708176948613 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5848999999999999 mem remaining: 0.05814717987214303 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8606999999999992 mem remaining: 0.1045945176403732 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4070000000000005 mem remaining: 0.05234902803304117 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.41630000000000045 mem remaining: 0.05682188802320477 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8578999999999992 mem remaining: 0.10567131726763479 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5951999999999998 mem remaining: 0.06127404032822943 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.42540000000000044 mem remaining: 0.06127404032822877 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4866000000000005 mem remaining: 0.08966427665468517 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6629999999999998 mem remaining: 0.18510599746332146 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8570999999999992 mem remaining: 0.030129681878200792 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6911999999999995 mem remaining: 0.008821473869503016 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7407999999999995 mem remaining: 0.07781948075480823 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7502999999999994 mem remaining: 0.16727668055808503 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6507999999999992 mem remaining: 0.05688401107862613 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6602999999999991 mem remaining: 0.07218699039682533 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4900000000000005 mem remaining: 0.09364015220149757 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8627999999999992 mem remaining: 0.040545647503443194 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5595000000000006 mem remaining: 0.14261382755676355 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8727999999999992 mem remaining: 0.05713250330030079 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7494999999999994 mem remaining: 0.20223125307380985 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8819999999999992 mem remaining: 0.06038360986722519 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7501999999999993 mem remaining: 0.19782051613906504 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4982000000000006 mem remaining: 0.08057360287837956 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5016000000000006 mem remaining: 0.033153003908586755 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.660799999999999 mem remaining: 0.04733776822924812 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5728000000000006 mem remaining: 0.11004063883209755 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5828000000000007 mem remaining: 0.16402557399115836 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.664999999999999 mem remaining: 0.15253280873865693 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7004999999999998 mem remaining: 0.23265084254395227 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.662999999999999 mem remaining: 0.2800507338286061 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7347999999999992 mem remaining: 0.06090130199571624 
+VM5:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7019999999999997 mem remaining: 0.37884709962986307 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5992000000000006 mem remaining: 0.17651230813036556 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7445999999999993 mem remaining: 0.09239769109311984 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7119999999999997 mem remaining: 0.47358475914374987 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5969000000000007 mem remaining: 0.20366008334844315 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6180999999999991 mem remaining: 0.11548676002382774 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8819999999999992 mem remaining: 0.06038360986722519 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6601000000000007 mem remaining: 0.15392022364300995 
+VM4: Server: Resources deallocated, cpu remaining: 0.6894999999999998 mem remaining: 0.3554681231072015 
+VM1:  
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.9399999999999993 mem remaining: 0.151373178370836 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7544999999999993 mem remaining: 0.09947971941087905 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6598000000000007 mem remaining: 0.021225377268149152 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7619999999999992 mem remaining: 0.12936090906739026 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7024000000000007 mem remaining: 0.04563973804779316 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8069999999999993 mem remaining: 0.14207542774313345 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6261999999999998 mem remaining: 0.09200424507546708 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8746999999999993 mem remaining: 0.1783552921077968 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8176999999999993 mem remaining: 0.23627468744338945 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7124000000000007 mem remaining: 0.11764035927834715 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8793999999999993 mem remaining: 0.1578132684492664 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7302000000000007 mem remaining: 0.18924753449124795 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.8197999999999993 mem remaining: 0.20121657650196761 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6934000000000008 mem remaining: 0.18032252219605996 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6910000000000007 mem remaining: 0.24542748427511157 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8045999999999993 mem remaining: 0.11246343799343783 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.525099999999999 mem remaining: 0.11761965159321253 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7033000000000007 mem remaining: 0.3063909093262336 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.528399999999999 mem remaining: 0.052390443403323335 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7465999999999993 mem remaining: 0.09612507441825682 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8071999999999993 mem remaining: 0.10792845494785502 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7557999999999993 mem remaining: 0.1275800481453812 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7705999999999993 mem remaining: 0.222441953770106 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.537699999999999 mem remaining: 0.055641549970247735 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6842000000000007 mem remaining: 0.1195454663111948 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5353999999999989 mem remaining: 0.040690601299422535 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7583999999999993 mem remaining: 0.195894701421078 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7824999999999993 mem remaining: 0.2343902880956824 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6829000000000007 mem remaining: 0.048994383040416 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8070999999999993 mem remaining: 0.10314497968059622 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7918999999999993 mem remaining: 0.25600911138147403 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5351999999999989 mem remaining: 0.05185204358969253 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5664999999999997 mem remaining: 0.027893251883118676 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5456999999999989 mem remaining: 0.09800947376596653 
+VM3:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5552999999999989 mem remaining: 0.10689307069087492 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7092000000000007 mem remaining: 0.0890223384153544 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5447999999999988 mem remaining: 0.08912587684105733 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7977999999999993 mem remaining: 0.08630963166206303 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.8262999999999993 mem remaining: 0.13012709341755702 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5450999999999988 mem remaining: 0.046053891750590534 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5581999999999997 mem remaining: 0.00969119664536868 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7431999999999993 mem remaining: 0.10374550254964683 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5547999999999988 mem remaining: 0.06539486967102093 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5592999999999997 mem remaining: 0.07040612947481507 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7429999999999992 mem remaining: 0.15870369891027125 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7541999999999992 mem remaining: 0.25551212693812286 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6979000000000007 mem remaining: 0.16646908083763598 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5647999999999989 mem remaining: 0.07233194419280253 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7082000000000007 mem remaining: 0.3062252478451164 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7175000000000007 mem remaining: 0.410322781042124 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5615999999999997 mem remaining: 0.18523024357416026 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5087999999999997 mem remaining: 0.14909533300547548 
+VM4:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5883000000000007 mem remaining: 0.2588460642456028 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5659999999999988 mem remaining: 0.08357621722363133 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.7301999999999993 mem remaining: 0.1751663085962913 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4448999999999997 mem remaining: 0.08235446380039188 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7163999999999995 mem remaining: 0.07015763725313864 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6660999999999992 mem remaining: 0.1265446638883993 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.45319999999999966 mem remaining: 0.10055651903814188 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5131000000000008 mem remaining: 0.0857505241632904 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5236000000000007 mem remaining: 0.2053374058447544 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6640999999999992 mem remaining: 0.15971837548211448 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4528999999999997 mem remaining: 0.09413713664485147 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3907000000000007 mem remaining: 0.08635104703234041 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4014000000000007 mem remaining: 0.09003701498719761 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6149999999999993 mem remaining: 0.1670696037066897 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4534999999999997 mem remaining: 0.08454947842519467 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4603999999999997 mem remaining: 0.08786270804753787 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4129000000000007 mem remaining: 0.20065746900319403 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4239000000000007 mem remaining: 0.23335490383869723 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.4587999999999997 mem remaining: 0.08720006212306908 
+VM4:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5333999999999997 mem remaining: 0.21803121683536147 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.49419999999999886 mem remaining: 0.025180545129825725 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5046999999999988 mem remaining: 0.23637822586908974 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6472999999999993 mem remaining: 0.1895788574534865 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6677999999999993 mem remaining: 0.2524266818523165 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6863999999999995 mem remaining: 0.020293531436867848 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7083999999999995 mem remaining: 0.17800326146042264 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5144999999999996 mem remaining: 0.06816969947973267 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6295999999999993 mem remaining: 0.01279734941631648 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5242999999999997 mem remaining: 0.09523464395725187 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5322999999999997 mem remaining: 0.09693267413870267 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4405999999999988 mem remaining: 0.026816452255857333 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6395999999999993 mem remaining: 0.15621877669351447 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6507999999999993 mem remaining: 0.29139854528513287 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4507999999999988 mem remaining: 0.08521212434966294 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7034999999999995 mem remaining: 0.17313695545260582 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5317999999999996 mem remaining: 0.2040949447363783 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5431999999999996 mem remaining: 0.2556570807341003 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5539999999999996 mem remaining: 0.2612688634069447 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7014999999999995 mem remaining: 0.11656355965108903 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.45599999999999885 mem remaining: 0.07674268112754734 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.30990000000000073 mem remaining: 0.1524706856832352 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5763999999999994 mem remaining: 0.18742525819896325 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5863999999999994 mem remaining: 0.27630264281833006 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5022999999999996 mem remaining: 0.1262961716667231 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7000999999999995 mem remaining: 0.06189527088241982 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7087999999999995 mem remaining: 0.06895659151503943 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.40979999999999883 mem remaining: 0.060901301995716944 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5055999999999994 mem remaining: 0.10502937902830606 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7078999999999995 mem remaining: 0.07009551419772023 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7178999999999995 mem remaining: 0.15545259234334663 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.49669999999999964 mem remaining: 0.05868557968577431 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.2576000000000007 mem remaining: 0.10819765485466923 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.49599999999999966 mem remaining: 0.05843708746409871 
+VM1: Server: Resources deallocated, cpu remaining: 0.2571000000000007 mem remaining: 0.23407967281858602 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.2789000000000007 mem remaining: 0.2740455051381052 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7164999999999996 mem remaining: 0.059037610333148235 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5151999999999997 mem remaining: 0.07655631196128991 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.2271000000000007 mem remaining: 0.18197913700723242 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7822999999999996 mem remaining: 0.19322341003806381 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.2302000000000007 mem remaining: 0.19469365568297603 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5248999999999997 mem remaining: 0.08107058732173271 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.3877999999999988 mem remaining: 0.037895063805568945 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5331999999999997 mem remaining: 0.1455336111614551 
+VM4:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.3888999999999988 mem remaining: 0.05029896720421774 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.3867999999999988 mem remaining: 0.05928610255482454 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.49219999999999964 mem remaining: 0.022654207542787505 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5087999999999996 mem remaining: 0.0738021898377167 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.43879999999999936 mem remaining: 0.031227189190603265 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5166999999999996 mem remaining: 0.0814640333393859 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5262999999999997 mem remaining: 0.0962700282142335 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7267999999999996 mem remaining: 0.08020086454586861 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.23920000000000072 mem remaining: 0.07639065048017045 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.3980999999999988 mem remaining: 0.06669945383481814 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7311999999999995 mem remaining: 0.1256956487976738 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7425999999999995 mem remaining: 0.1327983848005726 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.45989999999999936 mem remaining: 0.07593508140710206 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7523999999999995 mem remaining: 0.1446845960707302 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4592999999999994 mem remaining: 0.05417130432533246 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4075999999999988 mem remaining: 0.06976419123548573 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4161999999999988 mem remaining: 0.20018119224498532 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4928999999999994 mem remaining: 0.13977687469263486 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.40999999999999875 mem remaining: 0.07177283669403173 
+VM3:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.22440000000000074 mem remaining: 0.11001993114695806 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7487999999999996 mem remaining: 0.1919809489296846 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5456999999999994 mem remaining: 0.037563740843335254 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5192999999999997 mem remaining: 0.0525561048844375 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7510999999999995 mem remaining: 0.17539409313282697 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6167999999999993 mem remaining: 0.19618460901303444 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.22700000000000073 mem remaining: 0.10854968550204326 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.23700000000000074 mem remaining: 0.11577666761578007 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.40799999999999875 mem remaining: 0.051023736184104926 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6165999999999994 mem remaining: 0.09390935210831565 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6261999999999994 mem remaining: 0.18278673672768245 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.23810000000000076 mem remaining: 0.11532109854270806 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6239999999999994 mem remaining: 0.08334843268709415 
+VM4: Server: Resources deallocated, cpu remaining: 0.5669999999999996 mem remaining: 0.2060207594543647 
+VM5:  
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6936999999999994 mem remaining: 0.11041337716461334 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.21980000000000074 mem remaining: 0.06473222374654926 
+VM1:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.23390000000000075 mem remaining: 0.07146222141693445 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7022999999999995 mem remaining: 0.14553361116145536 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.7026999999999994 mem remaining: 0.14917816374603338 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.40349999999999875 mem remaining: 0.022240053839994924 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.43229999999999874 mem remaining: 0.13424792276034772 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.44299999999999873 mem remaining: 0.14534724199519852 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5654999999999997 mem remaining: 0.1464240416224595 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5039999999999988 mem remaining: 0.1625553283462453 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5497999999999994 mem remaining: 0.09173504516865284 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6620999999999995 mem remaining: 0.16661403463361696 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.18430000000000074 mem remaining: 0.06736209975928445 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6703999999999994 mem remaining: 0.22387078404474214 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6712999999999995 mem remaining: 0.23035228949345174 
+VM5:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4826999999999988 mem remaining: 0.14037739756168288 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6749999999999995 mem remaining: 0.24927911371108974 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5528999999999988 mem remaining: 0.20875417389279888 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5390999999999995 mem remaining: 0.07024046799369923 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6373999999999994 mem remaining: 0.29112934537831736 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5503999999999989 mem remaining: 0.28845805399530167 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5452999999999995 mem remaining: 0.07463049724330444 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.16470000000000073 mem remaining: 0.04866306007818284 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.17870000000000075 mem remaining: 0.05692542644890204 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5662999999999989 mem remaining: 0.4675381150829725 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6123999999999994 mem remaining: 0.11828229751768124 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6188999999999993 mem remaining: 0.22575518339245124 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6216999999999997 mem remaining: 0.11517614474673152 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6349999999999993 mem remaining: 0.25984003313231013 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6190999999999993 mem remaining: 0.06680299226051764 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6368999999999997 mem remaining: 0.22890275153367512 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.16910000000000075 mem remaining: 0.040462816762882436 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6290999999999993 mem remaining: 0.19214661041080294 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.19370000000000076 mem remaining: 0.05491678099035604 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6293999999999993 mem remaining: 0.07473403566900244 
+VM5: Server: Resources deallocated, cpu remaining: 0.6391999999999993 mem remaining: 0.2709807677374405 
+VM2:  
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6323999999999994 mem remaining: 0.24685631454975132 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6390999999999998 mem remaining: 0.2471669298268439 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.23330000000000076 mem remaining: 0.15013071726245525 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6423999999999994 mem remaining: 0.25526363471644814 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6283999999999993 mem remaining: 0.09556596691948764 
+VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.6451999999999993 mem remaining: 0.21753423239201056 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5599999999999997 mem remaining: 0.0937436906271959 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.25970000000000076 mem remaining: 0.05570367302566326 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.2707000000000008 mem remaining: 0.06589185411436965 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5660999999999993 mem remaining: 0.15949059094557966 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.5758999999999997 mem remaining: 0.10393187171590229 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6101999999999997 mem remaining: 0.2163953097093275 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6189999999999998 mem remaining: 0.2180519245204991 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.6061999999999993 mem remaining: 0.21825900137189924 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.30120000000000074 mem remaining: 0.051748505163990446 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6159999999999998 mem remaining: 0.0978438122848459 
+VM4:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.31130000000000074 mem remaining: 0.11360236067611724 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5565999999999993 mem remaining: 0.036528356586352555 
+VM4: Server: Resources deallocated, cpu remaining: 0.5959999999999998 mem remaining: 0.1344549996117427 
+VM5:  
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.32850000000000074 mem remaining: 0.17210157119562125 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.34310000000000074 mem remaining: 0.19442445577616085 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5619999999999993 mem remaining: 0.04226438537003455 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3394000000000007 mem remaining: 0.19382393290711084 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5781999999999993 mem remaining: 0.12167835788058215 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5167999999999993 mem remaining: 0.036072787513281246 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3209000000000007 mem remaining: 0.17023787953305244 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5884999999999992 mem remaining: 0.15253280873865654 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5267999999999988 mem remaining: 0.050485336370473685 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5277999999999993 mem remaining: 0.043092692775621645 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.25010000000000066 mem remaining: 0.10186110320193645 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5373999999999993 mem remaining: 0.06392462402610685 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5470999999999994 mem remaining: 0.06717573059303125 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5731999999999993 mem remaining: 0.15160096290737254 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.25910000000000066 mem remaining: 0.12128491186292564 
+VM1:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5477999999999993 mem remaining: 0.06435948541403926 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5106999999999988 mem remaining: 0.2244713069137917 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6483999999999998 mem remaining: 0.04905650609583632 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5713999999999991 mem remaining: 0.13054124712035134 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.31980000000000064 mem remaining: 0.15062770170580642 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.518699999999999 mem remaining: 0.15313333160770692 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5458999999999993 mem remaining: 0.018326301348602855 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3275000000000006 mem remaining: 0.16197551316233322 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6464999999999999 mem remaining: 0.09664276654674632 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.528799999999999 mem remaining: 0.21482152563871654 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5534999999999993 mem remaining: 0.025553283462339656 
+VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.507099999999999 mem remaining: 0.14872259467296256 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.511899999999999 mem remaining: 0.15315403929284696 
+VM2: Server: Resources deallocated, cpu remaining: 0.5635999999999993 mem remaining: 0.09426138275568965 
+VM5:  
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5744999999999993 mem remaining: 0.16920249527607367 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.533299999999999 mem remaining: 0.17112830999406056 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6391999999999999 mem remaining: 0.055268811637730716 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6436999999999999 mem remaining: 0.05013330572309792 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5677999999999988 mem remaining: 0.0652706235601821 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6613 mem remaining: 0.053860689048234316 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5202999999999992 mem remaining: 0.03549297232937047 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6711 mem remaining: 0.10979214661042191 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6672 mem remaining: 0.06906012994073592 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.6972 mem remaining: 0.15102114772346031 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7065 mem remaining: 0.1542722542903847 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3035000000000006 mem remaining: 0.04648875313851961 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5301999999999987 mem remaining: 0.1170398364093017 
+VM3:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5204999999999992 mem remaining: 0.05460616571326528 
+VM2:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7081999999999999 mem remaining: 0.19794476224990112 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.319599999999999 mem remaining: 0.027209898273511775 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3756000000000006 mem remaining: 0.1883363963451048 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3847000000000006 mem remaining: 0.2398778246576872 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5328999999999992 mem remaining: 0.06175031708644328 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5441999999999991 mem remaining: 0.08676520073513729 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7006999999999999 mem remaining: 0.12401832630135952 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7762999999999999 mem remaining: 0.15864157585484992 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.7764999999999999 mem remaining: 0.26425077006705233 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3906000000000006 mem remaining: 0.07135868299123639 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8120999999999999 mem remaining: 0.15986332927808955 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.274199999999999 mem remaining: 0.06450443921001658 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5180999999999987 mem remaining: 0.1388657365464905 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5734999999999991 mem remaining: 0.10807340874383448 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8545 mem remaining: 0.10734863976394356 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4013000000000006 mem remaining: 0.1630730204747352 
+VM1: Server: Resources deallocated, cpu remaining: 0.4072000000000006 mem remaining: 0.16756658815003841 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8641000000000001 mem remaining: 0.14447751921933116 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3971000000000006 mem remaining: 0.16533015815495683 
+VM2: Server: Resources deallocated, cpu remaining: 0.49679999999999913 mem remaining: 0.038267802138083264 
+VM1:  
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.210699999999999 mem remaining: 0.04760696813606418 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.210699999999999 mem remaining: 0.04760696813606418 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.3963000000000006 mem remaining: 0.018719747366252835 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.250999999999999 mem remaining: 0.08862889239770577 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5059999999999991 mem remaining: 0.08802836952865606 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4028000000000006 mem remaining: 0.023399684207812833 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.3884999999999987 mem remaining: 0.06025936375638931 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.5151999999999991 mem remaining: 0.12381124944996647 
+VM2:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.4490999999999991 mem remaining: 0.03882690963685326 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4074999999999987 mem remaining: 0.07837858825358052 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.291199999999999 mem remaining: 0.141557735614645 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.44969999999999916 mem remaining: 0.21817617063133965 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.365999999999999 mem remaining: 0.245034038257463 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8401000000000001 mem remaining: 0.021494577174965158 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.367299999999999 mem remaining: 0.14594776486424982 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.8567 mem remaining: 0.14079155126447396 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4531000000000006 mem remaining: 0.07649418890586923 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9108 mem remaining: 0.13354386146559755 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.4632000000000006 mem remaining: 0.23024875106775122 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.37059999999999904 mem remaining: 0.147293764398327 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.44330000000000064 mem remaining: 0.18320089043047202 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.40039999999999903 mem remaining: 0.26702559987576824 
+VM5:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.45140000000000063 mem remaining: 0.18819144254912681 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5169000000000006 mem remaining: 0.18494033598220241 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9133 mem remaining: 0.032676727150375146 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.34139999999999915 mem remaining: 0.13973545932235565 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.412499999999999 mem remaining: 0.21053503481481023 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9099999999999999 mem remaining: 0.030564543266131144 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.407699999999999 mem remaining: 0.19036574948879345 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5054000000000006 mem remaining: 0.10401470245646043 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9203999999999999 mem remaining: 0.16251391297596435 
+VM4:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5195000000000006 mem remaining: 0.12929878601196962 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.441699999999999 mem remaining: 0.24909274454483388 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.451199999999999 mem remaining: 0.25752077239667026 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9304999999999999 mem remaining: 0.17580824683561794 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5294000000000006 mem remaining: 0.1803432298812004 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.28889999999999916 mem remaining: 0.07137939067638004 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.41419999999999896 mem remaining: 0.23416250355914786 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5991000000000006 mem remaining: 0.23610902596227082 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9301999999999999 mem remaining: 0.08185747935703755 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9405999999999999 mem remaining: 0.08885667693423835 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9505999999999999 mem remaining: 0.09324670618384355 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.25919999999999915 mem remaining: 0.11838583594337965 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4074999999999987 mem remaining: 0.07837858825358052 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.26769999999999916 mem remaining: 0.14265524292704646 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.27289999999999914 mem remaining: 0.14729376439832725 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5918000000000005 mem remaining: 0.017787901534967607 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.40409999999999896 mem remaining: 0.26590738487822746 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6046000000000006 mem remaining: 0.025449745036636807 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4692999999999987 mem remaining: 0.1803639375663445 
+VM3:  
+VM5: Server: Resources deallocated, cpu remaining: 0.40019999999999895 mem remaining: 0.25634043434371023 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.22839999999999916 mem remaining: 0.045101338234167246 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9442999999999999 mem remaining: 0.010540211736091556 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.39679999999999893 mem remaining: 0.25890818730102627 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5869000000000006 mem remaining: 0.005901690264810407 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.4671999999999987 mem remaining: 0.0615846556053265 
+VM3:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3954999999999989 mem remaining: 0.14565785727229427 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.957 mem remaining: 0.024704268371610355 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5208999999999987 mem remaining: 0.0749618202055389 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5940000000000006 mem remaining: 0.010664457846929208 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2750999999999992 mem remaining: 0.08015944917559004 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 1.0245 mem remaining: 0.10948153133332675 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2850999999999992 mem remaining: 0.19274713327985282 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5108999999999987 mem remaining: 0.10509150208372652 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5688999999999986 mem remaining: 0.13370952294671892 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9578999999999999 mem remaining: 0.06609893096576515 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.5911000000000006 mem remaining: 0.009484119793969209 
+VM1:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9672999999999998 mem remaining: 0.19614319364275112 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6011000000000006 mem remaining: 0.013956979784132809 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.3620999999999989 mem remaining: 0.20647632852743947 
+VM5:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6083000000000006 mem remaining: 0.01894753190278761 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4392999999999989 mem remaining: 0.24644216084695866 
+VM5:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6043000000000006 mem remaining: 0.020438485232842408 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.23249999999999915 mem remaining: 0.10604405560015001 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5467999999999986 mem remaining: 0.04071130898456252 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9671999999999998 mem remaining: 0.1342479227603451 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6156999999999986 mem remaining: 0.07388502057827773 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6546999999999986 mem remaining: 0.09082390702250932 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6646999999999986 mem remaining: 0.10076359588953972 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6748999999999986 mem remaining: 0.2226697383066441 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6161000000000006 mem remaining: 0.02648512929361921 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6739999999999987 mem remaining: 0.13025133952839732 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9542999999999998 mem remaining: 0.07699117334922033 
+VM4:  
+VM5: Server: Resources deallocated, cpu remaining: 0.41959999999999886 mem remaining: 0.13317112313308746 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.23039999999999913 mem remaining: 0.07007480651258281 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.24079999999999913 mem remaining: 0.07730178862631962 
+VM2:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2564999999999991 mem remaining: 0.13327466155878642 
+VM2:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9742999999999998 mem remaining: 0.08187818704217673 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6142000000000006 mem remaining: 0.014309010431506407 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9830999999999999 mem remaining: 0.09270830637021232 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.26139999999999913 mem remaining: 0.14170268941062283 
+VM2:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.27999999999999914 mem remaining: 0.16106437501619283 
+VM2:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6825000000000006 mem remaining: 0.0643387777288944 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6933000000000006 mem remaining: 0.0677969611472152 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.40109999999999885 mem remaining: 0.059762379313037454 
+VM5:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2845999999999992 mem remaining: 0.18657624310823845 
+VM5: Server: Resources deallocated, cpu remaining: 0.40679999999999883 mem remaining: 0.10950223901847025 
+VM2:  
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9839999999999999 mem remaining: 0.16657261926333472 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6356999999999987 mem remaining: 0.04460435379081612 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9884999999999999 mem remaining: 0.3218388424404115 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6851000000000006 mem remaining: 0.1787073227551672 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.4053999999999988 mem remaining: 0.20405352936610027 
+VM5:  
+VM5: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6467999999999987 mem remaining: 0.20045039215180252 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7356000000000006 mem remaining: 0.18672119690421082 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7456000000000006 mem remaining: 0.23950508632517203 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7512000000000006 mem remaining: 0.24509616131287684 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7610000000000007 mem remaining: 0.34772344886496925 
+VM1:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2956999999999992 mem remaining: 0.16392203556546445 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5837999999999988 mem remaining: 0.07864778816039612 
+VM3:  
+VM2: Server: Resources deallocated, cpu remaining: 0.3474999999999992 mem remaining: 0.34650169544173604 
+VM5: Server: Resources deallocated, cpu remaining: 0.4412999999999988 mem remaining: 0.11289829938137269 
+VM1: Server: Resources deallocated, cpu remaining: 0.7638000000000007 mem remaining: 0.41943416250356846 
+VM2:  
+VM5:  
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9138 mem remaining: 0.08098775658117227 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7487000000000007 mem remaining: 0.27176765977274286 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9398 mem remaining: 0.10206818005333307 
+VM4:  
+VM3: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4: Server: Resources deallocated, cpu remaining: 0.949 mem remaining: 0.12370771102426427 
+VM3:  
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.2789999999999992 mem remaining: 0.04797970646857843 
+VM1: Server: Resources deallocated, cpu remaining: 0.7568000000000007 mem remaining: 0.16112649807160645 
+VM2:  
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7650000000000007 mem remaining: 0.17154246369684886 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.44359999999999883 mem remaining: 0.009566950534531896 
+VM5:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5400999999999988 mem remaining: 0.041974477778080124 
+VM3:  
+VM4: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9531999999999999 mem remaining: 0.16493671213730227 
+VM4:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6891000000000007 mem remaining: 0.08597830869982567 
+VM1:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9511999999999999 mem remaining: 0.24907203685968987 
+VM4:  
+VM3: Server: Resources deallocated, cpu remaining: 0.5363999999999989 mem remaining: 0.033774234462779724 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.7039000000000007 mem remaining: 0.11422359123030447 
+VM1:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5224999999999989 mem remaining: 0.1088395930940015 
+VM5:  
+VM2: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM2:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5301999999999989 mem remaining: 0.2165195558201679 
+VM5:  
+VM5: Server: Resources deallocated, cpu remaining: 0.5403999999999989 mem remaining: 0.2550151424947723 
+VM5:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9340999999999999 mem remaining: 0.04369321564466626 
+VM3: Server: Resources deallocated, cpu remaining: 0.5522999999999988 mem remaining: 0.03812284834210573 
+VM4:  
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9388 mem remaining: 0.14895037920949386 
+VM4:  
+VM1: Error connecting to autoscaler at sp25-cs525-0920.cs.illinois.edu:9000: dial tcp 172.22.153.34:9000: connect: connection refused 
+VM1:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6950000000000007 mem remaining: 0.021453161804684075 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6178999999999988 mem remaining: 0.14236533533509094 
+VM3:  
+VM1: Server: Resources deallocated, cpu remaining: 0.6920000000000007 mem remaining: 0.04555690730723368 
+VM1:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6239999999999988 mem remaining: 0.14211684311341494 
+VM3:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9185 mem remaining: 0.10921233142651067 
+VM4:  
+VM4: Server: Resources deallocated, cpu remaining: 0.9257 mem remaining: 0.11229777651231787 
+VM4:  
+VM2: Server: Resources deallocated, cpu remaining: 0.33399999999999924 mem remaining: 0.07200062123056923 
+VM2:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6156999999999988 mem remaining: 0.09983175005825494 
+VM3:  
+VM3: Server: Resources deallocated, cpu remaining: 0.6212999999999989 mem remaining: 0.10304144125490014 
+VM3:  

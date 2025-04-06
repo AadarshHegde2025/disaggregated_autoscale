@@ -234,6 +234,27 @@ func autoscale() {
 		fmt.Println("RPC call failed:", err) // Check if this prints
 	}
 
+	args = rpcstructs.ServerDetails{"sp25-cs525-0910.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0911.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0912.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.AddServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
 	time.Sleep(20 * time.Second) // TODO: CHANGE THIS wait for load balancer to start
 
 	args = rpcstructs.ServerDetails{"sp25-cs525-0906.cs.illinois.edu", 5} // TODO: This is just a test
@@ -257,6 +278,27 @@ func autoscale() {
 	}
 
 	args = rpcstructs.ServerDetails{"sp25-cs525-0909.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0910.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0911.cs.illinois.edu", 8} // TODO: This is just a test
+
+	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
+	if err != nil {
+		fmt.Println("RPC call failed:", err) // Check if this prints
+	}
+
+	args = rpcstructs.ServerDetails{"sp25-cs525-0912.cs.illinois.edu", 8} // TODO: This is just a test
 
 	load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
 	if err != nil {
