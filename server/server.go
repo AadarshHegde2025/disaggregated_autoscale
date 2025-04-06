@@ -54,6 +54,11 @@ type HandleJob struct{}
 
 func sendAutoscalerStatistics() { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
 	// inefficient, do not have to loop through every single time, just store in a map or something
+
+	if my_ip == "" {
+		return
+	}
+
 	config_file, _ := os.Open("config.txt")
 	scanner := bufio.NewScanner(config_file)
 	var line string
@@ -99,8 +104,6 @@ func processJobQueue() {
 		if len(job_queue) > 0 {
 			key := rpcstructs.Pair{J_ID: job_queue[0].JobId, T_ID: job_queue[0].TaskId}
 			if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
-				fmt.Print("Server: Not enough resources, adding job to queue\n")
-
 				// TODO: Push the current job back in the queue due to lack of resources
 				job_to_marked[key] = 1
 
@@ -111,7 +114,6 @@ func processJobQueue() {
 				job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
 				spots_to_pushback += 1 // future jobs should be pushed back behind where we placed this one
 			} else {
-				fmt.Println("Job Queue length: ", len(job_queue))
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
 

@@ -1,260 +1,25 @@
+VM6: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM3: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM2: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM5: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM1: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM7: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM9: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM8: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM1: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM4: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM5: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM7: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM3: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM6: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM2: [?2004l 
-VM9: [?2004l 
-VM2: remote: Enumerating objects: 18, done.[K 
-VM2: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[K 
-VM2: remote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM2: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM2: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM2:  
-VM9: remote: Enumerating objects: 18, done.[K 
-VM9:  
-VM2: Unpacking objects:   5% (1/18) 
-VM9:  
-VM2: Unpacking objects:  11% (2/18) 
-VM9: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[K 
-VM9: remote: Counting objects:  44% (8/18)[K 
-VM2: Unpacking objects:  16% (3/18) 
-VM2: Unpacking objects:  22% (4/18) 
-VM2: Unpacking objects:  27% (5/18) 
-VM2: Unpacking objects:  33% (6/18) 
-VM9: remote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[K 
-VM9: remote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[K 
-VM9: remote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM9: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[K 
-VM9: remote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM9: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM9:  
-VM9: Unpacking objects:   5% (1/18) 
-VM2: Unpacking objects:  38% (7/18) 
-VM2: Unpacking objects:  44% (8/18)Unpacking objects:  50% (9/18)Unpacking objects:  55% (10/18)Unpacking objects:  61% (11/18)Unpacking objects:  66% (12/18)Unpacking objects:  72% (13/18) 
-VM2: Unpacking objects:  77% (14/18) 
-VM9: Unpacking objects:  11% (2/18)Unpacking objects:  16% (3/18) 
-VM2: Unpacking objects:  83% (15/18) 
-VM2: Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18) 
-VM2: Unpacking objects: 100% (18/18) 
-VM9: Unpacking objects:  22% (4/18)Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18) 
-VM2: Unpacking objects: 100% (18/18), 1.58 KiB | 201.00 KiB/s, done. 
-VM2:  
-VM9: Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18) 
-VM8: [?2004lremote: Enumerating objects: 18, done.[K 
-VM8: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM8: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4 
-VM8: /4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM9: Unpacking objects:  50% (9/18) 
-VM8: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM8: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18)Unpacking objects:  16% (3/18)Unpacking objects:  22% (4/18)Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18)Unpacking objects:  50% (9/18)Unpacking objects:  55% (10/18)Unpacking objects:  61% (11/18)Unpacking objects:  66% (12/18)Unpacking objects:  72% (13/18)Unpacking objects:  77% (14/18)Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18)Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 100.00 KiB/s, done. 
-VM8:  
-VM9: Unpacking objects:  55% (10/18) 
-VM9: Unpacking objects:  61% (11/18) 
-VM9: Unpacking objects:  66% (12/18) 
-VM9: Unpacking objects:  72% (13/18) 
-VM2: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM9: Unpacking objects:  77% (14/18) 
-VM2:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM9: Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18) 
-VM2:  
-VM9: Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 115.00 KiB/s, done. 
-VM9:  
-VM9:  
-VM5: [?2004l 
-VM1: [?2004lremote: Enumerating objects: 18, done.[K 
-VM4: [?2004lremote: Enumerating objects: 18, done.[K 
-VM1: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM4: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM1: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4 
-VM4: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4 
-VM1: /4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM4: /4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM1: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM4: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM1: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18)Unpacking objects:  16% (3/18)Unpacking objects:  22% (4/18)Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18)Unpacking objects:  50% (9/18)Unpacking objects:  55% (10/18)Unpacking objects:  61% (11/18)Unpacking objects:  66% (12/18)Unpacking objects:  72% (13/18)Unpacking objects:  77% (14/18)Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18)Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 201.00 KiB/s, done. 
-VM4: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18) 
-VM1: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM1:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM1: Updating ba981be..d69e99c 
-VM1: Fast-forward 
-VM7: [?2004l 
-VM1:  orchestrator/output.txt | 18 [32m++++++++++ 
-VM4: Unpacking objects:  16% (3/18)Unpacking objects:  22% (4/18) 
-VM8: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM1: ++++++++[m 
-VM4: Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18) 
-VM8:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM1:  server/server.go        |  7 [32m++++++[m[31m-[m 
 VM6: [?2004l 
-VM8:  
-VM4: Unpacking objects:  50% (9/18) 
-VM2: Updating ba981be..d69e99c 
-VM1:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM3: [?2004lremote: Enumerating objects: 18, done.[K 
-VM2:  
-VM3: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM3: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4 
-VM3: /4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM3: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM3:  
-VM4: Unpacking objects:  55% (10/18) 
-VM4: Unpacking objects:  61% (11/18) 
-VM4: Unpacking objects:  66% (12/18) 
-VM3: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18)Unpacking objects:  16% (3/18)Unpacking objects:  22% (4/18)Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18)Unpacking objects:  50% (9/18)Unpacking objects:  55% (10/18)Unpacking objects:  61% (11/18)Unpacking objects:  66% (12/18)Unpacking objects:  72% (13/18)Unpacking objects:  77% (14/18)Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18)Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 322.00 KiB/s, done. 
-VM3:  
-VM4: Unpacking objects:  72% (13/18) 
-VM2: Fast-forward 
-VM4: Unpacking objects:  77% (14/18) 
-VM2:  
-VM4: Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18) 
-VM4: Unpacking objects:  94% (17/18) 
-VM2:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM9: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM4: Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 179.00 KiB/s, done. 
-VM2:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM9:  
-VM4:  
-VM2:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM9:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM9:  
-VM3: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM5: remote: Enumerating objects: 18, done.[K 
-VM3:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM8: Updating ba981be..d69e99c 
-VM5:  
-VM3:  
-VM8:  
-VM5: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM8:  
-VM5: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM5:  
-VM5: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM5:  
-VM8: Fast-forward 
-VM5: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18) 
-VM7: remote: Enumerating objects: 18, done.[K 
-VM8:  
-VM7:  
-VM8:  
-VM7: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[Kremote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[K 
-VM5: Unpacking objects:  16% (3/18) 
-VM4: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM3: Updating ba981be..d69e99c 
-VM5: Unpacking objects:  22% (4/18)Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18) 
-VM4:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM3:  
-VM5: Unpacking objects:  44% (8/18) 
-VM4:  
-VM6: remote: Enumerating objects: 18, done.[K 
-VM5: Unpacking objects:  50% (9/18) 
-VM6: remote: Counting objects:   5% (1/18)[Kremote: Counting objects:  11% (2/18)[Kremote: Counting objects:  16% (3/18)[Kremote: Counting objects:  22% (4/18)[K 
-VM6: remote: Counting objects:  27% (5/18)[Kremote: Counting objects:  33% (6/18)[Kremote: Counting objects:  38% (7/18)[Kremote: Counting objects:  44% (8/18)[Kremote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[Kremote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM6: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[Kremote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM6: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
+VM3: [?2004l 
+VM5: [?2004lAlready up to date. 
+VM6: Already up to date. 
+VM6:  
+VM3: Already up to date. 
 VM6:  
-VM5: Unpacking objects:  55% (10/18)Unpacking objects:  61% (11/18)Unpacking objects:  66% (12/18) 
-VM3: Fast-forward 
-VM9: Updating ba981be..d69e99c 
-VM7: remote: Counting objects:  50% (9/18)[Kremote: Counting objects:  55% (10/18)[Kremote: Counting objects:  61% (11/18)[Kremote: Counting objects:  66% (12/18)[Kremote: Counting objects:  72% (13/18)[K 
+VM3:  
 VM3:  
-VM9:  
-VM7: remote: Counting objects:  77% (14/18)[Kremote: Counting objects:  83% (15/18)[Kremote: Counting objects:  88% (16/18)[Kremote: Counting objects:  94% (17/18)[Kremote: Counting objects: 100% (18/18)[Kremote: Counting objects: 100% (18/18), done.[K 
-VM7: remote: Compressing objects:  25% (1/4)[Kremote: Compressing objects:  50% (2/4)[Kremote: Compressing objects:  75% (3/4)[K 
-VM7: remote: Compressing objects: 100% (4/4)[Kremote: Compressing objects: 100% (4/4), done.[K 
-VM7: remote: Total 18 (delta 11), reused 18 (delta 11), pack-reused 0 (from 0)[K 
-VM7:  
-VM7: Unpacking objects:   5% (1/18) 
-VM5: Unpacking objects:  72% (13/18) 
-VM5: Unpacking objects:  77% (14/18) 
-VM7: Unpacking objects:  11% (2/18)Unpacking objects:  16% (3/18)Unpacking objects:  22% (4/18) 
-VM9: Fast-forward 
-VM5: Unpacking objects:  83% (15/18)Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18)Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 179.00 KiB/s, done. 
-VM4: Updating ba981be..d69e99c 
-VM9:  
-VM5:  
-VM4:  
-VM8:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM8:  
-VM8:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM8:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM8:  
-VM4: Fast-forward 
-VM7: Unpacking objects:  27% (5/18)Unpacking objects:  33% (6/18)Unpacking objects:  38% (7/18)Unpacking objects:  44% (8/18) 
-VM6: Unpacking objects:   5% (1/18)Unpacking objects:  11% (2/18) 
-VM4:  
-VM3:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM3:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM3:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM3:  
-VM7: Unpacking objects:  50% (9/18)Unpacking objects:  55% (10/18) 
-VM4:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM9:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM5: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM6: Unpacking objects:  16% (3/18) 
-VM4:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM9:  
-VM5:  
-VM4:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM9:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM5:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM6: Unpacking objects:  22% (4/18) 
-VM7: Unpacking objects:  61% (11/18) 
-VM9:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM5:  
-VM9:  
-VM7: Unpacking objects:  66% (12/18) 
-VM6: Unpacking objects:  27% (5/18) 
-VM7: Unpacking objects:  72% (13/18) 
-VM6: Unpacking objects:  33% (6/18) 
-VM6: Unpacking objects:  38% (7/18) 
-VM7: Unpacking objects:  77% (14/18) 
-VM6: Unpacking objects:  44% (8/18) 
-VM7: Unpacking objects:  83% (15/18) 
-VM6: Unpacking objects:  50% (9/18) 
-VM7: Unpacking objects:  88% (16/18) 
-VM6: Unpacking objects:  55% (10/18) 
-VM7: Unpacking objects:  94% (17/18) 
-VM6: Unpacking objects:  61% (11/18) 
-VM7: Unpacking objects: 100% (18/18) 
-VM6: Unpacking objects:  66% (12/18)Unpacking objects:  72% (13/18) 
-VM5: Updating ba981be..d69e99c 
-VM7: Unpacking objects: 100% (18/18), 1.58 KiB | 100.00 KiB/s, done. 
-VM5:  
-VM7:  
-VM6: Unpacking objects:  77% (14/18)Unpacking objects:  83% (15/18) 
-VM5: Fast-forward 
-VM6: Unpacking objects:  88% (16/18)Unpacking objects:  94% (17/18)Unpacking objects: 100% (18/18)Unpacking objects: 100% (18/18), 1.58 KiB | 107.00 KiB/s, done. 
-VM5:  
-VM6:  
-VM5:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM5:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM5:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM7: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM7:  
-VM7:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM7:  
-VM6: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
-VM6:    ba981be..d69e99c  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
-VM6:  
-VM7: Updating ba981be..d69e99c 
-VM7:  
-VM7: Fast-forward 
-VM7:  
-VM6: Updating ba981be..d69e99c 
-VM6:  
-VM7:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM7:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM7:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM7:  
-VM7:  
-VM6: Fast-forward 
-VM6:  
-VM6:  orchestrator/output.txt | 18 [32m++++++++++++++++++[m 
-VM6:  server/server.go        |  7 [32m++++++[m[31m-[m 
-VM6:  2 files changed, 24 insertions(+), 1 deletion(-) 
-VM6:  
+VM3: [?2004h 
+VM2: [?2004lAlready up to date. 
+VM1: [?2004lAlready up to date. 
+VM9: [?2004lAlready up to date. 
+VM7: [?2004lAlready up to date. 
+VM8: [?2004lAlready up to date. 
+VM4: [?2004lAlready up to date. 
