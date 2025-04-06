@@ -105,10 +105,11 @@ func captureMetrics(servers map[string][]ServerStatus) {
 		for _, snap := range snapshots {
 			totalTime += snap.Time
 		}
-		meanTime := totalTime / int64(len(snapshots))
+		// meanTime := totalTime / int64(len(snapshots))
 
 		for _, snap := range snapshots {
-			t := float64(snap.Time - meanTime) // relative time
+			startTime := snapshots[0].Time
+			t := float64(snap.Time - startTime)
 
 			// --- Resource usage ---
 			computePoints = append(computePoints, plotter.XY{X: t, Y: snap.ComputeRemaining})
