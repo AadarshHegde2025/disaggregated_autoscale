@@ -168,7 +168,16 @@ func startServer() {
 	}
 }
 
+func periodicallySendStats() {
+	for {
+		sendAutoscalerStatistics()
+		time.Sleep(5 * time.Second)
+	}
+
+}
+
 func main() {
 	go processJobQueue() // Start the job queue processor in a separate goroutine
+	go periodicallySendStats()
 	startServer()
 }

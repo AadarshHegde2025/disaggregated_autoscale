@@ -27,6 +27,7 @@ type ServerStatus struct {
 	Server_Type      string // computer or memory heavy
 	ComputeRemaining float64
 	MemoryRemaining  float64
+	JobToTiming      map[rpcstructs.Pair]rpcstructs.JobTiming
 }
 
 type AutoScaler struct{}
@@ -48,6 +49,7 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.Status = true
 	status.ComputeRemaining = args.ComputeUsage
 	status.MemoryRemaining = args.MemoryUsage
+	status.JobToTiming = args.JobToTiming
 	server_to_status[args.ServerIp] = status
 
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
