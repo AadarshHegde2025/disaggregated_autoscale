@@ -162,6 +162,9 @@ func processConfigFile() {
 	i := 0
 	for scanner.Scan() {
 		line := scanner.Text()
+		if i-2 == number_of_online_servers {
+			break
+		}
 		if i == 0 {
 			// num, _ := strconv.Atoi(line)
 			// total_servers = num - 2
@@ -179,9 +182,6 @@ func processConfigFile() {
 			mu.Unlock()
 		}
 
-		if i-2 == number_of_online_servers {
-			break
-		}
 		i += 1
 	}
 	fmt.Println("post processing: ", connected_servers)
