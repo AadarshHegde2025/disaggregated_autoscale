@@ -157,6 +157,9 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	fmt.Println("Received server stats:", args.ServerIp, args.ComputeUsage, args.MemoryUsage)
 	status := server_to_status[args.ServerIp] // mark the server as online
 	status.Status = args.Status
+	if status.Status == false {
+		fmt.Println("Server , ", args.ServerIp, " is now offline")
+	}
 	status.ComputeRemaining = args.ComputeUsage
 	status.MemoryRemaining = args.MemoryUsage
 	status.JobToTiming = args.JobToTiming
