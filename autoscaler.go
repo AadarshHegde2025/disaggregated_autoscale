@@ -33,6 +33,7 @@ type ServerStatus struct {
 	ComputeRemaining float64
 	MemoryRemaining  float64
 	JobToTiming      map[rpcstructs.Pair]rpcstructs.JobTiming
+	QueueLength      int
 }
 
 type AutoScaler struct{}
@@ -71,6 +72,7 @@ func captureMetrics(servers map[string][]ServerStatus) {
 		var computePoints plotter.XYs
 		var memoryPoints plotter.XYs
 		var avgWaitPoints plotter.XYs
+		var queuePoints plotter.XYs
 
 		for i, snapshot := range snapshots {
 			t := float64(i * 5) // time in seconds (5-second interval)
@@ -78,13 +80,13 @@ func captureMetrics(servers map[string][]ServerStatus) {
 			// --- Resource tracking ---
 			computePoints = append(computePoints, plotter.XY{X: t, Y: snapshot.ComputeRemaining})
 			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snapshot.MemoryRemaining})
+			queuePoints = append(queuePoints, plotter.XY{X: t, Y: float64(snapshot.QueueLength)})
 
 			// --- Wait time tracking ---
 			var totalWait float64
 			var jobCount int
 
 			for _, timing := range snapshot.JobToTiming {
-				// Must have valid timestamps
 				if timing.JobStartTime == 0 || timing.JobEndTime == 0 ||
 					timing.JobExecStartTime == 0 || timing.JobExecEndTime == 0 {
 					continue
@@ -136,9 +138,18 @@ func captureMetrics(servers map[string][]ServerStatus) {
 			color.RGBA{B: 255, A: 255}); err != nil {
 			fmt.Println("Failed to plot avg wait time:", err)
 		}
+
+		// --- Plot Queue Length ---
+		if err := plotLineGraph(
+			fmt.Sprintf("Queue Length - %s", serverID),
+			"Time (s)", "Queue Length", queuePoints,
+			fmt.Sprintf("queue_length_%s.png", serverID),
+			color.RGBA{R: 200, G: 100, B: 255, A: 255}); err != nil {
+			fmt.Println("Failed to plot queue length:", err)
+		}
 	}
 
-	fmt.Println("Done plotting usage and wait graphs.")
+	fmt.Println("Done plotting usage, wait, and queue graphs.")
 }
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
@@ -149,6 +160,7 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.ComputeRemaining = args.ComputeUsage
 	status.MemoryRemaining = args.MemoryUsage
 	status.JobToTiming = args.JobToTiming
+	status.QueueLength = args.QueueLength
 	server_to_status[args.ServerIp] = status
 
 	status2 := server_to_status_overtime[args.ServerIp]
