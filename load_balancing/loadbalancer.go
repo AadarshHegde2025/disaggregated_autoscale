@@ -169,6 +169,7 @@ func processConfigFile() {
 			num, _ := strconv.Atoi(line)
 			mu2.Lock()
 			number_of_online_servers = num
+			fmt.Println("NUM ONLINE ", number_of_online_servers)
 			mu2.Unlock()
 		} else {
 			// normal servers
