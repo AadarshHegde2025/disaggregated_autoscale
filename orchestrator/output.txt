@@ -1,25 +1,196 @@
-VM6: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM3: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM2: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM5: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM9: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM1: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM7: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
-VM9: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM5: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM6: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM2: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM8: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM3: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
 VM4: [?2004l-bash: cd: disaggregated_autoscale: No such file or directory 
+VM9: [?2004l 
+VM2: [?2004l 
+VM1: [?2004l 
+VM3: [?2004lremote: Enumerating objects: 6, done.[K 
+VM5: [?2004l 
+VM8: [?2004l 
+VM7: [?2004l 
 VM6: [?2004l 
-VM3: [?2004l 
-VM5: [?2004lAlready up to date. 
-VM6: Already up to date. 
-VM6:  
-VM3: Already up to date. 
-VM6:  
-VM3:  
+VM3: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM3: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM3: Unpacking objects:  16% (1/6)Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6)Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6)Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 301.00 KiB/s, done. 
+VM3: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM3:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
 VM3:  
-VM3: [?2004h 
-VM2: [?2004lAlready up to date. 
-VM1: [?2004lAlready up to date. 
-VM9: [?2004lAlready up to date. 
-VM7: [?2004lAlready up to date. 
-VM8: [?2004lAlready up to date. 
-VM4: [?2004lAlready up to date. 
+VM7: remote: Enumerating objects: 6, done.[K 
+VM8: remote: Enumerating objects: 6, done.[K 
+VM7: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM8: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM7:  
+VM4: [?2004l 
+VM8: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM7: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM8:  
+VM7:  
+VM8: Unpacking objects:  16% (1/6) 
+VM2: remote: Enumerating objects: 6, done.[K 
+VM3: Updating e741ede..95d94fc 
+VM5: remote: Enumerating objects: 6, done.[K 
+VM2: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM3:  
+VM5: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM2:  
+VM5: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM2: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM5:  
+VM2:  
+VM8: Unpacking objects:  33% (2/6) 
+VM3: Fast-forward 
+VM2: Unpacking objects:  16% (1/6) 
+VM7: Unpacking objects:  16% (1/6)Unpacking objects:  33% (2/6) 
+VM9: remote: Enumerating objects: 6, done.[K 
+VM8: Unpacking objects:  50% (3/6)Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6) 
+VM3:  
+VM9: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[K 
+VM9: remote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM9: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM9:  
+VM7: Unpacking objects:  50% (3/6) 
+VM8: Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 201.00 KiB/s, done. 
+VM1: remote: Enumerating objects: 6, done.[K 
+VM2: Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6)Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6) 
+VM7: Unpacking objects:  66% (4/6) 
+VM4: remote: Enumerating objects: 6, done.[K 
+VM8:  
+VM1: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM4: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM1:  
+VM4: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM7: Unpacking objects:  83% (5/6)Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 150.00 KiB/s, done. 
+VM5: Unpacking objects:  16% (1/6)Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6)Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6)Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 301.00 KiB/s, done. 
+VM2: Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 201.00 KiB/s, done. 
+VM9: Unpacking objects:  16% (1/6) 
+VM1: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM4:  
+VM7:  
+VM5:  
+VM2:  
+VM9: Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6) 
+VM1:  
+VM2:  
+VM3:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM9: Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6)Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 301.00 KiB/s, done. 
+VM4: Unpacking objects:  16% (1/6)Unpacking objects:  33% (2/6) 
+VM8: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM1: Unpacking objects:  16% (1/6)Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6) 
+VM3:  server/server.go        |   8 [32m+[m[31m-[m 
+VM9:  
+VM4: Unpacking objects:  50% (3/6)Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6) 
+VM8:  
+VM3:  
+VM8:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM3:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM8:  
+VM4: Unpacking objects: 100% (6/6) 
+VM1: Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6) 
+VM6: remote: Enumerating objects: 6, done.[K 
+VM4: Unpacking objects: 100% (6/6), 603 bytes | 301.00 KiB/s, done. 
+VM1: Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 201.00 KiB/s, done. 
+VM2: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM7: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM6: remote: Counting objects:  16% (1/6)[Kremote: Counting objects:  33% (2/6)[Kremote: Counting objects:  50% (3/6)[Kremote: Counting objects:  66% (4/6)[Kremote: Counting objects:  83% (5/6)[Kremote: Counting objects: 100% (6/6)[Kremote: Counting objects: 100% (6/6), done.[K 
+VM4:  
+VM1:  
+VM2:  
+VM7:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM6: remote: Total 6 (delta 4), reused 6 (delta 4), pack-reused 0 (from 0)[K 
+VM2:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM7:  
+VM6:  
+VM2:  
+VM5: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM5:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM5:  
+VM9: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM6: Unpacking objects:  16% (1/6) 
+VM9:  
+VM6: Unpacking objects:  33% (2/6)Unpacking objects:  50% (3/6) 
+VM9:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM9:  
+VM8: Updating e741ede..95d94fc 
+VM6: Unpacking objects:  66% (4/6)Unpacking objects:  83% (5/6) 
+VM4: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM8:  
+VM6: Unpacking objects: 100% (6/6)Unpacking objects: 100% (6/6), 603 bytes | 150.00 KiB/s, done. 
+VM4:  
+VM6:  
+VM4:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM4:  
+VM2: Updating e741ede..95d94fc 
+VM8: Fast-forward 
+VM5: Updating e741ede..95d94fc 
+VM7: Updating e741ede..95d94fc 
+VM9: Updating e741ede..95d94fc 
+VM2:  
+VM8:  
+VM5:  
+VM7:  
+VM9:  
+VM2: Fast-forward 
+VM1: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM5:  
+VM2:  
+VM1:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM5: Fast-forward 
+VM1:  
+VM5:  
+VM8:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM4: Updating e741ede..95d94fc 
+VM9: Fast-forward 
+VM8:  server/server.go        |   8 [32m+[m[31m-[m 
+VM4:  
+VM9:  
+VM8:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM8:  
+VM7: Fast-forward 
+VM2:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM4: Fast-forward 
+VM6: From https://github.com/AadarshHegde2025/disaggregated_autoscale 
+VM7:  
+VM5:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM2:  server/server.go        |   8 [32m+[m[31m-[m 
+VM4:  
+VM6:    e741ede..95d94fc  aadarsh/server_architecture_changes -> origin/aadarsh/server_architecture_changes 
+VM7:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM5:  server/server.go        |   8 [32m+[m[31m-[m 
+VM2:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM6:  
+VM7:  server/server.go        |   8 [32m+[m[31m-[m 
+VM5:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM7:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM9:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM1: Updating e741ede..95d94fc 
+VM4:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM9:  
+VM1:  
+VM4:  server/server.go        |   8 [32m+[m[31m-[m 
+VM9:  server/server.go        |   8 [32m+[m[31m-[m 
+VM4:  
+VM9:  
+VM4:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM9:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM1: Fast-forward 
+VM1:  
+VM1:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM6: Updating e741ede..95d94fc 
+VM1:  server/server.go        |   8 [32m+[m[31m-[m 
+VM6:  
+VM1:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM1:  
+VM1: [?2004h 
+VM6: Fast-forward 
+VM6:  
+VM6:  orchestrator/output.txt | 271 [32m++++[m[31m--------------------------------------------[m 
+VM6:  server/server.go        |   8 [32m+[m[31m-[m 
+VM6:  2 files changed, 23 insertions(+), 256 deletions(-) 
+VM6:  
+VM6: [?2004h 

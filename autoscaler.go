@@ -37,6 +37,8 @@ type ServerStatus struct {
 
 type AutoScaler struct{}
 
+var server_to_status_overtime = make(map[string][]ServerStatus)
+
 var server_to_status = make(map[string]ServerStatus)
 var job_completion_times = make(map[string][]int64) // how much time between when the job was added to the server and when it was completed, for each server
 var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
@@ -62,72 +64,39 @@ func plotLineGraph(title, xlabel, ylabel string, data plotter.XYs, filename stri
 	return p.Save(10*vg.Inch, 5*vg.Inch, filename)
 }
 
-func captureMetrics(servers map[string]ServerStatus) {
-	fmt.Println("Generating per-server metrics...")
+func captureMetrics(servers map[string][]ServerStatus) {
+	fmt.Println("Generating resource usage graphs...")
 
-	for serverID, status := range servers {
-		jobTimings := status.JobToTiming
-
-		var waitPoints plotter.XYs
+	for serverID, snapshots := range servers {
 		var computePoints plotter.XYs
 		var memoryPoints plotter.XYs
 
-		index := 0
-		for _, timing := range jobTimings {
-			// Validate timestamps
-			if timing.JobStartTime == 0 || timing.JobEndTime == 0 ||
-				timing.JobExecStartTime == 0 || timing.JobExecEndTime == 0 {
-				continue
-			}
-
-			// Wait Time = Total time - Execution time
-			totalTime := timing.JobEndTime - timing.JobStartTime
-			execTime := timing.JobExecEndTime - timing.JobExecStartTime
-			waitTime := float64(totalTime - execTime)
-			if waitTime < 0 {
-				waitTime = 0 // for safety
-			}
-
-			// Compute & memory used (invert remaining)
-			computeUsed := 100.0 - status.ComputeRemaining
-			memoryUsed := 100.0 - status.MemoryRemaining
-
-			waitPoints = append(waitPoints, plotter.XY{X: float64(index), Y: waitTime})
-			computePoints = append(computePoints, plotter.XY{X: float64(index), Y: computeUsed})
-			memoryPoints = append(memoryPoints, plotter.XY{X: float64(index), Y: memoryUsed})
-
-			index++
+		for i, snapshot := range snapshots {
+			t := float64(i * 5) // time in seconds (5-second interval)
+			computePoints = append(computePoints, plotter.XY{X: t, Y: snapshot.ComputeRemaining})
+			memoryPoints = append(memoryPoints, plotter.XY{X: t, Y: snapshot.MemoryRemaining})
 		}
 
-		// --- Plot Wait Time ---
+		// --- Plot Compute Remaining ---
 		if err := plotLineGraph(
-			fmt.Sprintf("Wait Time - %s", serverID),
-			"Job Index", "Wait Time (ms)", waitPoints,
-			fmt.Sprintf("wait_time_%s.png", serverID),
-			color.RGBA{B: 255, A: 200}); err != nil {
-			fmt.Println("Failed to plot wait time:", err)
+			fmt.Sprintf("Compute Remaining - %s", serverID),
+			"Time (s)", "Compute Remaining (%)", computePoints,
+			fmt.Sprintf("compute_remaining_%s.png", serverID),
+			color.RGBA{R: 100, G: 200, B: 255, A: 255}); err != nil {
+			fmt.Println("Failed to plot compute:", err)
 		}
 
-		// --- Plot Compute Usage ---
+		// --- Plot Memory Remaining ---
 		if err := plotLineGraph(
-			fmt.Sprintf("Compute Usage - %s", serverID),
-			"Job Index", "Compute Used (%)", computePoints,
-			fmt.Sprintf("compute_usage_%s.png", serverID),
-			color.RGBA{R: 255, A: 200}); err != nil {
-			fmt.Println("Failed to plot compute usage:", err)
-		}
-
-		// --- Plot Memory Usage ---
-		if err := plotLineGraph(
-			fmt.Sprintf("Memory Usage - %s", serverID),
-			"Job Index", "Memory Used (%)", memoryPoints,
-			fmt.Sprintf("memory_usage_%s.png", serverID),
-			color.RGBA{G: 200, A: 200}); err != nil {
-			fmt.Println("Failed to plot memory usage:", err)
+			fmt.Sprintf("Memory Remaining - %s", serverID),
+			"Time (s)", "Memory Remaining (%)", memoryPoints,
+			fmt.Sprintf("memory_remaining_%s.png", serverID),
+			color.RGBA{R: 150, G: 255, B: 150, A: 255}); err != nil {
+			fmt.Println("Failed to plot memory:", err)
 		}
 	}
 
-	fmt.Println("Done generating metrics.")
+	fmt.Println("Done plotting usage graphs.")
 }
 
 func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string) error {
@@ -140,6 +109,9 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	status.JobToTiming = args.JobToTiming
 	server_to_status[args.ServerIp] = status
 
+	status2 := server_to_status_overtime[args.ServerIp]
+	status2 = append(status2, status)
+	server_to_status_overtime[args.ServerIp] = status2
 	// TODO : Add logic to store the stats in some data structure so that we can do predictive autoscaling
 
 	mu.Unlock()
@@ -239,7 +211,7 @@ func main() {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(sigChan, os.Interrupt, syscall.SIGTERM)
 	<-sigChan
-	captureMetrics(server_to_status)
+	captureMetrics(server_to_status_overtime)
 }
 
 // TODO:
