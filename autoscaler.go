@@ -320,9 +320,9 @@ func truncateHistory(list *SnapshotList, node *SnapshotListNode) {
 
 func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
-	var x_prime int = -1
+	var x_prime int = 0
 
-	var y_prime int = -1
+	var y_prime int = 0
 
 	var maxVal float64 = math.Inf(-1)
 
@@ -612,6 +612,8 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 
 	for {
 
+		fmt.Printf("x: %v\n", x)
+		fmt.Printf("y: %v\n", y)
 		x_prime, y_prime := findOptimalConfiguration(num_compute_heavy_available, num_memory_heavy_available)
 		fmt.Println("Optimal configuration: ", x_prime, y_prime)
 		fmt.Println("Current configuration: ", x, y)
