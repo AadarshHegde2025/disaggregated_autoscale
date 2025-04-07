@@ -362,6 +362,8 @@ func calculateUtilityFunction(x_prime int, y_prime int) float64 {
 
 	D = float64(max(x_prime-x, 0) + max(y_prime-y, 0))
 
+	fmt.Println(A, B, C, D)
+
 	return alpha*A + lambda*B + C + gamma*D
 
 }
