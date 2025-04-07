@@ -214,7 +214,7 @@ func autoscale() {
 	for i := 6; i <= 9; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
 		nodeNumber := i - 1 // Or however you want to map this
-		args := rpcstructs.ServerDetails{hostname, nodeNumber}
+		args := rpcstructs.ServerDetails{hostname, nodeNumber, "C"}
 
 		err := load_balancer.Call("ServerChange.AddServer", &args, &reply)
 		if err != nil {
@@ -228,7 +228,7 @@ func autoscale() {
 	for i := 6; i <= 9; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
 		nodeNumber := i - 1
-		args := rpcstructs.ServerDetails{hostname, nodeNumber}
+		args := rpcstructs.ServerDetails{hostname, nodeNumber, "C"}
 
 		err := load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
 		if err != nil {

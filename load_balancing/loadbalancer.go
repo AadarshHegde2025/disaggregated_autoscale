@@ -29,8 +29,8 @@ var server_to_type = make(map[string]string)                // server ip -> serv
 var port int = 9000
 var number_of_online_servers int = 0
 
-var compute_online_servers = []string{}
-var memory_online_servers = []string{}
+var compute_online_servers = []string{} // list of available compute servers
+var memory_online_servers = []string{}  // list of available memory servers
 
 func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64, int, int) {
 	db, err := sql.Open("sqlite3", "./batch_data.db")
@@ -62,19 +62,35 @@ func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64
 
 }
 
-func (t *ServerChange) AddServer(args *rpcstructs.ServerDetails, reply *int) error {
+func removeFromSlice(slice []string, item string) []string {
+	newSlice := make([]string, 0, len(slice))
+	for _, v := range slice {
+		if v != item {
+			newSlice = append(newSlice, v)
+		}
+	}
+	return newSlice
+}
+
+func (t *ServerChange) AddServer(args *rpcstructs.ServerDetails, reply *int) error { // what type of server are we adding?
 	mu.Lock()
 	fmt.Println("Adding server:", args.ServerIp, "with node number:", args.NodeNumber)
 	mu2.Lock()
 	number_of_online_servers += 1
 	mu2.Unlock()
 	connected_servers[args.NodeNumber] = args.ServerIp
+	if args.ServerType == "C" {
+		compute_online_servers = append(compute_online_servers, args.ServerIp)
+	} else {
+		memory_online_servers = append(memory_online_servers, args.ServerIp)
+	}
+
 	mu.Unlock()
 	*reply = 0
 	return nil
 }
 
-func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) error {
+func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) error { // what type of server are we removing?
 	mu.Lock()
 	fmt.Println("Removing server server:", args.ServerIp, "with node number:", args.NodeNumber)
 	mu2.Lock()
@@ -83,6 +99,11 @@ func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) 
 	client, _ := rpc.Dial("tcp", connected_servers[args.NodeNumber]+":"+strconv.Itoa(port))
 	client.Call("HandleJob.ShutDownServer", &args, &reply) // args field doesn't really matter, is not considered by server
 	delete(connected_servers, args.NodeNumber)
+	if args.ServerType == "C" {
+		compute_online_servers = removeFromSlice(compute_online_servers, args.ServerIp)
+	} else {
+		memory_online_servers = removeFromSlice(memory_online_servers, args.ServerIp)
+	}
 	mu.Unlock()
 	*reply = 0
 	return nil

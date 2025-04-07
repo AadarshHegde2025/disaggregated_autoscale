@@ -41,4 +41,5 @@ type ServerUsage struct { // This struct used for server stats to send to and ma
 type ServerDetails struct { // This struct is used for autoscaler to add/remove server to load balancer
 	ServerIp   string
 	NodeNumber int
+	ServerType string
 }
