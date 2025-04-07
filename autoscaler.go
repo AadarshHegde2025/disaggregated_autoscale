@@ -663,7 +663,7 @@ func main() {
 		var server_type ServerType
 		fmt.Println(server_type)
 
-		switch words[3] {
+		switch words[4] {
 
 		case "C":
 
