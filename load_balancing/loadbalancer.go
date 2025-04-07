@@ -176,7 +176,11 @@ func resource_awareness_loadbalancer() {
 		mu2.Unlock()
 		mu.Unlock()
 		var reply int
-		main_client.Call("HandleJob.AddJobs", &args, &reply)
+		err := main_client.Call("HandleJob.AddJobs", &args, &reply)
+		if err != nil {
+			fmt.Println("Error calling AddJobs:", err)
+			continue
+		}
 		time.Sleep(100 * time.Millisecond)
 		i += 1
 	}
@@ -296,8 +300,8 @@ func main() {
 	go ListenForAutoscalerUpdates()
 
 	// // Process Jobs:
-	// resource_awareness_loadbalancer()
-	round_robin_loadbalancer()
+	resource_awareness_loadbalancer()
+	// round_robin_loadbalancer()
 }
 
 /* My notes:
