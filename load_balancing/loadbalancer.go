@@ -128,7 +128,7 @@ func resource_awareness_loadbalancer() {
 		var client *rpc.Client
 		var server_ip string
 		fmt.Println((plan_cpu / (100 * 4)), plan_mem)
-		if (plan_cpu / (100 * 4)) > plan_mem {
+		if (plan_cpu / (100 * 8)) > plan_mem {
 			server_ip = compute_online_servers[i%len(compute_online_servers)]
 
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
