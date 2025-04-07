@@ -86,6 +86,54 @@ func sendAutoscalerStatistics() { // only send when a job with 'key' has complet
 		mu.Unlock()
 		return
 	}
+
+	mu.Unlock()
+}
+
+func sendAutoscalerStatisticsAfterJob(key rpcstructs.Pair) { // only send when a job with 'key' has completed trade off is higher network usage for sending per completed job
+	for my_ip == "" {
+		time.Sleep(1 * time.Second) // Wait for my_ip to be set -> means we heard from the load balancer
+	}
+	config_file, _ := os.Open("config.txt")
+	scanner := bufio.NewScanner(config_file)
+	var line string
+	for scanner.Scan() {
+		line = scanner.Text()
+	}
+
+	words := strings.Fields(line)
+	autoscaler, err := rpc.Dial("tcp", words[1]+":"+strconv.Itoa(port))
+	if err != nil {
+		fmt.Printf("Error connecting to autoscaler at %s:%d: %v\n", words[1], port, err)
+		return // Exit the function if the connection fails
+	}
+
+	mu.Lock()
+
+	// Used for generating statistics on the autoscaler side
+	job_total_time := job_to_timing[key].JobEndTime - job_to_timing[key].JobStartTime
+	job_execution_time := job_to_timing[key].JobExecEndTime - job_to_timing[key].JobExecStartTime
+
+	server_stats := rpcstructs.ServerUsage{ServerIp: my_ip, ComputeRemaining: compute_remaining, MemoryRemaining: memory_remaining, JobToTiming: job_to_timing}
+	var reply string
+	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
+	if err != nil {
+		fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
+		mu.Unlock()
+		return
+	}
+
+	// TODO: Assign job type correctly
+	jobType := rpcstructs.COMPUTE_HEAVY
+	autoscaler_data := rpcstructs.Snapshot{ServerIp: my_ip, JobType: jobType, CpuUtilization: job_to_cpu_resource_usage[key], MemoryUtilization: job_to_mem_resource_usage[key], ExecutionTime: job_execution_time, TotalTime: job_total_time, Timestamp: job_to_timing[key].JobStartTime}
+
+	err = autoscaler.Call("AutoScaler.AddSnapshotToList", &autoscaler_data, &reply)
+	if err != nil {
+		fmt.Printf("Error making RPC call to autoscaler: %v\n", err)
+		mu.Unlock()
+		return
+	}
+
 	mu.Unlock()
 }
 

@@ -38,6 +38,31 @@ type ServerUsage struct { // This struct used for server stats to send to and ma
 	Server_Type      string
 }
 
+type JobType int
+
+const (
+	COMPUTE_HEAVY JobType = iota
+
+	MEMORY_HEAVY
+)
+
+type Snapshot struct { // This struct is used for the autoscaler to understand the chronology of jobs completed
+
+	ServerIp string
+
+	JobType JobType
+
+	CpuUtilization float64
+
+	MemoryUtilization float64
+
+	ExecutionTime int64
+
+	TotalTime int64
+
+	Timestamp int64
+}
+
 type ServerDetails struct { // This struct is used for autoscaler to add/remove server to load balancer
 	ServerIp   string
 	NodeNumber int
