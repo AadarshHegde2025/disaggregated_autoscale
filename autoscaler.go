@@ -291,9 +291,9 @@ func truncateHistory(list *SnapshotList, node *SnapshotListNode) {
 
 func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
-	var x_prime int
+	var x_prime int = -1
 
-	var y_prime int
+	var y_prime int = -1
 
 	var maxVal float64 = math.Inf(-1)
 
@@ -578,8 +578,7 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 	// basic testing that autoscaler can interact with load balancer
 
 	fmt.Println("Autoscaler started")
-	fmt.Printf("num_compute_heavy_available: %v\n", num_compute_heavy_available)
-	fmt.Printf("num_memory_heavy_available: %v\n", num_memory_heavy_available)
+
 	for {
 
 		x_prime, y_prime := findOptimalConfiguration(num_compute_heavy_available, num_memory_heavy_available)
