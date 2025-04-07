@@ -29,6 +29,9 @@ var server_to_type = make(map[string]string)                // server ip -> serv
 var port int = 9000
 var number_of_online_servers int = 0
 
+var compute_online_servers = []string{}
+var memory_online_servers = []string{}
+
 func retrieve_corresponding_real_resource_util(job_id int, task_id int) (float64, float64, int, int) {
 	db, err := sql.Open("sqlite3", "./batch_data.db")
 	if err != nil {
