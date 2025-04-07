@@ -311,11 +311,8 @@ func (t *AutoScaler) AddSnapshotToList(args *rpcstructs.Snapshot, reply *string)
 }
 
 func truncateHistory(list *SnapshotList, node *SnapshotListNode) {
-
 	node.prev = nil
-
 	list.head = node
-
 }
 
 func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
@@ -421,7 +418,7 @@ func calculateExpectedLatencyAndUtilization(x_prime int, y_prime int) (float64, 
 
 			// Remove all data from the linked list that is before our threshold (N)
 
-			truncateHistory(&snapshotList, current.next)
+			// truncateHistory(&snapshotList, current.next)
 
 			break
 
