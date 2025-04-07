@@ -128,8 +128,11 @@ func resource_awareness_loadbalancer() {
 		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
 		var client *rpc.Client
 		var server_ip string
-		fmt.Println((plan_cpu / (100 * 40)), plan_mem)
-		if (plan_cpu / (100 * 40)) > plan_mem {
+		fmt.Println((plan_cpu / (100 * 40)), plan_mem) // I have plan_cpu and plan_mem and potential servers to route to, but I don't know server side stats other than compute or memory heavy
+
+		// how to determine what is most resource intensive?
+
+		if (plan_cpu / (100 * 64)) > plan_mem {
 			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
 			fmt.Println("Sending to compute server: ", server_ip)
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
