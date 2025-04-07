@@ -5,4 +5,4 @@
 
 - name: MemHeavy
   vm_numbers: [10,11,12,13,14,15,16,17,18]
-  commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", GOTOOLCHAIN=auto go run server/server.go --cpu=2 -mem=4]
+  commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go --cpu=2 -mem=4"]
