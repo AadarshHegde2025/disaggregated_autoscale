@@ -127,6 +127,7 @@ func resource_awareness_loadbalancer() {
 		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
 		var client *rpc.Client
 		var server_ip string
+		fmt.Println((plan_cpu / (100 * 4)), plan_mem)
 		if (plan_cpu / (100 * 4)) > plan_mem {
 			server_ip = compute_online_servers[i%len(compute_online_servers)]
 
@@ -148,7 +149,7 @@ func resource_awareness_loadbalancer() {
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		i += 1
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(100 * time.Millisecond)
 	}
 }
 
