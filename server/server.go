@@ -137,7 +137,7 @@ func processJobQueue() {
 
 		}
 		mu.Unlock()
-		time.Sleep(300 * time.Millisecond)
+		time.Sleep(400 * time.Millisecond)
 	}
 }
 
