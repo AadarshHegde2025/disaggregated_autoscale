@@ -26,7 +26,7 @@ var mu2 sync.Mutex
 
 var connected_servers map[int]string = make(map[int]string) // node number -> server ip
 var server_to_type = make(map[string]string)                // server ip -> server type
-var port int = 9000
+var port int = 9001
 var number_of_online_servers int = 0
 
 var compute_online_servers = []string{} // list of available compute servers

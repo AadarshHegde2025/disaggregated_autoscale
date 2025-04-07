@@ -23,7 +23,7 @@ import (
 )
 
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
-var port int = 9000
+var port int = 9001
 
 // everything working
 

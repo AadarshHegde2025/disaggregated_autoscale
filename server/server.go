@@ -50,7 +50,7 @@ var spots_to_pushback = 0
 
 var mu sync.Mutex // Mutex to ensure thread-safe access to shared resources
 
-var port int = 9000
+var port int = 9001
 var my_ip string
 var my_type string
 
