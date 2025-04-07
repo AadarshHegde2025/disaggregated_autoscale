@@ -563,10 +563,13 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 	// autoscaler also has to let load balancer know when it adds or removes a server
 
 	// basic testing that autoscaler can interact with load balancer
+
+	fmt.Println("Autoscaler started")
 	for {
 
 		x_prime, y_prime := findOptimalConfiguration(num_compute_heavy_available, num_memory_heavy_available)
-
+		fmt.Println("Optimal configuration: ", x_prime, y_prime)
+		fmt.Println("Current configuration: ", x, y)
 		// The optimal configuration has changed scale up or down servers
 
 		if x_prime != x || y_prime != y {
