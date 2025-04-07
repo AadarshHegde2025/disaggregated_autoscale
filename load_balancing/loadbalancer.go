@@ -131,14 +131,14 @@ func resource_awareness_loadbalancer() {
 		fmt.Println((plan_cpu / (100 * 40)), plan_mem)
 		if (plan_cpu / (100 * 40)) > plan_mem {
 			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
-
+			fmt.Println("Sending to compute server: ", server_ip)
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 
 			compute_i += 1
 
 		} else {
 			server_ip = memory_online_servers[memory_i%len(memory_online_servers)]
-
+			fmt.Println("Sending to memory server: ", server_ip)
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 
 			memory_i += 1
@@ -271,8 +271,8 @@ func main() {
 	go ListenForAutoscalerUpdates()
 
 	// // Process Jobs:
-	// resource_awareness_loadbalancer()
-	round_robin_loadbalancer()
+	resource_awareness_loadbalancer()
+	// round_robin_loadbalancer()
 }
 
 /* My notes:
