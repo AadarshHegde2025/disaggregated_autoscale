@@ -1,8 +1,8 @@
 node1 sp25-cs525-0901.cs.illinois.edu 9000 O C
 node2 sp25-cs525-0902.cs.illinois.edu 9000 O C
-node3 sp25-cs525-0903.cs.illinois.edu 9000 O C
-node4 sp25-cs525-0904.cs.illinois.edu 9000 O C
-node5 sp25-cs525-0905.cs.illinois.edu 9000 O C
+node3 sp25-cs525-0903.cs.illinois.edu 9000 O M
+node4 sp25-cs525-0904.cs.illinois.edu 9000 O M
+node5 sp25-cs525-0905.cs.illinois.edu 9000 O M
 node6 sp25-cs525-0906.cs.illinois.edu 9000 X C
 node7 sp25-cs525-0907.cs.illinois.edu 9000 X C
 node8 sp25-cs525-0908.cs.illinois.edu 9000 X C
