@@ -264,8 +264,7 @@ func main() {
 	go ListenForAutoscalerUpdates()
 
 	// // Process Jobs:
-	// resource_awareness_loadbalancer()
-	round_robin_loadbalancer()
+	resource_awareness_loadbalancer()
 }
 
 /* My notes:
