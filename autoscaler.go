@@ -293,6 +293,10 @@ func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_
 
 		for j := 0; j < num_memory_heavy_available; j++ {
 
+			if i == 0 && j == 0 {
+				continue
+			}
+
 			utility := calculateUtilityFunction(i, j)
 
 			if utility > maxVal {
