@@ -79,7 +79,7 @@ func sendAutoscalerStatistics() { // only send when a job with 'key' has complet
 	}
 
 	mu.Lock()
-	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, job_queue_len, status, time.Now().Unix(), my_type}
+	server_stats := rpcstructs.ServerUsage{my_ip, compute_remaining, memory_remaining, job_to_timing, len(job_queue), status, time.Now().Unix(), my_type}
 	var reply string
 	err = autoscaler.Call("AutoScaler.RequestedStats", &server_stats, &reply)
 	if err != nil {
