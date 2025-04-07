@@ -578,6 +578,8 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 	// basic testing that autoscaler can interact with load balancer
 
 	fmt.Println("Autoscaler started")
+	fmt.Printf("num_compute_heavy_available: %v\n", num_compute_heavy_available)
+	fmt.Printf("num_memory_heavy_available: %v\n", num_memory_heavy_available)
 	for {
 
 		x_prime, y_prime := findOptimalConfiguration(num_compute_heavy_available, num_memory_heavy_available)
