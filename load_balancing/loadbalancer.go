@@ -150,7 +150,7 @@ func resource_awareness_loadbalancer() {
 
 			memory_i += 1
 		} else {
-			server_ip = values[i%len(number_of_online_servers)]
+			server_ip = values[i%number_of_online_servers]
 		}
 
 		mu.Lock()
