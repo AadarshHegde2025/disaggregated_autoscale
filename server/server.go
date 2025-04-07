@@ -148,6 +148,7 @@ func processJobQueue() {
 func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	mu.Lock()
 	job_queue = append(job_queue, *args)
+	fmt.Println("Job added to queue, job id: ", args.JobId, " task id: ", args.TaskId, " plan cpu: ", args.PlanCPUResourceUsage, " plan mem: ", args.PlanMemoryResourceUsage)
 	job_queue_len += 1
 	status = true
 	key := rpcstructs.Pair{J_ID: args.JobId, T_ID: args.TaskId}
