@@ -3,7 +3,6 @@ package main
 import (
 	"bufio"
 	rpcstructs "disaggregated_autoscale/rpc_structs"
-	"flag"
 	"fmt"
 	"net"
 	"net/rpc"
@@ -30,11 +29,11 @@ import (
 // need a hash map + linked list implementation?
 
 // TODO: The following are the real numbers for the server, however can make them different via commandline args
-var CPU_AVAILABLE float64    // number of cores
-var MEMORY_AVAILABLE float64 // in GB
+const CPU_AVAILABLE = 2    // number of cores
+const MEMORY_AVAILABLE = 4 // in GB
 
-var compute_remaining float64
-var memory_remaining float64
+var compute_remaining float64 = CPU_AVAILABLE
+var memory_remaining float64 = MEMORY_AVAILABLE
 
 var job_queue []rpcstructs.Args
 var job_queue_len int = 0
@@ -197,17 +196,6 @@ func periodicallySendStats() {
 }
 
 func main() {
-
-	cpuPtr := flag.Float64("cpu", 2.0, "Total CPU available (cores)")
-	memPtr := flag.Float64("mem", 4.0, "Total memory available (GB)")
-	flag.Parse()
-
-	CPU_AVAILABLE = *cpuPtr
-	MEMORY_AVAILABLE = *memPtr
-
-	compute_remaining = CPU_AVAILABLE
-	memory_remaining = MEMORY_AVAILABLE
-
 	go processJobQueue() // Start the job queue processor in a separate goroutine
 	go periodicallySendStats()
 	startServer()
