@@ -52,6 +52,8 @@ type ServerState struct {
 
 }
 
+
+
 // Define the enum values as constants
 
 const (
@@ -88,13 +90,13 @@ var snapshotList SnapshotList = SnapshotList{}
 
 var x int = 0
 
-// var online_compute_vms = []int
+var online_compute_vms = make(map[string]bool)
 
 // Here, y denotes the number of compute heavy VMs that are currently online
 
 var y int = 0
 
-// var online_memory_vms = []int
+var online_memory_vms = make(map[string]bool)
 
 
 func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plotter.XYs) {
@@ -221,9 +223,36 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	if status.Status == OFFLINE {
 		fmt.Println("Server , ", args.ServerIp, " is now offline")
 	}
-	// if(status.Status == ONLINE) {
+	if(status.Status == ONLINE) {
+		if(status.Server_Type == COMPUTE_HEAVY){
+			online_compute_vms[args.ServerIp] = true
+		} else{
+			online_memory_vms[args.ServerIp] = true
+		}
+	} else { 
+		if(status.Server_Type == COMPUTE_HEAVY){
+			online_compute_vms[args.ServerIp] = false
+			
+		} else { 
+			online_memory_vms[args.ServerIp] = false
+		}
+	}
 
-	// }
+	compute_count := 0
+	mem_count := 0
+	for _, exists := range online_compute_vms {
+		if exists {
+			compute_count++
+		}
+	}
+	for _, exists := range online_memory_vms {
+		if exists {
+			mem_count++
+		}
+	}
+	x = compute_count
+	y = mem_count
+
 	status.ComputeRemaining = args.ComputeRemaining
 	status.MemoryRemaining = args.MemoryRemaining
 	server_to_status[args.ServerIp] = status
@@ -297,9 +326,9 @@ func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_
 
 	var maxVal float64 = math.Inf(-1)
 
-	for i := 0; i < num_compute_heavy_available; i++ {
+	for i := 0; i <= num_compute_heavy_available; i++ {
 
-		for j := 0; j < num_memory_heavy_available; j++ {
+		for j := 0; j <= num_memory_heavy_available; j++ {
 
 			if i == 0 && j == 0 {
 				continue
