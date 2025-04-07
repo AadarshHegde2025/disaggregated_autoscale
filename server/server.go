@@ -116,8 +116,12 @@ func processJobQueue() {
 
 				// remove that job from the queue and add it back in
 				job_queue = job_queue[1:]
-				job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
-				spots_to_pushback += 1 // future jobs should be pushed back behind where we placed this one
+				if spots_to_pushback >= job_queue_len {
+					job_queue = append(job_queue, job_to_delay)
+				} else {
+					job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
+					spots_to_pushback += 1 // future jobs should be pushed back behind where we placed this one
+				}
 			} else {
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
@@ -137,7 +141,7 @@ func processJobQueue() {
 
 		}
 		mu.Unlock()
-		time.Sleep(400 * time.Millisecond)
+		time.Sleep(300 * time.Millisecond)
 	}
 }
 
