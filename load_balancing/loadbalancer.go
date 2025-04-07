@@ -116,7 +116,8 @@ func resource_awareness_loadbalancer() {
 		FROM tasks
 	`)
 
-	i := 0
+	compute_i := 0
+	memory_i := 0
 	for rows.Next() {
 		// fmt.Println(record[6])
 		var job_id int
@@ -129,14 +130,18 @@ func resource_awareness_loadbalancer() {
 		var server_ip string
 		fmt.Println((plan_cpu / (100 * 12)), plan_mem)
 		if (plan_cpu / (100 * 8)) > plan_mem {
-			server_ip = compute_online_servers[i%len(compute_online_servers)]
+			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
 
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+
+			compute_i += 1
 
 		} else {
-			server_ip = memory_online_servers[i%len(memory_online_servers)]
+			server_ip = memory_online_servers[memory_i%len(memory_online_servers)]
 
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+
+			memory_i += 1
 		}
 
 		mu.Lock()
@@ -148,7 +153,6 @@ func resource_awareness_loadbalancer() {
 		mu.Unlock()
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
-		i += 1
 		time.Sleep(100 * time.Millisecond)
 	}
 }
