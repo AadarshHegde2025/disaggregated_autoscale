@@ -150,7 +150,9 @@ func resource_awareness_loadbalancer() {
 
 			memory_i += 1
 		} else {
+			fmt.Println("No match: ", server_ip)
 			server_ip = values[i%number_of_online_servers]
+			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 		}
 
 		mu.Lock()
