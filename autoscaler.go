@@ -574,24 +574,26 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 			if x_prime > x {
 
 				// Add (x_prime - x) compute heavy server
+				fmt.Println("Adding compute heavy server")
 
 			}
 
 			if y_prime > y {
 
 				// Add (y_prime - y) memory heavy servers
-
+				fmt.Println("Adding memory heavy server")
 			}
 
 			if x_prime < x {
 
 				// Sort compute heavy servers by queue size, remove (x - x_prime) servers with the shortest queues
-
+				fmt.Println("Removing compute heavy server")
 			}
 
 			if y_prime < y {
 
 				// Sort memory heavy servers by queue size, remove (y - y_prime) servers with the shortest queues
+				fmt.Println("Removing memory heavy server")
 
 			}
 
