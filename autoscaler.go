@@ -88,9 +88,14 @@ var snapshotList SnapshotList = SnapshotList{}
 
 var x int = 0
 
+// var online_compute_vms = []int
+
 // Here, y denotes the number of compute heavy VMs that are currently online
 
 var y int = 0
+
+// var online_memory_vms = []int
+
 
 func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plotter.XYs) {
 	p := plot.New()
@@ -216,6 +221,9 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	if status.Status == OFFLINE {
 		fmt.Println("Server , ", args.ServerIp, " is now offline")
 	}
+	// if(status.Status == ONLINE) {
+
+	// }
 	status.ComputeRemaining = args.ComputeRemaining
 	status.MemoryRemaining = args.MemoryRemaining
 	server_to_status[args.ServerIp] = status
@@ -300,6 +308,7 @@ func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_
 			utility := calculateUtilityFunction(i, j)
 
 			if utility > maxVal {
+				fmt.Println(maxVal)
 
 				maxVal = utility
 
@@ -685,6 +694,9 @@ func main() {
 
 		}
 	}
+	fmt.Println(num_compute_heavy_available)
+	// fmt.Printf("num_compute_heavy_available: %v\n", num_compute_heavy_available)
+	// fmt.Printf("num_memory_heavy_available: %v\n", num_memory_heavy_available)
 
 	go startAutoscaler()                                                  // handler to receive stats from servers
 	go autoscale(num_compute_heavy_available, num_memory_heavy_available) // actual autoscaling logic
