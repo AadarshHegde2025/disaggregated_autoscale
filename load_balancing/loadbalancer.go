@@ -89,7 +89,44 @@ func (t *ServerChange) RemoveServer(args *rpcstructs.ServerDetails, reply *int) 
 }
 
 func resource_awareness_loadbalancer() {
+	db, _ := sql.Open("sqlite3", "./batch_data.db")
+	rows, _ := db.Query(`
+		SELECT job_id, task_id, plan_cpu, plan_mem
+		FROM tasks
+	`)
 
+	i := 0
+	for rows.Next() {
+		// fmt.Println(record[6])
+		var job_id int
+		var task_id int
+		var plan_cpu float64
+		var plan_mem float64
+
+		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
+		var client *rpc.Client
+		var server_ip string
+		if plan_cpu > plan_mem {
+			server_ip = compute_online_servers[i%len(compute_online_servers)]
+			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+
+		} else {
+			server_ip = memory_online_servers[i%len(memory_online_servers)]
+			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+		}
+
+		mu.Lock()
+		mu2.Lock()
+		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
+		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, server_ip, real_cpu, real_mem, server_to_type[server_ip]} // TODO: fill in with actual values from the trace
+		// fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
+		mu2.Unlock()
+		mu.Unlock()
+		var reply int
+		client.Call("HandleJob.AddJobs", &args, &reply)
+		i += 1
+		time.Sleep(10 * time.Millisecond)
+	}
 }
 
 func round_robin_loadbalancer() {
@@ -176,6 +213,13 @@ func processConfigFile() {
 		if words[3] == "O" {
 			number_of_online_servers += 1
 			connected_servers[i] = strings.TrimSpace(words[1])
+
+			if server_to_type[words[1]] == "C" {
+				compute_online_servers = append(compute_online_servers, strings.TrimSpace(words[1]))
+			} else if server_to_type[words[1]] == "M" {
+				memory_online_servers = append(memory_online_servers, strings.TrimSpace(words[1]))
+			}
+
 		}
 		i += 1
 	}
