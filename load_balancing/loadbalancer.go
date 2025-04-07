@@ -199,7 +199,7 @@ func ListenForAutoscalerUpdates() {
 	server_adder := new(ServerChange)
 	rpc.Register(server_adder)
 
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", ":9001")
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 		return

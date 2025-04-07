@@ -242,7 +242,7 @@ func startAutoscaler() { // server listener
 	stat_handler := new(AutoScaler)
 	rpc.Register(stat_handler)
 
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", ":9001")
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 		return
