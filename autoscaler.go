@@ -327,11 +327,11 @@ func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_
 
 func calculateUtilityFunction(x_prime int, y_prime int) float64 {
 
-	var alpha float64 = 1.0
+	var alpha float64 = 100 // latency
 
-	var lambda float64 = 1.0
+	var lambda float64 = 1.0 // utilization
 
-	var gamma float64 = 1.0
+	var gamma float64 = 1.0 // avoids thrashing
 
 	// First term
 
