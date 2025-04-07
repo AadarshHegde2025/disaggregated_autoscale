@@ -1,5 +1,5 @@
 - name: ComputeHeavy
-  vm_numbers: [1, 2]
+  vm_numbers: [1, 2, 3]
   commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go -cpu=64 -mem=16"]
 
 

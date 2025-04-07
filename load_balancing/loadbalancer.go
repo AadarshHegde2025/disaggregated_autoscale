@@ -118,6 +118,7 @@ func resource_awareness_loadbalancer() {
 
 	compute_i := 0
 	memory_i := 0
+	i := 0
 	for rows.Next() {
 		// fmt.Println(record[6])
 		var job_id int
@@ -130,21 +131,26 @@ func resource_awareness_loadbalancer() {
 		var server_ip string
 		fmt.Println((plan_cpu / (100 * 40)), plan_mem) // I have plan_cpu and plan_mem and potential servers to route to, but I don't know server side stats other than compute or memory heavy
 
-		// how to determine what is most resource intensive?
+		var values []string
+		for _, v := range connected_servers {
+			values = append(values, v)
+		}
 
-		if (plan_cpu / (100 * 64)) > plan_mem {
+		if (plan_cpu/(100*64)) > plan_mem && len(compute_online_servers) > 0 { // TODO: this is a very naive way of determining if the job is compute or memory heavy, need to be more sophisticated
 			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
 			fmt.Println("Sending to compute server: ", server_ip)
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 
 			compute_i += 1
 
-		} else {
+		} else if len(memory_online_servers) > 0 {
 			server_ip = memory_online_servers[memory_i%len(memory_online_servers)]
 			fmt.Println("Sending to memory server: ", server_ip)
 			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 
 			memory_i += 1
+		} else {
+			server_ip = values[i%len(memory_online_servers)]
 		}
 
 		mu.Lock()
@@ -157,6 +163,7 @@ func resource_awareness_loadbalancer() {
 		var reply int
 		client.Call("HandleJob.AddJobs", &args, &reply)
 		time.Sleep(100 * time.Millisecond)
+		i += 1
 	}
 }
 
