@@ -661,7 +661,7 @@ func main() {
 		line = scanner.Text()
 		words := strings.Fields(line)
 		var server_type ServerType
-		fmt.Println()
+		fmt.Println("hello")
 
 		switch words[3] {
 
