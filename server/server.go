@@ -126,6 +126,8 @@ func processJobQueue() {
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
 
+				fmt.Println("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining)
+
 				jid := job_queue[0].JobId
 				tid := job_queue[0].TaskId
 				duration := job_queue[0].TimeEnd - job_queue[0].TimeStart
