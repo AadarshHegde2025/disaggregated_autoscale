@@ -116,7 +116,7 @@ func processJobQueue() {
 
 				// remove that job from the queue and add it back in
 				job_queue = job_queue[1:]
-				if spots_to_pushback >= job_queue_len {
+				if spots_to_pushback >= job_queue_len { // is happening because a job is getting double marked?
 					job_queue = append(job_queue, job_to_delay)
 				} else {
 					job_queue = append(job_queue[:spots_to_pushback], append([]rpcstructs.Args{job_to_delay}, job_queue[spots_to_pushback:]...)...)
@@ -152,7 +152,7 @@ func (t *HandleJob) AddJobs(args *rpcstructs.Args, reply *int) error {
 	job_queue_len += 1
 	status = true
 	key := rpcstructs.Pair{J_ID: args.JobId, T_ID: args.TaskId}
-	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) / 100
+	job_to_cpu_resource_usage[key] = float64(args.RealMaxCPU) * 100 // number of cores being used
 	job_to_mem_resource_usage[key] = float64(args.RealMaxMemory * MEMORY_AVAILABLE)
 	job_to_timing[key] = rpcstructs.JobTiming{JobStartTime: time.Now().Unix(), JobEndTime: -1, JobExecStartTime: int64(args.TimeStart), JobExecEndTime: int64(args.TimeEnd)}
 	my_ip = args.ServerIp
