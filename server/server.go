@@ -110,6 +110,7 @@ func processJobQueue() {
 			key := rpcstructs.Pair{J_ID: job_queue[0].JobId, T_ID: job_queue[0].TaskId}
 			if compute_remaining < job_to_cpu_resource_usage[key] || memory_remaining < job_to_mem_resource_usage[key] {
 				// TODO: Push the current job back in the queue due to lack of resources
+				fmt.Println("Not enough resources")
 				job_to_marked[key] = 1
 
 				job_to_delay := job_queue[0]
