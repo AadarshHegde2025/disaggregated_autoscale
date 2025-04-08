@@ -99,7 +99,7 @@ func deallocateResources(jobId int, taskId int) {
 	state := job_to_timing[key]
 	state.JobEndTime = time.Now().Unix()
 	job_to_timing[key] = state
-	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+	fmt.Println("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
 	sendAutoscalerStatistics()
 	mu.Unlock()
 
