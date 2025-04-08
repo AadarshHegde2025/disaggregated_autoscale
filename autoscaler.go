@@ -211,7 +211,7 @@ func autoscale() {
 	var reply int
 
 	// Add servers from sp25-cs525-0906 to sp25-cs525-0918 (inclusive)
-	for i := 6; i <= 18; i++ {
+	for i := 6; i <= 9; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
 		nodeNumber := i - 1 // Or however you want to map this
 		args := rpcstructs.ServerDetails{hostname, nodeNumber, server_to_status[hostname].Server_Type}
@@ -225,7 +225,7 @@ func autoscale() {
 	time.Sleep(20 * time.Second) // simulate some time passing before removals
 
 	// Remove the same servers
-	for i := 6; i <= 18; i++ {
+	for i := 6; i <= 9; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
 		nodeNumber := i - 1
 		args := rpcstructs.ServerDetails{hostname, nodeNumber, server_to_status[hostname].Server_Type}
