@@ -137,7 +137,7 @@ func resource_awareness_loadbalancer() {
 
 		if (plan_cpu/(100*64)) > plan_mem && len(compute_online_servers) > 0 { // TODO: this is a very naive way of determining if the job is compute or memory heavy, need to be more sophisticated
 			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
-			// fmt.Println("Sending to compute server: ", server_ip)
+			fmt.Println("Sending to compute server: ", server_ip)
 			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 			if err != nil {
 				fmt.Println("Error connecting to server:", err)
@@ -148,7 +148,7 @@ func resource_awareness_loadbalancer() {
 
 		} else if len(memory_online_servers) > 0 {
 			server_ip = memory_online_servers[memory_i%len(memory_online_servers)]
-			// fmt.Println("Sending to memory server: ", server_ip)
+			fmt.Println("Sending to memory server: ", server_ip)
 			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 			if err != nil {
 				fmt.Println("Error connecting to server:", err)
@@ -157,7 +157,7 @@ func resource_awareness_loadbalancer() {
 			main_client = client
 			memory_i += 1
 		} else {
-			// fmt.Println("No match: ", server_ip)
+			fmt.Println("No match: ", server_ip)
 			server_ip = values[i%number_of_online_servers]
 			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 			if err != nil {
@@ -180,7 +180,7 @@ func resource_awareness_loadbalancer() {
 			fmt.Println("Error calling AddJobs:", err)
 			continue
 		}
-		time.Sleep(10 * time.Millisecond)
+		time.Sleep(1000 * time.Millisecond)
 		i += 1
 	}
 }
