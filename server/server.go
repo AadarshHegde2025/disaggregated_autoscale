@@ -197,7 +197,9 @@ func startServer() {
 
 func periodicallySendStats() {
 	for {
+		mu.Lock()
 		sendAutoscalerStatistics()
+		mu.Unlock()
 		time.Sleep(100 * time.Millisecond)
 	}
 
@@ -216,6 +218,6 @@ func main() {
 	memory_remaining = MEMORY_AVAILABLE
 
 	go processJobQueue() // Start the job queue processor in a separate goroutine
-	// go periodicallySendStats()
+	go periodicallySendStats()
 	startServer()
 }
