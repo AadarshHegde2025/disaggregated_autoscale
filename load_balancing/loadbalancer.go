@@ -171,6 +171,7 @@ func resource_awareness_loadbalancer() {
 		mu.Lock()
 		mu2.Lock()
 		real_cpu, real_mem, start_time, end_time := retrieve_corresponding_real_resource_util(job_id, task_id)
+		fmt.Println("real cpu: ", real_cpu, " real mem: ", real_mem, "plan cpu: ", plan_cpu, " plan mem: ", plan_mem)
 		args := rpcstructs.Args{job_id, plan_cpu, plan_mem, start_time, end_time, task_id, server_ip, real_cpu, real_mem, server_to_type[server_ip]} // TODO: fill in with actual values from the trace
 		// fmt.Println("data: ", job_id, " ", task_id, " ", plan_cpu, " ", plan_mem, " ", real_cpu, " ", real_mem)
 		mu2.Unlock()
