@@ -100,7 +100,9 @@ func deallocateResources(jobId int, taskId int) {
 	state.JobEndTime = time.Now().Unix()
 	job_to_timing[key] = state
 	fmt.Print("Server: Resources deallocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining, "\n")
+	sendAutoscalerStatistics()
 	mu.Unlock()
+
 }
 
 func processJobQueue() {
@@ -126,7 +128,7 @@ func processJobQueue() {
 			} else {
 				compute_remaining -= job_to_cpu_resource_usage[key]
 				memory_remaining -= job_to_mem_resource_usage[key]
-
+				sendAutoscalerStatistics()
 				fmt.Println("Server: Resources allocated, cpu remaining: ", compute_remaining, " mem remaining: ", memory_remaining)
 
 				jid := job_queue[0].JobId
@@ -217,6 +219,6 @@ func main() {
 	memory_remaining = MEMORY_AVAILABLE
 
 	go processJobQueue() // Start the job queue processor in a separate goroutine
-	go periodicallySendStats()
+	// go periodicallySendStats()
 	startServer()
 }
