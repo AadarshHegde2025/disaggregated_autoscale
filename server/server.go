@@ -200,7 +200,7 @@ func periodicallySendStats() {
 		mu.Lock()
 		sendAutoscalerStatistics()
 		mu.Unlock()
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(2000 * time.Millisecond)
 	}
 
 }

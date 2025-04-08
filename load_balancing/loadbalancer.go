@@ -180,7 +180,7 @@ func resource_awareness_loadbalancer() {
 			fmt.Println("Error calling AddJobs:", err)
 			continue
 		}
-		time.Sleep(1000 * time.Millisecond)
+		time.Sleep(10 * time.Millisecond)
 		i += 1
 	}
 }
