@@ -1,8 +1,16 @@
 - name: ComputeHeavy
-  vm_numbers: [1, 2, 3]
+  vm_numbers: [1, 2, 3, 4, 5, 6]
   commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go -cpu=64 -mem=16"]
 
 
 - name: MemHeavy
-  vm_numbers: [4,5, 6]
+  vm_numbers: [7,8,9]
+  commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go -cpu=16 -mem=128"]
+
+- name: ComputeHeavy2
+  vm_numbers: [10,11,12,13]
+  commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go -cpu=64 -mem=16"]
+
+- name: MemHeavy2
+  vm_numbers: [14,15,16,17,18]
   commands: ["cd disaggregated_autoscale", "git switch aadarsh/server_architecture_changes", "git pull", "GOTOOLCHAIN=auto go run server/server.go -cpu=16 -mem=128"]
