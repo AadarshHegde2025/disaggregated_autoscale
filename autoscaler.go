@@ -179,13 +179,13 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	return nil
 }
 
-func adjust_server(power_flag bool) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
+func adjust_server(power_flag bool, server_num int) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
 	if power_flag {
 		fmt.Println("Turning on server")
-		exec.Command("python3", "vm_power.py", "--vm", "5", "--state", "on").Run()
+		exec.Command("python3", "vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "on").Run()
 	} else {
 		fmt.Println("Turning off server")
-		exec.Command("python3", "vm_power.py", "--vm", "5", "--state", "off").Run()
+		exec.Command("python3", "vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "off").Run()
 	}
 }
 
@@ -199,7 +199,7 @@ func autoscale() {
 	// autoscaler also has to let load balancer know when it adds or removes a server
 
 	// basic testing that autoscaler can interact with load balancer
-	time.Sleep(60 * time.Second) // wait for load balancer to start
+	time.Sleep(30 * time.Second) // wait for load balancer to start
 	fmt.Println("Autoscaler is starting to send stats to load balancer")
 
 	load_balancer, err := rpc.Dial("tcp", LOAD_BALANCER_IP+":"+strconv.Itoa(port))
@@ -211,6 +211,13 @@ func autoscale() {
 	var reply int
 
 	// Add servers from sp25-cs525-0906 to sp25-cs525-0918 (inclusive)
+	for i := 10; i <= 18; i++ {
+		nodeNumber := i - 1 // Or however you want to map this
+		adjust_server(true, nodeNumber)
+	}
+
+	time.Sleep(20 * time.Second) // wait for servers to start up
+
 	for i := 10; i <= 18; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
 		nodeNumber := i - 1 // Or however you want to map this
