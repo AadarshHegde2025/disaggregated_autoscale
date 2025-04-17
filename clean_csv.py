@@ -139,7 +139,7 @@ def clean_db():
 if __name__ == "__main__":
 
     # Database creation
-    # create_db()
+    create_db()
     clean_db()
 
     # Data merging 
