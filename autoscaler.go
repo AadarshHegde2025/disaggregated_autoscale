@@ -216,7 +216,7 @@ func autoscale() {
 		go adjust_server(true, nodeNumber)
 	}
 
-	time.Sleep(60 * time.Second) // wait for servers to start up
+	time.Sleep(30 * time.Second) // wait for servers to start up
 
 	fmt.Println("Now telling load balanecer to add server")
 	for i := 10; i <= 18; i++ {
