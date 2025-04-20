@@ -204,7 +204,10 @@ func round_robin_loadbalancer() {
 		}
 
 		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
-		client, _ := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		client, err := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		if err != nil {
+			fmt.Println("Error connecting to server:", err)
+		}
 		mu2.Unlock()
 		mu.Unlock()
 		// fmt.Println(record[6])
