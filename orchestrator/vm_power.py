@@ -35,7 +35,7 @@ def ssh_and_run(vm_number, cpu, mem):
     shell = client.invoke_shell()
     commands = [
         "cd disaggregated_autoscale",
-        f"GOTOOLCHAIN=auto go run server/server.go -cpu={cpu} -mem={mem}"
+        f"nohup GOTOOLCHAIN=auto go run server/server.go -cpu={cpu} -mem={mem} > server.log 2>&1 &"
     ]
 
     for cmd in commands:
