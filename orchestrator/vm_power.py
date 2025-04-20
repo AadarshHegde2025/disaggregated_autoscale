@@ -43,7 +43,7 @@ def ssh_and_run(vm_number, cpu, mem):
         shell.send(cmd + "\n")
         shell.recv(1024)
 
-    client.close()
+    # client.close()
     print(f"✅ Commands sent to VM{vm_number}")
 
 def init_server(server_number):
