@@ -21,8 +21,8 @@ USERNAME = os.getenv("SSH_USER")
 PASSWORD = os.getenv("SSH_PASS")
 
 def format_hostname(vm_number: int) -> str:
-    padded_num = f"{vm_number:02d}"
-    return f"{HOST_BEGIN}{padded_num}.cs.illinois.edu"
+    padded_num = f"{vm_number+1:02d}"
+    return f"sp25-cs525-09{padded_num}.cs.illinois.edu"
 
 def ssh_and_run(vm_number, cpu, mem):
     hostname = format_hostname(vm_number)
@@ -110,11 +110,13 @@ def main():
     payload = build_payload(urn, args.state)
     response = requests.post(VCENTER_URL, headers=headers, cookies=cookies, json=payload)
 
-    if SEND_COMMAND_FLAG:
-        init_server(int(args.vm.split('-')[-1]))  # Converts e.g., vm-0912 to 912
+    
 
     print("✅ Status:", response.status_code)
     print("🔁 Response:", response.text)
+
+    if SEND_COMMAND_FLAG:
+        init_server(int(args.vm.split('-')[-1]))  # Converts e.g., vm-0912 to 912
 
 
 if __name__ == "__main__":
