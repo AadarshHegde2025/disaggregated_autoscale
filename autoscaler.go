@@ -213,7 +213,7 @@ func autoscale() {
 	// Add servers from sp25-cs525-0906 to sp25-cs525-0918 (inclusive)
 	for i := 10; i <= 18; i++ {
 		nodeNumber := i - 1 // Or however you want to map this
-		adjust_server(true, nodeNumber)
+		go adjust_server(true, nodeNumber)
 	}
 
 	time.Sleep(20 * time.Second) // wait for servers to start up
