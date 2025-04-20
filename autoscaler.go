@@ -216,7 +216,7 @@ func autoscale() {
 		go adjust_server(true, nodeNumber)
 	}
 
-	time.Sleep(20 * time.Second) // wait for servers to start up
+	time.Sleep(30 * time.Second) // wait for servers to start up
 
 	for i := 10; i <= 18; i++ {
 		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
