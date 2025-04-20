@@ -64,6 +64,7 @@ def load_cookies(path):
     return {cookie['name']: cookie['value'] for cookie in raw}
 
 def build_payload(urn, state):
+    global SEND_COMMAND_FLAG
     if state == "on":
         spec = "{\"powerState\":\"poweredOn\"}"
         SEND_COMMAND_FLAG = True
