@@ -5,6 +5,7 @@ import os
 import sys
 from dotenv import load_dotenv
 import paramiko
+import time
 
 
 VCENTER_URL = "https://vc.cs.illinois.edu/ui/mutation/applyOnMultiEntity"
@@ -117,6 +118,7 @@ def main():
     print("🔁 Response:", response.text)
 
     if SEND_COMMAND_FLAG:
+        time.sleep(8)  # Wait for the VM to power on
         init_server(int(args.vm.split('-')[-1]))  # Converts e.g., vm-0912 to 912
 
 
