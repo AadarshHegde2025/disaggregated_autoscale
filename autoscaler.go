@@ -182,7 +182,14 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 func adjust_server(power_flag bool, server_num int) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
 	if power_flag {
 		fmt.Println("Turning on server")
-		exec.Command("python3", "./orchestrator/vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "on").Run()
+		cmd := exec.Command("python3", "./orchestrator/vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "on")
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		err := cmd.Run()
+		if err != nil {
+			fmt.Println("Command failed: ", err)
+		}
+
 	} else {
 		fmt.Println("Turning off server")
 		exec.Command("python3", "./orchestrator/vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "off").Run()
@@ -216,7 +223,7 @@ func autoscale() {
 		go adjust_server(true, nodeNumber)
 	}
 
-	time.Sleep(30 * time.Second) // wait for servers to start up
+	time.Sleep(50 * time.Second) // wait for servers to start up
 
 	fmt.Println("Now telling load balanecer to add server")
 	for i := 10; i <= 18; i++ {
