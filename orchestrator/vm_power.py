@@ -33,20 +33,22 @@ def ssh_and_run(vm_number, cpu, mem):
     client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     client.connect(hostname, PORT, USERNAME, PASSWORD)
 
-    shell = client.invoke_shell()
-    commands = [
-        "cd disaggregated_autoscale",
-        f"nohup bash -c 'GOTOOLCHAIN=auto go run server/server.go -cpu={cpu} -mem={mem}' > server.log 2>&1 &"
-    ]
+    # Build full command
+    full_cmd = (
+        f"cd disaggregated_autoscale && "
+        f"nohup bash -c 'GOTOOLCHAIN=auto go run server/server.go -cpu={cpu} -mem={mem}' "
+        f"> server.log 2>&1 &"
+    )
 
+    print(f"Running on VM{vm_number}: {full_cmd}")
+    stdin, stdout, stderr = client.exec_command(full_cmd)
 
-    for cmd in commands:
-        print(f"Running on VM{vm_number}: {cmd}")
-        shell.send(cmd + "\n")
-        shell.recv(1024)
+    # Read output to force execution
+    stdout.channel.recv_exit_status()
 
-    # client.close()
-    print(f"✅ Commands sent to VM{vm_number}")
+    client.close()
+    print(f"✅ Server start command sent to VM{vm_number}")
+
 
 def init_server(server_number):
     # send a command to that server to actially power on
@@ -118,7 +120,7 @@ def main():
     print("🔁 Response:", response.text)
 
     if SEND_COMMAND_FLAG:
-        time.sleep(8)  # Wait for the VM to power on
+        time.sleep(15)  # Wait for the VM to power on
         init_server(int(args.vm.split('-')[-1]))  # Converts e.g., vm-0912 to 912
 
 
