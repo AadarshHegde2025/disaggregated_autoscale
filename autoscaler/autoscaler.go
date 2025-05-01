@@ -339,6 +339,14 @@ func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
 
 func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
+	const N = 10
+
+	// Look through linked list backwards until we find a timestamp that was N seconds before now before we try to optimize 
+
+	now := time.Now().Unix()
+	timestamp := now - N
+	t.truncateHistory(timestamp)
+
 	var x_prime int = 0
 
 	var y_prime int = 0
@@ -421,29 +429,16 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	t.snapshotMutex.Lock()
 
 	defer t.snapshotMutex.Unlock()
-
-	const N = 10
-
-	// Look through linked list backwards until we find a timestamp that was N seconds before now
-
-	now := time.Now().Unix()
-	timestamp := now - N
-	t.truncateHistory(timestamp)
-
-	// TODO: Implement simulation of queues logic
-
-	// Initialize queues
-
+	
+	// Initialize simulation queues
+	// Compute heavy queues...
 	compute_queues := make([][]rpcstructs.Snapshot, x_prime)
-
 	for i := range compute_queues {
-
 		compute_queues[i] = make([]rpcstructs.Snapshot, 0)
-
 	}
 
+	// ... and memory heavy queues
 	memory_queues := make([][]rpcstructs.Snapshot, y_prime)
-
 	for i := range memory_queues {
 
 		memory_queues[i] = make([]rpcstructs.Snapshot, 0)
@@ -451,15 +446,12 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	}
 
 	// Assign jobs from the linked list to the queue
-
 	current := t.snapshotList.head
-
 	compute_queue_index := 0
-
 	memory_queue_index := 0
 
 	for {
-
+		// No more jobs to assign
 		if current == nil {
 			break
 		}
@@ -491,7 +483,6 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 	// for each compute heavy queue
 
-	// t
 
 	var total_latency int64 = 0
 

@@ -2,6 +2,8 @@ package main
 
 import (
 	rpcstructs "disaggregated_autoscale/rpc_structs"
+	"fmt"
+	"math"
 	"testing"
 )
 
@@ -211,4 +213,56 @@ func TestSnapshotTruncateToEmptyList(t *testing.T){
 	if autoscaler.snapshotList.head != nil{
 		t.Errorf("Expected truncation to an empty list")
 	}
+}
+
+func TestExpectedLatencyAndUtilization(t *testing.T){
+	autoscaler := AutoScaler{}
+
+	snapshots := []rpcstructs.Snapshot{
+        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+	}
+
+
+	for _, snapshot := range snapshots{
+		autoscaler.AddSnapshotToList(&snapshot)
+	}
+
+	current := autoscaler.snapshotList.head
+	count := 0
+	for {
+		if current == nil{
+			break;
+		}
+		count++
+		current = current.next
+	}
+
+	if count != len(snapshots) {
+		t.Errorf("Add Snapshot functionality unsuccessful, Expected Latency cannot be tested. Expected list of length %d, found %d", len(snapshots), count)
+	}
+	
+	//Truncates all snapshots from list that have timestamp < 50 seconds
+	calculated_latency, calculated_utilization := autoscaler.calculateExpectedLatencyAndUtilization(3, 3)
+	expected_latency := 4.0
+	expected_utilization := 100000.0
+
+	if math.IsNaN(calculated_latency) { 
+		t.Errorf("Calculated latency was not a number (NaN)")
+	}
+
+	if math.IsNaN(calculated_utilization) { 
+		t.Errorf("Calculated utilization was not a number (NaN)")
+	}
+	
+	if math.Abs(calculated_latency - expected_latency) >= 1e-3 {
+		fmt.Print(calculated_latency, expected_latency)
+		t.Errorf("Calculation of latency incorrect: calculated %f, expected %f", calculated_latency, expected_latency)
+	}
+	if math.Abs(calculated_utilization - expected_utilization) >= 1e-3 {
+		t.Errorf("Calculation of utilization incorrect: calculated %f, expected %f",calculated_utilization, expected_utilization)
+	}
+
 }
