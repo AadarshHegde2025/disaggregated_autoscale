@@ -219,10 +219,10 @@ func TestExpectedLatencyAndUtilization(t *testing.T){
 	autoscaler := AutoScaler{}
 
 	snapshots := []rpcstructs.Snapshot{
-        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.8, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
 	}
 
 
@@ -247,7 +247,7 @@ func TestExpectedLatencyAndUtilization(t *testing.T){
 	//Truncates all snapshots from list that have timestamp < 50 seconds
 	calculated_latency, calculated_utilization := autoscaler.calculateExpectedLatencyAndUtilization(3, 3)
 	expected_latency := 4.0
-	expected_utilization := 100000.0
+	expected_utilization := 3.6666
 
 	if math.IsNaN(calculated_latency) { 
 		t.Errorf("Calculated latency was not a number (NaN)")

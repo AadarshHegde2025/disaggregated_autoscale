@@ -488,7 +488,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 	total_jobs := 0
 
-	ComputeRunDuration := 0
+	ComputeRunDuration := int64(0)
 
 	var total_cpu_utilization float64 = 0
 
@@ -528,7 +528,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 		}
 
-		ComputeRunDuration += int(job_start_time)
+		ComputeRunDuration += int64(job_start_time) - compute_queues[q_idx][0].Timestamp
 
 		total_jobs += len(compute_queues[q_idx])
 
@@ -536,7 +536,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 	var total_memory_utilization float64 = 0
 
-	MemoryRunDuration := 0
+	MemoryRunDuration := int64(0)
 
 	for q_idx := range memory_queues {
 
@@ -574,12 +574,18 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 		}
 
-		MemoryRunDuration += int(job_start_time)
+		MemoryRunDuration += int64(job_start_time) - memory_queues[q_idx][0].Timestamp
 
 		total_jobs += len(memory_queues[q_idx])
 
 	}
-
+	// If nothing was run for each, prevent NaN
+	if MemoryRunDuration == 0 {
+		MemoryRunDuration = 1
+	}
+	if ComputeRunDuration == 0 {
+		ComputeRunDuration = 1
+	}
 	average_utilization := total_memory_utilization/float64(MemoryRunDuration) + total_cpu_utilization/float64(ComputeRunDuration)
 
 	return float64(total_latency) / float64(total_jobs), average_utilization
