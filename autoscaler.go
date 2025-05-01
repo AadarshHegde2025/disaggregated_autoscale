@@ -237,19 +237,27 @@ func autoscale() {
 		}
 	}
 
-	// time.Sleep(20 * time.Second) // simulate some time passing before removals
+	time.Sleep(40 * time.Second) // simulate some time passing before removals
 
-	// // Remove the same servers
-	// for i := 10; i <= 18; i++ {
-	// 	hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
-	// 	nodeNumber := i - 1
-	// 	args := rpcstructs.ServerDetails{hostname, nodeNumber, server_to_status[hostname].Server_Type}
+	for i := 10; i <= 18; i++ {
+		hostname := fmt.Sprintf("sp25-cs525-09%02d.cs.illinois.edu", i)
+		nodeNumber := i - 1
+		args := rpcstructs.ServerDetails{hostname, nodeNumber, server_to_status[hostname].Server_Type}
 
-	// 	err := load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
-	// 	if err != nil {
-	// 		fmt.Printf("RPC RemoveServer failed for %s: %v\n", hostname, err)
-	// 	}
-	// }
+		err := load_balancer.Call("ServerChange.RemoveServer", &args, &reply)
+		if err != nil {
+			fmt.Printf("RPC RemoveServer failed for %s: %v\n", hostname, err)
+		}
+	}
+
+	time.Sleep(1 * time.Second) // wait for load balancer to process the request
+
+	// Remove the same servers
+	for i := 10; i <= 18; i++ {
+
+		nodeNumber := i - 1 // Or however you want to map this
+		go adjust_server(false, nodeNumber)
+	}
 
 }
 
