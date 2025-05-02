@@ -635,6 +635,7 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 	fmt.Println("Autoscaler started")
 
 	for {
+		time.Sleep(5 * time.Second)
 
 		fmt.Printf("x: %v\n", x)
 		fmt.Printf("y: %v\n", y)
@@ -683,7 +684,6 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 
 		}
 		// attempt autoscale every 5 seconds (?)
-		time.Sleep(5 * time.Second)
 
 	}
 
