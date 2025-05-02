@@ -26,7 +26,7 @@ var mu2 sync.Mutex
 
 var connected_servers map[int]string = make(map[int]string) // node number -> server ip
 var server_to_type = make(map[string]string)                // server ip -> server type
-var port int = 9000
+var port int = 9001
 var number_of_online_servers int = 0
 
 var compute_online_servers = []string{} // list of available compute servers
@@ -116,6 +116,8 @@ func resource_awareness_loadbalancer() {
 		FROM tasks
 	`)
 
+	compute_i := 0
+	memory_i := 0
 	i := 0
 	for rows.Next() {
 		// fmt.Println(record[6])
@@ -125,15 +127,44 @@ func resource_awareness_loadbalancer() {
 		var plan_mem float64
 
 		rows.Scan(&job_id, &task_id, &plan_cpu, &plan_mem)
-		var client *rpc.Client
+		var main_client *rpc.Client
 		var server_ip string
-		if plan_cpu > plan_mem {
-			server_ip = compute_online_servers[i%len(compute_online_servers)]
-			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
 
+		var values []string
+		for _, v := range connected_servers {
+			values = append(values, v)
+		}
+
+		if (plan_cpu/(100*64)) > plan_mem && len(compute_online_servers) > 0 { // TODO: this is a very naive way of determining if the job is compute or memory heavy, need to be more sophisticated
+			server_ip = compute_online_servers[compute_i%len(compute_online_servers)]
+			fmt.Println("Sending to compute server: ", server_ip)
+			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+			if err != nil {
+				fmt.Println("Error connecting to server:", err)
+				continue
+			}
+			main_client = client
+			compute_i += 1
+
+		} else if len(memory_online_servers) > 0 {
+			server_ip = memory_online_servers[memory_i%len(memory_online_servers)]
+			fmt.Println("Sending to memory server: ", server_ip)
+			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+			if err != nil {
+				fmt.Println("Error connecting to server:", err)
+				continue
+			}
+			main_client = client
+			memory_i += 1
 		} else {
-			server_ip = memory_online_servers[i%len(memory_online_servers)]
-			client, _ = rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+			fmt.Println("No match: ", server_ip)
+			server_ip = values[i%number_of_online_servers]
+			client, err := rpc.Dial("tcp", server_ip+":"+strconv.Itoa(port))
+			if err != nil {
+				fmt.Println("Error connecting to server:", err)
+				continue
+			}
+			main_client = client
 		}
 
 		mu.Lock()
@@ -144,9 +175,13 @@ func resource_awareness_loadbalancer() {
 		mu2.Unlock()
 		mu.Unlock()
 		var reply int
-		client.Call("HandleJob.AddJobs", &args, &reply)
-		i += 1
+		err := main_client.Call("HandleJob.AddJobs", &args, &reply)
+		if err != nil {
+			fmt.Println("Error calling AddJobs:", err)
+			continue
+		}
 		time.Sleep(10 * time.Millisecond)
+		i += 1
 	}
 }
 
@@ -169,7 +204,10 @@ func round_robin_loadbalancer() {
 		}
 
 		// fmt.Println("sending to: ", connected_servers[i%number_of_online_servers])
-		client, _ := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		client, err := rpc.Dial("tcp", values[i%number_of_online_servers]+":"+strconv.Itoa(port))
+		if err != nil {
+			fmt.Println("Error connecting to server:", err)
+		}
 		mu2.Unlock()
 		mu.Unlock()
 		// fmt.Println(record[6])
@@ -199,7 +237,7 @@ func ListenForAutoscalerUpdates() {
 	server_adder := new(ServerChange)
 	rpc.Register(server_adder)
 
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", ":9001")
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 		return
@@ -264,7 +302,8 @@ func main() {
 	go ListenForAutoscalerUpdates()
 
 	// // Process Jobs:
-	resource_awareness_loadbalancer()
+	// resource_awareness_loadbalancer()
+	round_robin_loadbalancer()
 }
 
 /* My notes:
