@@ -30,6 +30,8 @@ var port int = 9000
 type AutoScaler struct{
 	snapshotList SnapshotList
 	snapshotMutex sync.Mutex
+	compute int		// The number of compute machines that are in the current configuration
+	memory int		// The number of memory machines that are in the current configuration
 }
 
 var server_to_status_overtime = make(map[string][]rpcstructs.ServerUsage)
