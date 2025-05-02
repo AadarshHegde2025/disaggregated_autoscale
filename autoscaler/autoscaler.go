@@ -428,6 +428,8 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 
 	defer t.snapshotMutex.Unlock()
 
+	fmt.Println("entering calculateExpectedLatencyAndUtilization")
+
 	// Initialize simulation queues
 	// Compute heavy queues...
 	compute_queues := make([][]rpcstructs.Snapshot, x_prime)
