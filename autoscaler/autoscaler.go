@@ -608,8 +608,8 @@ func (t *AutoScaler) autoscale(num_compute_heavy_available int, num_memory_heavy
 	// basic testing that autoscaler can interact with load balancer
 
 	fmt.Println("Autoscaler started")
-	time.Sleep(5 * time.Second)
 	for {
+		time.Sleep(5 * time.Second)
 
 		fmt.Printf("x: %v\n", x)
 		fmt.Printf("y: %v\n", y)
