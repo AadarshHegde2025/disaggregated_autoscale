@@ -325,15 +325,15 @@ func truncateHistory(list *SnapshotList, node *SnapshotListNode) {
 
 func findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
-	var x_prime int = 0
+	var x_prime int = 1
 
-	var y_prime int = 0
+	var y_prime int = 1
 
 	var maxVal float64 = math.Inf(-1)
 
-	for i := 0; i <= num_compute_heavy_available; i++ {
+	for i := 1; i <= num_compute_heavy_available; i++ {
 
-		for j := 0; j <= num_memory_heavy_available; j++ {
+		for j := 1; j <= num_memory_heavy_available; j++ {
 
 			if i == 0 && j == 0 {
 				continue
