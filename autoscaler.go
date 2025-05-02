@@ -11,6 +11,7 @@ import (
 	"os"
 	"os/exec"
 	"os/signal"
+	"strconv"
 	"strings"
 	"sync"
 	"syscall"
@@ -32,6 +33,7 @@ type AutoScaler struct{}
 var server_to_status_overtime = make(map[string][]rpcstructs.ServerUsage)
 
 var server_to_status = make(map[string]ServerState) // server_ip -> ServerStatus
+var server_ip_to_num = make(map[string]int)         // server_ip -> server number
 var job_completion_times = make(map[string][]int64) // how much time between when the job was added to the server and when it was completed, for each server
 var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
 
@@ -52,8 +54,6 @@ type ServerState struct {
 
 }
 
-
-
 // Define the enum values as constants
 
 const (
@@ -68,6 +68,8 @@ const (
 	COMPUTE_HEAVY ServerType = iota
 
 	MEMORY_HEAVY
+
+	INVALID
 )
 
 type SnapshotListNode struct {
@@ -97,7 +99,6 @@ var online_compute_vms = make(map[string]bool)
 var y int = 0
 
 var online_memory_vms = make(map[string]bool)
-
 
 func plotOverlayedMetric(title, filename, ylabel string, allData map[string]plotter.XYs) {
 	p := plot.New()
@@ -223,17 +224,17 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	if status.Status == OFFLINE {
 		fmt.Println("Server , ", args.ServerIp, " is now offline")
 	}
-	if(status.Status == ONLINE) {
-		if(status.Server_Type == COMPUTE_HEAVY){
+	if status.Status == ONLINE {
+		if status.Server_Type == COMPUTE_HEAVY {
 			online_compute_vms[args.ServerIp] = true
-		} else{
+		} else {
 			online_memory_vms[args.ServerIp] = true
 		}
-	} else { 
-		if(status.Server_Type == COMPUTE_HEAVY){
+	} else {
+		if status.Server_Type == COMPUTE_HEAVY {
 			online_compute_vms[args.ServerIp] = false
-			
-		} else { 
+
+		} else {
 			online_memory_vms[args.ServerIp] = false
 		}
 	}
@@ -264,13 +265,20 @@ func (t *AutoScaler) RequestedStats(args *rpcstructs.ServerUsage, reply *string)
 	return nil
 }
 
-func adjust_server(power_flag bool) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
+func adjust_server(power_flag bool, server_num int) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
 	if power_flag {
 		fmt.Println("Turning on server")
-		exec.Command("python3", "vm_power.py", "--vm", "5", "--state", "on").Run()
+		cmd := exec.Command("python3", "./orchestrator/vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "on")
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		err := cmd.Run()
+		if err != nil {
+			fmt.Println("Command failed: ", err)
+		}
+
 	} else {
 		fmt.Println("Turning off server")
-		exec.Command("python3", "vm_power.py", "--vm", "5", "--state", "off").Run()
+		exec.Command("python3", "./orchestrator/vm_power.py", "--vm", strconv.Itoa(server_num), "--state", "off").Run()
 	}
 }
 
@@ -594,6 +602,25 @@ func calculateExpectedLatencyAndUtilization(x_prime int, y_prime int) (float64, 
 
 }
 
+func adjust_server_wrapper(typ ServerType, curr_stat Status, power_flag bool) { // if true turn on, if false turn off, need to turn on first, wait a little, then tell load balancer to add server
+	slice := make([]string, 0)
+	for k, v := range server_to_status {
+		if v.Server_Type == typ && v.Status == curr_stat {
+			slice = append(slice, k)
+		}
+	}
+
+	if power_flag {
+		server_to_status[slice[0]] = ServerState{Status: ONLINE, Server_Type: COMPUTE_HEAVY, ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
+		go adjust_server(power_flag, server_ip_to_num[slice[0]])
+	} else {
+		var curr ServerState = server_to_status[slice[0]]
+		curr.Status = OFFLINE
+		server_to_status[slice[0]] = curr
+		go adjust_server(power_flag, server_ip_to_num[slice[0]])
+	}
+}
+
 func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) {
 	// TODO: Write actual algorithm for autoscaling here
 
@@ -623,24 +650,34 @@ func autoscale(num_compute_heavy_available int, num_memory_heavy_available int) 
 				// Add (x_prime - x) compute heavy server
 				fmt.Println("Adding compute heavy server")
 
+				// get list of currently offline compute heavy servers
+
+				adjust_server_wrapper(COMPUTE_HEAVY, OFFLINE, true) // power on a currently offline server
+
 			}
 
 			if y_prime > y {
 
 				// Add (y_prime - y) memory heavy servers
 				fmt.Println("Adding memory heavy server")
+
+				adjust_server_wrapper(MEMORY_HEAVY, OFFLINE, true) // power on a currently offline server
 			}
 
 			if x_prime < x {
 
 				// Sort compute heavy servers by queue size, remove (x - x_prime) servers with the shortest queues
 				fmt.Println("Removing compute heavy server")
+
+				adjust_server_wrapper(COMPUTE_HEAVY, ONLINE, false)
 			}
 
 			if y_prime < y {
 
 				// Sort memory heavy servers by queue size, remove (y - y_prime) servers with the shortest queues
 				fmt.Println("Removing memory heavy server")
+
+				adjust_server_wrapper(MEMORY_HEAVY, ONLINE, false)
 
 			}
 
@@ -688,6 +725,7 @@ func main() {
 
 	var num_memory_heavy_available int = 0
 	var num_compute_heavy_available int = 0
+	var i int = 0
 	for scanner.Scan() {
 		line = scanner.Text()
 		words := strings.Fields(line)
@@ -707,11 +745,12 @@ func main() {
 
 		default:
 
-			server_type = COMPUTE_HEAVY
+			server_type = INVALID
 
 		}
 
 		server_to_status[words[1]] = ServerState{Status: OFFLINE, Server_Type: server_type, ComputeRemaining: -1, MemoryRemaining: -1} // everything starts offline until they identify themselves, -1 for resource util until known
+		server_ip_to_num[words[1]] = i
 
 		// Count whether server is online or offline
 
