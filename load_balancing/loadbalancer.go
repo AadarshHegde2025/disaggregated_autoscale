@@ -242,7 +242,7 @@ func ListenForAutoscalerUpdates() {
 		fmt.Println("Error starting server:", err)
 		return
 	}
-	fmt.Println("Load balancer listening on port 9000")
+	fmt.Println("Load balancer listening on port 900")
 
 	for {
 		conn, err := listener.Accept()
