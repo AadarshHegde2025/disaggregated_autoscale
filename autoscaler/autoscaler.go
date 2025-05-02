@@ -27,11 +27,11 @@ var port int = 9000
 // everything working
 
 // TODO: aggregate the server stats over here. metrics: job latency, efficiency, graph of server usage
-type AutoScaler struct{
-	snapshotList SnapshotList
+type AutoScaler struct {
+	snapshotList  SnapshotList
 	snapshotMutex sync.Mutex
-	compute int		// The number of compute machines that are in the current configuration
-	memory int		// The number of memory machines that are in the current configuration
+	compute       int // The number of compute machines that are in the current configuration
+	memory        int // The number of memory machines that are in the current configuration
 }
 
 var server_to_status_overtime = make(map[string][]rpcstructs.ServerUsage)
@@ -41,8 +41,6 @@ var job_completion_times = make(map[string][]int64) // how much time between whe
 var job_execution_times = make(map[string][]int64)  // how much time the job took to execute, for each server
 
 var mu sync.Mutex
-
-
 
 type Status int
 
@@ -86,7 +84,6 @@ type SnapshotList struct {
 
 	tail *SnapshotListNode
 }
-
 
 // Here, x denotes the number of compute heavy VMs that are currently online
 
@@ -294,7 +291,7 @@ func (t *AutoScaler) AddSnapshotToList(args *rpcstructs.Snapshot) error {
 
 		t.snapshotList.tail = snapshotNode
 
-	// There is a node in our list already, add the new node as the tail
+		// There is a node in our list already, add the new node as the tail
 
 	} else {
 
@@ -306,12 +303,11 @@ func (t *AutoScaler) AddSnapshotToList(args *rpcstructs.Snapshot) error {
 
 	}
 
-
 	return nil
 
 }
 
-// Truncates snapshot list so that the timestamp of all timestamps is at least `minimum timestamp`  
+// Truncates snapshot list so that the timestamp of all timestamps is at least `minimum timestamp`
 func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
 	t.snapshotMutex.Lock()
 	defer t.snapshotMutex.Unlock()
@@ -328,7 +324,7 @@ func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
 
 			// Remove all data from the linked list that is before our threshold
 			t.snapshotList.head = current.next
-			if current.next != nil{
+			if current.next != nil {
 				current.next.prev = nil
 			}
 			return
@@ -341,9 +337,9 @@ func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
 
 func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
-	const N = 10
+	const N = 1000000000000
 
-	// Look through linked list backwards until we find a timestamp that was N seconds before now before we try to optimize 
+	// Look through linked list backwards until we find a timestamp that was N seconds before now before we try to optimize
 
 	now := time.Now().Unix()
 	timestamp := now - N
@@ -431,7 +427,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	t.snapshotMutex.Lock()
 
 	defer t.snapshotMutex.Unlock()
-	
+
 	// Initialize simulation queues
 	// Compute heavy queues...
 	compute_queues := make([][]rpcstructs.Snapshot, x_prime)
@@ -484,7 +480,6 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	}
 
 	// for each compute heavy queue
-
 
 	var total_latency int64 = 0
 
@@ -653,7 +648,7 @@ func (t *AutoScaler) autoscale(num_compute_heavy_available int, num_memory_heavy
 }
 
 func (t *AutoScaler) startAutoscaler() { // server listener
-	
+
 	rpc.Register(t)
 
 	listener, err := net.Listen("tcp", ":9000")
