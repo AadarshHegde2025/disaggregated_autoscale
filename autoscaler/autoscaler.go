@@ -410,7 +410,7 @@ func (t *AutoScaler) calculateUtilityFunction(x_prime int, y_prime int) float64 
 
 	var D float64 = 0
 
-	fmt.Println("right before calculateExpectedLatencyAndUtilization")
+	// fmt.Println("right before calculateExpectedLatencyAndUtilization")
 	A, B = t.calculateExpectedLatencyAndUtilization(x_prime, y_prime)
 
 	C = float64(x_prime + y_prime)
