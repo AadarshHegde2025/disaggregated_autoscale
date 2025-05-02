@@ -586,6 +586,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	if total_jobs == 0 {
 		total_jobs = 1
 	}
+	fmt.Println("sanity check", total_jobs, MemoryRunDuration, ComputeRunDuration)
 	average_utilization := total_memory_utilization/float64(MemoryRunDuration) + total_cpu_utilization/float64(ComputeRunDuration)
 
 	return float64(total_latency) / float64(total_jobs), average_utilization
