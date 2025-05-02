@@ -418,7 +418,7 @@ func (t *AutoScaler) calculateUtilityFunction(x_prime int, y_prime int) float64 
 
 	fmt.Println(A, B, C, D)
 
-	return alpha*A + lambda*B + C + gamma*D
+	return alpha*A + lambda*B - C - gamma*D
 
 }
 
