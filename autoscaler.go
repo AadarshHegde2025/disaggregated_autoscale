@@ -23,7 +23,7 @@ import (
 )
 
 var LOAD_BALANCER_IP string = "sp25-cs525-0919.cs.illinois.edu" // Change this
-var port int = 9000
+var port int = 9001
 
 // everything working
 
@@ -693,12 +693,12 @@ func startAutoscaler() { // server listener
 	stat_handler := new(AutoScaler)
 	rpc.Register(stat_handler)
 
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", ":9001")
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 		return
 	}
-	fmt.Println("Server listening on port 9000")
+	fmt.Println("Server listening on port 9001")
 
 	for {
 		conn, err := listener.Accept()

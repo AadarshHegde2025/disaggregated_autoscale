@@ -220,12 +220,12 @@ func startServer() {
 	job_handler := new(HandleJob)
 	rpc.Register(job_handler)
 
-	listener, err := net.Listen("tcp", ":9000")
+	listener, err := net.Listen("tcp", ":9001")
 	if err != nil {
 		fmt.Println("Error starting server:", err)
 		return
 	}
-	fmt.Println("Server listening on port 9000")
+	fmt.Println("Server listening on port 9001")
 
 	for {
 		conn, err := listener.Accept()
