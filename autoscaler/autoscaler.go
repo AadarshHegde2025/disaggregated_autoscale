@@ -90,13 +90,13 @@ type SnapshotList struct {
 
 // Here, x denotes the number of compute heavy VMs that are currently online
 
-var x int = 0
+var x int = 1
 
 var online_compute_vms = make(map[string]bool)
 
 // Here, y denotes the number of compute heavy VMs that are currently online
 
-var y int = 0
+var y int = 1
 
 var online_memory_vms = make(map[string]bool)
 
@@ -341,7 +341,7 @@ func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
 
 func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, num_memory_heavy_available int) (int, int) {
 
-	const N = 10
+	const N = 1000000000000
 
 	// Look through linked list backwards until we find a timestamp that was N seconds before now before we try to optimize 
 
@@ -355,15 +355,37 @@ func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, n
 
 	var maxVal float64 = math.Inf(-1)
 
-	for i := 0; i <= num_compute_heavy_available; i++ {
+	var DEBUGMODE bool = true
+	f, err := os.OpenFile("utilityCalc.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	if DEBUGMODE {
+		if err != nil {
+			fmt.Println("Error opening file:", err)
+		}
+		defer f.Close()
+	
+		if _, err := f.WriteString("Autoscaler Run \n"); err != nil {
+			fmt.Println("Error writing to file:", err)
+		}
+	}
 
-		for j := 0; j <= num_memory_heavy_available; j++ {
+
+	for i := 1; i <= num_compute_heavy_available; i++ {
+
+		for j := 1; j <= num_memory_heavy_available; j++ {
 
 			if i == 0 && j == 0 {
 				continue
 			}
 
-			utility := t.calculateUtilityFunction(i, j)
+			utility := t.calculateUtilityFunction(i, j)		
+
+			line := fmt.Sprintf("i: %d, j: %d, utility: %f\n", i, j, utility)
+			if DEBUGMODE {
+				if _, err := f.WriteString(line); err != nil {
+					fmt.Println("Error writing to file:", err)
+				}
+			}
+
 
 			if utility > maxVal {
 				fmt.Println(maxVal)
@@ -390,6 +412,12 @@ func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, n
 
 		}
 
+	}
+
+	if DEBUGMODE {
+		if _, err := f.WriteString("--------------\n"); err != nil {
+			fmt.Println("Error writing to file:", err)
+		}	
 	}
 
 	return x_prime, y_prime
@@ -422,7 +450,7 @@ func (t *AutoScaler) calculateUtilityFunction(x_prime int, y_prime int) float64 
 
 	fmt.Println(A, B, C, D)
 
-	return alpha*A + lambda*B + C + gamma*D
+	return alpha*A + lambda*B - C - gamma*D
 
 }
 
@@ -442,9 +470,7 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	// ... and memory heavy queues
 	memory_queues := make([][]rpcstructs.Snapshot, y_prime)
 	for i := range memory_queues {
-
 		memory_queues[i] = make([]rpcstructs.Snapshot, 0)
-
 	}
 
 	// Assign jobs from the linked list to the queue
@@ -452,11 +478,13 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	compute_queue_index := 0
 	memory_queue_index := 0
 
+	jobCount := 0
 	for {
 		// No more jobs to assign
 		if current == nil {
 			break
 		}
+		jobCount++
 
 		// Add job to a queue depending on what type it is
 
@@ -478,10 +506,12 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 				memory_queue_index = (memory_queue_index + 1) % len(memory_queues)
 			}
 		}
-
+		
 		current = current.next
 
 	}
+
+	fmt.Println(jobCount)
 
 	// for each compute heavy queue
 
@@ -588,7 +618,13 @@ func (t *AutoScaler) calculateExpectedLatencyAndUtilization(x_prime int, y_prime
 	if ComputeRunDuration == 0 {
 		ComputeRunDuration = 1
 	}
+	
+	if(total_jobs == 0){
+		total_jobs = 1
+	}
+
 	average_utilization := total_memory_utilization/float64(MemoryRunDuration) + total_cpu_utilization/float64(ComputeRunDuration)
+
 
 	return float64(total_latency) / float64(total_jobs), average_utilization
 

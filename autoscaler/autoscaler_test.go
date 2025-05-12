@@ -266,3 +266,44 @@ func TestExpectedLatencyAndUtilization(t *testing.T){
 	}
 
 }
+
+func TestOptimalConfiguration(t *testing.T) {
+	autoscaler := AutoScaler{}
+
+	snapshots := []rpcstructs.Snapshot{
+        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.4, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.3, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 2.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+	}
+
+
+	for _, snapshot := range snapshots{
+		autoscaler.AddSnapshotToList(&snapshot)
+	}
+
+	current := autoscaler.snapshotList.head
+	count := 0
+	for {
+		if current == nil{
+			break;
+		}
+		count++
+		current = current.next
+	}
+
+	if count != len(snapshots) {
+		t.Errorf("Add Snapshot functionality unsuccessful, Expected Latency cannot be tested. Expected list of length %d, found %d", len(snapshots), count)
+	}
+
+	// Function under test
+	compute_heavy, memory_heavy  := autoscaler.findOptimalConfiguration(10, 10)
+
+	if(compute_heavy < 1 || compute_heavy > 10 || memory_heavy < 1 || memory_heavy > 10){
+		t.Errorf("Optimal configuration invalid, calculated %d compute heavy machines and %d memory heavy machines", compute_heavy, memory_heavy)
+	}
+
+}
