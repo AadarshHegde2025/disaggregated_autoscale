@@ -12,29 +12,28 @@ func TestSnapshotAddEmptyList(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshot := rpcstructs.Snapshot{
-		ServerIp: "1.1.1.1:8000", 
-		JobType: rpcstructs.MEMORY_HEAVY, 
-		CpuUtilization: 1.0,
-		MemoryUtilization: 1.0, 
-		ExecutionTime: 1,
-		TotalTime: 1, 
-		Timestamp: 1,
+		ServerIp:          "1.1.1.1:8000",
+		JobType:           rpcstructs.MEMORY_HEAVY,
+		CpuUtilization:    1.0,
+		MemoryUtilization: 1.0,
+		ExecutionTime:     1,
+		TotalTime:         1,
+		Timestamp:         1,
 	}
-
 
 	autoscaler.AddSnapshotToList(&snapshot)
 
-	head := autoscaler.snapshotList.head 
+	head := autoscaler.snapshotList.head
 	expectedServerIp := "1.1.1.1:8000"
 
-	if (head.data.ServerIp != expectedServerIp) {
+	if head.data.ServerIp != expectedServerIp {
 		t.Errorf("Result was incorrect, got: %s, want: %s.", head.data.ServerIp, expectedServerIp)
 	}
-	if (head.next != nil){
+	if head.next != nil {
 		t.Error("Head should not have 'next' element in snapshot list")
 	}
-	
-	if (head.prev != nil){
+
+	if head.prev != nil {
 		t.Error("Head should not have 'prev' element in snapshot list")
 	}
 }
@@ -44,77 +43,76 @@ func TestSnapshotAddMultiple(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshot := rpcstructs.Snapshot{
-		ServerIp: "1.1.1.1:8000", 
-		JobType: rpcstructs.MEMORY_HEAVY, 
-		CpuUtilization: 1.0,
-		MemoryUtilization: 1.0, 
-		ExecutionTime: 1,
-		TotalTime: 1, 
-		Timestamp: 1,
+		ServerIp:          "1.1.1.1:8000",
+		JobType:           rpcstructs.MEMORY_HEAVY,
+		CpuUtilization:    1.0,
+		MemoryUtilization: 1.0,
+		ExecutionTime:     1,
+		TotalTime:         1,
+		Timestamp:         1,
 	}
 
 	snapshot_two := rpcstructs.Snapshot{
-		ServerIp: "1.2.3.4:5000", 
-		JobType: rpcstructs.COMPUTE_HEAVY, 
-		CpuUtilization: 6.0,
-		MemoryUtilization: 5.0, 
-		ExecutionTime: 4,
-		TotalTime: 3,
-		Timestamp: 2,
+		ServerIp:          "1.2.3.4:5000",
+		JobType:           rpcstructs.COMPUTE_HEAVY,
+		CpuUtilization:    6.0,
+		MemoryUtilization: 5.0,
+		ExecutionTime:     4,
+		TotalTime:         3,
+		Timestamp:         2,
 	}
 
 	autoscaler.AddSnapshotToList(&snapshot)
 	autoscaler.AddSnapshotToList(&snapshot_two)
 
-	head := autoscaler.snapshotList.head 
+	head := autoscaler.snapshotList.head
 	expected := snapshot
 
 	next := autoscaler.snapshotList.head.next
 	expected_next := snapshot_two
 
-	if (head.data != expected) {
+	if head.data != expected {
 		t.Errorf("Result was incorrect, got: %v, want: %v.", head.data, expected)
 	}
-	if (head.next == nil || head.next != next){
+	if head.next == nil || head.next != next {
 		t.Error("Head should have 'next' element in snapshot list")
 	}
-	if (head.prev != nil){
+	if head.prev != nil {
 		t.Error("Head should not have 'prev' element in snapshot list")
 	}
 
-	if (next.data != expected_next) {
+	if next.data != expected_next {
 		t.Errorf("Result was incorrect, got: %v, want: %v.", next.data, expected_next)
 	}
-	if (next.next != nil){
+	if next.next != nil {
 		t.Error("Second element should not have 'next' element in snapshot list")
 	}
-	if (next.prev != head){
+	if next.prev != head {
 		t.Error("Second element should have 'prev' element in snapshot list")
 	}
 }
 
 // Tests the truncate feature of the snapshot list
-func TestSnapshotTruncateToNonEmptyList(t *testing.T){
+func TestSnapshotTruncateToNonEmptyList(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshots := []rpcstructs.Snapshot{
-        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 30,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 2},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 30},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200},
 	}
 
-	
-	for _, snapshot := range snapshots{
+	for _, snapshot := range snapshots {
 		autoscaler.AddSnapshotToList(&snapshot)
 	}
 
 	current := autoscaler.snapshotList.head
 	count := 0
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -123,21 +121,21 @@ func TestSnapshotTruncateToNonEmptyList(t *testing.T){
 	if count != len(snapshots) {
 		t.Errorf("Add Snapshot functionality unsuccessful, truncate history cannot be tested. Expected list of length %d, found %d", len(snapshots), count)
 	}
-	
+
 	//Truncates all snapshots from list that have timestamp < 50 seconds
 	autoscaler.truncateHistory(50)
-	
+
 	expected := []rpcstructs.Snapshot{
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200},
 	}
 
 	count = 0
 	current = autoscaler.snapshotList.head
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -146,11 +144,11 @@ func TestSnapshotTruncateToNonEmptyList(t *testing.T){
 	// Preliminary length check
 	if count != len(expected) {
 		t.Errorf("Incorrect size of snapshot list after truncation. Expected list of length %d, found %d", len(expected), count)
-	}	
+	}
 
 	// Validate our list is correct
 	current = autoscaler.snapshotList.head
-	for i := range(len(expected)){
+	for i := range len(expected) {
 		if current.data != expected[i] {
 			t.Errorf("Incorrect data at position %d in list: expected %v, actual %v", i, current.data, expected[i])
 		}
@@ -158,27 +156,26 @@ func TestSnapshotTruncateToNonEmptyList(t *testing.T){
 	}
 }
 
-func TestSnapshotTruncateToEmptyList(t *testing.T){
+func TestSnapshotTruncateToEmptyList(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshots := []rpcstructs.Snapshot{
-        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 30,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 2},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 30},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 50},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 92},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 5.0, ExecutionTime: 4, TotalTime: 3, Timestamp: 200},
 	}
 
-	
-	for _, snapshot := range snapshots{
+	for _, snapshot := range snapshots {
 		autoscaler.AddSnapshotToList(&snapshot)
 	}
 
 	current := autoscaler.snapshotList.head
 	count := 0
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -187,18 +184,17 @@ func TestSnapshotTruncateToEmptyList(t *testing.T){
 	if count != len(snapshots) {
 		t.Errorf("Add Snapshot functionality unsuccessful, truncate history cannot be tested. Expected list of length %d, found %d", len(snapshots), count)
 	}
-	
+
 	//Truncates all snapshots from list that have timestamp < 50 seconds
 	autoscaler.truncateHistory(250)
-	
-	expected := []rpcstructs.Snapshot{
-	}
+
+	expected := []rpcstructs.Snapshot{}
 
 	count = 0
 	current = autoscaler.snapshotList.head
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -207,34 +203,33 @@ func TestSnapshotTruncateToEmptyList(t *testing.T){
 	// Preliminary length check
 	if count != len(expected) {
 		t.Errorf("Incorrect size of snapshot list after truncation. Expected list of length %d, found %d", len(expected), count)
-	}	
+	}
 
 	// Validate our list is correct
-	if autoscaler.snapshotList.head != nil{
+	if autoscaler.snapshotList.head != nil {
 		t.Errorf("Expected truncation to an empty list")
 	}
 }
 
-func TestExpectedLatencyAndUtilization(t *testing.T){
+func TestExpectedLatencyAndUtilization(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshots := []rpcstructs.Snapshot{
-        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.8, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 0},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.8, ExecutionTime: 4, TotalTime: 0, Timestamp: 1},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3},
 	}
 
-
-	for _, snapshot := range snapshots{
+	for _, snapshot := range snapshots {
 		autoscaler.AddSnapshotToList(&snapshot)
 	}
 
 	current := autoscaler.snapshotList.head
 	count := 0
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -243,26 +238,26 @@ func TestExpectedLatencyAndUtilization(t *testing.T){
 	if count != len(snapshots) {
 		t.Errorf("Add Snapshot functionality unsuccessful, Expected Latency cannot be tested. Expected list of length %d, found %d", len(snapshots), count)
 	}
-	
+
 	//Truncates all snapshots from list that have timestamp < 50 seconds
 	calculated_latency, calculated_utilization := autoscaler.calculateExpectedLatencyAndUtilization(3, 3)
 	expected_latency := 4.0
 	expected_utilization := 3.6666
 
-	if math.IsNaN(calculated_latency) { 
+	if math.IsNaN(calculated_latency) {
 		t.Errorf("Calculated latency was not a number (NaN)")
 	}
 
-	if math.IsNaN(calculated_utilization) { 
+	if math.IsNaN(calculated_utilization) {
 		t.Errorf("Calculated utilization was not a number (NaN)")
 	}
-	
-	if math.Abs(calculated_latency - expected_latency) >= 1e-3 {
+
+	if math.Abs(calculated_latency-expected_latency) >= 1e-3 {
 		fmt.Print(calculated_latency, expected_latency)
 		t.Errorf("Calculation of latency incorrect: calculated %f, expected %f", calculated_latency, expected_latency)
 	}
-	if math.Abs(calculated_utilization - expected_utilization) >= 1e-3 {
-		t.Errorf("Calculation of utilization incorrect: calculated %f, expected %f",calculated_utilization, expected_utilization)
+	if math.Abs(calculated_utilization-expected_utilization) >= 1e-3 {
+		t.Errorf("Calculation of utilization incorrect: calculated %f, expected %f", calculated_utilization, expected_utilization)
 	}
 
 }
@@ -271,25 +266,24 @@ func TestOptimalConfiguration(t *testing.T) {
 	autoscaler := AutoScaler{}
 
 	snapshots := []rpcstructs.Snapshot{
-        {ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.4, ExecutionTime: 4, TotalTime: 0, Timestamp: 0,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.3, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 1,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 2.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2,},
-		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3,},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 6.0, MemoryUtilization: 0.4, ExecutionTime: 4, TotalTime: 0, Timestamp: 0},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 3.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 1},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 4.0, MemoryUtilization: 0.2, ExecutionTime: 4, TotalTime: 0, Timestamp: 2},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.COMPUTE_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.3, ExecutionTime: 3, TotalTime: 0, Timestamp: 3},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 4, TotalTime: 0, Timestamp: 1},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 2.0, MemoryUtilization: 0.7, ExecutionTime: 4, TotalTime: 0, Timestamp: 2},
+		{ServerIp: "1.2.3.4:5000", JobType: rpcstructs.MEMORY_HEAVY, CpuUtilization: 1.0, MemoryUtilization: 0.9, ExecutionTime: 3, TotalTime: 0, Timestamp: 3},
 	}
 
-
-	for _, snapshot := range snapshots{
+	for _, snapshot := range snapshots {
 		autoscaler.AddSnapshotToList(&snapshot)
 	}
 
 	current := autoscaler.snapshotList.head
 	count := 0
 	for {
-		if current == nil{
-			break;
+		if current == nil {
+			break
 		}
 		count++
 		current = current.next
@@ -300,9 +294,9 @@ func TestOptimalConfiguration(t *testing.T) {
 	}
 
 	// Function under test
-	compute_heavy, memory_heavy  := autoscaler.findOptimalConfiguration(10, 10)
+	compute_heavy, memory_heavy := autoscaler.findOptimalConfiguration(10, 10)
 
-	if(compute_heavy < 1 || compute_heavy > 10 || memory_heavy < 1 || memory_heavy > 10){
+	if compute_heavy < 1 || compute_heavy > 10 || memory_heavy < 1 || memory_heavy > 10 {
 		t.Errorf("Optimal configuration invalid, calculated %d compute heavy machines and %d memory heavy machines", compute_heavy, memory_heavy)
 	}
 

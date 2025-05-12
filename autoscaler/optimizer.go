@@ -2,7 +2,7 @@ package main
 
 import (
 	"container/heap"
-	"fmt"
+	// "fmt"
 	// "time"
 )
 
@@ -27,14 +27,35 @@ func getNeighbors(x, y, N int) [][2]int {
 	return deltas
 }
 
-//
-func greedyHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]int, objectiveFunction func(int, int) float64) (int, int, float64) {
+func bruteForceOptimizer(startX, startY, N, MAXITER int, bounds [2][2]int, objectiveFunction func(int, int) float64) (int, int, float64, int, int) {
+	currX := bounds[0][0]
+	currY := bounds[1][0]
+	currVal := -1e10
+	evaluations := 0
+	iterations := 0
+	for i := bounds[0][0]; i <= bounds[0][1]; i++{
+		for j := bounds[1][0]; j <= bounds[1][1]; j++{
+			val := objectiveFunction(i, j)
+			evaluations++
+			if val > currVal {
+				currVal = val
+				currX = i
+				currY = j
+			}
+			iterations++
+		}
+	}
+	return currX, currY, currVal, evaluations, iterations
+}
+
+
+func greedyHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]int, objectiveFunction func(int, int) float64) (int, int, float64, int, int) {
 	currX := startX
 	currY := startY
 	currVal := objectiveFunction(currX, currY)
-
-	for i := 0; i < MAXITER; i++{
-		fmt.Print(currX, currY)
+	evaluations := 1
+	i := 0
+	for i = 0; i < MAXITER; i++{
 		improved := false
 		// Locally search with radius N
 		for _, neighbor := range getNeighbors(currX, currY, N) {
@@ -43,6 +64,8 @@ func greedyHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]in
 				continue
 			}
 			val := objectiveFunction(neighborX, neighborY)
+			evaluations++
+
 			// As soon as we find a neighbor that's better, take it
 			if val > currVal {
 				currX = neighborX
@@ -58,10 +81,10 @@ func greedyHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]in
 			break
 		}
 	}
-	return currX, currY, currVal
+	return currX, currY, currVal, evaluations, i
 }
 
-func geneticHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]int, objectiveFunction func(int, int) float64) (int, int, float64, int) {
+func geneticHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]int, objectiveFunction func(int, int) float64) (int, int, float64, int, int) {
 	currX := startX
 	currY := startY
 	currVal := objectiveFunction(currX, currY)
@@ -76,8 +99,8 @@ func geneticHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]i
 
 	stepSizeX := (bounds[0][1] - bounds[0][0]) / 2  // Initialize to be half of space
 	stepSizeY := (bounds[1][1] - bounds[1][0]) / 2  // Initialize to be half of space
-
-	for i := 0; i < MAXITER; i++{
+	i := 0
+	for i = 0; i < MAXITER; i++{
 		if(queue.Len() == 0) {
 			break
 		}
@@ -150,11 +173,8 @@ func geneticHillclimbingOptimizer(startX, startY, N, MAXITER int, bounds [2][2]i
 		if(!improved) {
 			break
 		}
-
-
 	}
-	// fmt.Println()
 
-	return currX, currY, currVal, evaluations
+	return currX, currY, currVal, evaluations, i
 
 }
