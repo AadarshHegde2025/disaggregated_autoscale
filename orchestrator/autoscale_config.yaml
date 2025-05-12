@@ -1,0 +1,32 @@
+- commands:
+  - cd disaggregated_autoscale
+  - git switch Balaji/Autoscaler_update
+  - git pull
+  - GOTOOLCHAIN=auto go run server/server.go -cpu=64 -mem=16
+  name: ComputeHeavy
+  vm_numbers:
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+- commands:
+  - cd disaggregated_autoscale
+  - git switch Balaji/Autoscaler_update
+  - git pull
+  - GOTOOLCHAIN=auto go run server/server.go -cpu=16 -mem=128
+  name: MemHeavy
+  vm_numbers:
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
