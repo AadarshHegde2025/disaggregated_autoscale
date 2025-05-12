@@ -176,58 +176,58 @@ func TestOptimizerEvaluationOutput(t *testing.T){
 	
 	fmt.Fprintln(evaluationf, "Brute Force, Greedy, Genetic")
 	fmt.Fprintln(iterationf, "Brute Force, Greedy, Genetic")
-
-	for i := 0; i < 100; i++ {
-		size := 1000
-		a := rand.Intn(size) 
-		b := rand.Intn(size)
-		c := rand.Intn(size)
-		d := rand.Intn(size)
-		for {
-			if a != b && c != d{
-				break
+	sizes := []int{30, 300, 750, 1500, 3000}
+	for _, size := range sizes {
+		for i := 0; i < 100; i++ {
+			a := rand.Intn(size) 
+			b := rand.Intn(size)
+			c := rand.Intn(size)
+			d := rand.Intn(size)
+			for {
+				if a != b && c != d{
+					break
+				}
+				b = rand.Intn(size)
+				c = rand.Intn(size)
 			}
-			b = rand.Intn(size)
-			c = rand.Intn(size)
+
+			xl := min(a, b)
+			xu := max(a, b)
+			yl := min(c, d)
+			yu := max(c, d)
+
+			bounds := [2][2]int{
+				{xl, xu},
+				{yl, yu},
+			}
+
+			optx := xl + rand.Intn(xu - xl)
+			opty := yl + rand.Intn(yu - yl)
+
+			// monotonically increasing function 
+			objectiveFunction := func(x, y int) float64 {
+				// return float64(x + y)
+				res :=float64(-1.0 * ((optx - x) * (optx -x) + (opty - y) * (opty - y)))
+				return res
+			}
+			startX := xl + rand.Intn(xu - xl)
+			startY := yl + rand.Intn(yu - yl)
+			N := 1
+			MAXITER := 100000
+
+
+
+			bX, bY, bVal, bEvals, bi := bruteForceOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
+			genX, genY, genVal, genEvals, geni := geneticHillclimbingOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
+			greeX, greeY, greeVal, greeEvals, greei := greedyHillclimbingOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
+
+			if(bX != genX || genX != greeX || greeY != genY || genY != bY || bVal != genVal || genVal != greeVal){
+				t.Errorf("Optimizers did not converge on the same value") 
+			}
+
+
+			fmt.Fprintf(evaluationf, "%d, %d, %d, %d\n", bEvals, greeEvals, genEvals, size)
+			fmt.Fprintf(iterationf, "%d, %d, %d, %d\n", bi, greei, geni, size)
 		}
-
-		xl := min(a, b)
-		xu := max(a, b)
-		yl := min(c, d)
-		yu := max(c, d)
-
-		bounds := [2][2]int{
-			{xl, xu},
-			{yl, yu},
-		}
-
-		optx := xl + rand.Intn(xu - xl)
-		opty := yl + rand.Intn(yu - yl)
-
-		// monotonically increasing function 
-		objectiveFunction := func(x, y int) float64 {
-			// return float64(x + y)
-			res :=float64(-1.0 * ((optx - x) * (optx -x) + (opty - y) * (opty - y)))
-			return res
-		}
-		startX := xl + rand.Intn(xu - xl)
-		startY := yl + rand.Intn(yu - yl)
-		N := 1
-		MAXITER := 100000
-
-
-
-		bX, bY, bVal, bEvals, bi := bruteForceOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
-		genX, genY, genVal, genEvals, geni := geneticHillclimbingOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
-		greeX, greeY, greeVal, greeEvals, greei := greedyHillclimbingOptimizer(startX, startY, N, MAXITER, bounds, objectiveFunction)
-
-		if(bX != genX || genX != greeX || greeY != genY || genY != bY || bVal != genVal || genVal != greeVal){
-			t.Errorf("Optimizers did not converge on the same value") 
-		}
-
-
-		fmt.Fprintf(evaluationf, "%d, %d, %d\n", bEvals, greeEvals, genEvals)
-		fmt.Fprintf(iterationf, "%d, %d, %d\n", bi, greei, geni)
-	}
-
+	} 
 }
