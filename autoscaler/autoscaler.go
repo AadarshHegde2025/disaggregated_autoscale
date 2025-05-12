@@ -313,6 +313,9 @@ func (t *AutoScaler) AddSnapshotToList(args *rpcstructs.Snapshot) error {
 
 // Truncates snapshot list so that the timestamp of all timestamps is at least `minimum timestamp`  
 func (t *AutoScaler) truncateHistory(minimum_timestamp int64) {
+	if minimum_timestamp == 0 {
+		return
+	}
 	t.snapshotMutex.Lock()
 	defer t.snapshotMutex.Unlock()
 
@@ -347,7 +350,8 @@ func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, n
 
 	now := time.Now().Unix()
 	timestamp := now - N
-	t.truncateHistory(timestamp)
+	timestamp++
+	t.truncateHistory(0)
 
 	var x_prime int = 0
 
@@ -356,18 +360,17 @@ func (t *AutoScaler) findOptimalConfiguration(num_compute_heavy_available int, n
 	var maxVal float64 = math.Inf(-1)
 
 	var DEBUGMODE bool = true
-	f, err := os.OpenFile("utilityCalc.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
-	if DEBUGMODE {
-		if err != nil {
-			fmt.Println("Error opening file:", err)
-		}
-		defer f.Close()
-	
+	f, _ := os.OpenFile("utilityCalc.txt", os.O_APPEND|os.O_WRONLY|os.O_CREATE, 0644)
+	defer f.Close()
+
+	if DEBUGMODE {	
 		if _, err := f.WriteString("Autoscaler Run \n"); err != nil {
 			fmt.Println("Error writing to file:", err)
 		}
 	}
 
+	t.snapshotMutex.Lock()
+	defer t.snapshotMutex.Unlock()
 
 	for i := 1; i <= num_compute_heavy_available; i++ {
 
